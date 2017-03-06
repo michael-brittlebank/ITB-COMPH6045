@@ -1,0 +1,32 @@
+<?php include_once($data['viewsDirectory'].'partials/header.phtml'); ?>
+    <main class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="page-title"><?php echo $data['pageTitle'];?></h1>
+            </div>
+            <div class="col-sm-3 position-relative hide-for-small">
+                <img class="sidebar-image favourites-sidebar-left-image" src="<?php echo $data['imagesDirectory'].'favourites/fetch.jpg';?>"/>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <h3>Fetch</h3>
+                <p>
+                    Zero loves playing fetch, especially with his <a href="/favourites/toys" class="text-decoration">tennis balls</a> but he has a very specific way of playing: he fetches the ball and brings it back to the thrower but does not give it back!  As a result of this one-sided game, the thrower often tires earlier than Zero.
+                </p>
+                <h3>Tricks</h3>
+                <p>
+                    Zero learned a lot of tricks as a puppy such as sit, down, stand, stay, roll over, and paw.  This has had an impact on his behavior as an adult as can be seen while waiting to receive a toy at Christmas.  (<a href="/barkbook/kaycee" class="text-decoration">Kaycee</a> is in the background.)
+                </p>
+                <div class="youtube">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cz8LRX9DNV4" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h3>Driving</h3>
+                <p>
+                    Zero loves looking out the window while driving.  He does not look through the windshield but rather out the side windows.  Sometimes on the highway he will growl to let the other cars know that they are too close!
+                </p>
+            </div>
+            <div class="col-sm-3 position-relative hide-for-small">
+                <img class="sidebar-image favourites-sidebar-right-image" src="<?php echo $data['imagesDirectory'].'favourites/car.jpg';?>"/>
+            </div>
+        </div>
+    </main>
+<?php include_once($data['viewsDirectory'].'partials/footer.phtml');

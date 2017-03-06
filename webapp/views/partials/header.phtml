@@ -1,0 +1,90 @@
+<?php
+function isActiveMenu($tab, $data){
+    return $tab === $data['activePage']?'active':'';
+}
+
+function isActiveSubMenu($tab, $data){
+    return $tab === strtolower($data['pageTitle'])?'active':'';
+}
+?>
+<html>
+<head>
+    <title><?php echo $data['metaTitle'];?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--favicon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="/public/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/public/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/public/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/public/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/public/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/public/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/public/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/public/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/public/images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/public/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/public/images/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!--stylesheets-->
+    <link rel="stylesheet" type="text/css" href="/public/app.main.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Proza+Libre" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="container row">
+        <div class="col-sm-6 col-md-2 col-lg-4">
+            <a href="/">
+                <div class="header-logo"></div>
+            </a>
+        </div>
+        <div class="col-sm-6 show-for-small text-right position-relative">
+            <i id="header-mobile-menu" class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+        <nav class="col-sm-10 col-lg-8 text-right hide-for-small">
+            <ul class="standard-menu">
+                <li class="<?php echo isActiveMenu('favourites',$data);?>">
+                    <a href="/favourites">Favourites</a>
+                    <ul class="sub-menu">
+                        <li class="<?php echo isActiveSubMenu('activities',$data);?>">
+                            <a href="/favourites/activities">Activities</a>
+                        </li>
+                        <li class="<?php echo isActiveSubMenu('places',$data);?>">
+                            <a href="/favourites/places">Places</a>
+                        </li>
+                        <li class="<?php echo isActiveSubMenu('toys',$data);?>">
+                            <a href="/favourites/toys">Toys</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="<?php echo isActiveMenu('growing-up',$data);?>">
+                    <a href="/growing-up">Growing Up</a>
+                    <ul class="sub-menu">
+                        <li class="<?php echo isActiveSubMenu('puppyhood',$data);?>">
+                            <a href="/growing-up/puppyhood">Puppyhood</a>
+                        </li>
+                        <li class="<?php echo isActiveSubMenu('adolescence',$data);?>">
+                            <a href="/growing-up/adolescence">Adolescence</a>
+                        </li>
+                        <li class="<?php echo isActiveSubMenu('adulthood',$data);?>">
+                            <a href="/growing-up/adulthood">Adulthood</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="<?php echo isActiveMenu('barkbook',$data);?>">
+                    <a href="/barkbook">Barkbook</a>
+                </li>
+                <li class="<?php echo isActiveMenu('gallery',$data);?>">
+                    <a href="/gallery">Gallery</a>
+                </li>
+                <li class="<?php echo isActiveMenu('contact',$data);?>">
+                    <a href="/contact">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>

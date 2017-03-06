@@ -1,0 +1,27 @@
+<?php include_once($data['viewsDirectory'].'partials/header.phtml'); ?>
+    <main id="page-contact" class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="page-title"><?php echo $data['pageTitle'];?></h1>
+            </div>
+            <section class="col-sm-12 col-md-6">
+                <div class="google-maps">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8785.229875105973!2d-6.384845907243105!3d53.40505636799418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486712badd7cd6b1%3A0x9817ed5716c08592!2sInstitute+of+Technology+%2C+Blanchardstown!5e0!3m2!1sen!2sie!4v1478782268039" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+            </section>
+            <section class="col-sm-12 col-md-6">
+                <form id="contact-form">
+                    <label for="contact-name">Name</label>
+                    <input type="text" id="contact-name"/>
+                    <label for="contact-email">Email</label>
+                    <input type="email" id="contact-email"/>
+                    <label for="contact-phone">Phone</label>
+                    <input type="tel" id="contact-phone"/>
+                    <label for="contact-message">Message</label>
+                    <textarea rows="5" id="contact-message"></textarea>
+                    <button type="submit" class="button" id="contact-submit">Send Message</button>
+                </form>
+            </section>
+        </div>
+    </main>
+<?php include_once($data['viewsDirectory'].'partials/footer.phtml');
