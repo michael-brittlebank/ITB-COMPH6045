@@ -1,0 +1,12 @@
+#ide
+.DS_Store
+.idea/
+
+#dependencies
+vendor/
+!webapp/vendor/
+node_modules/
+webapp/bower_components/
+
+#build files
+webapp/public/
