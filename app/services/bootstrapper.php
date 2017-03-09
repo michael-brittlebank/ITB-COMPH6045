@@ -19,7 +19,7 @@ foreach($servicesFiles as $services){
  */
 $modelsPath = 'models';
 $modelsFiles = [
-    'barkbook',
+    'user',
 ];
 
 //load files

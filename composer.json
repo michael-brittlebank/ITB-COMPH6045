@@ -1,10 +1,13 @@
 {
-    "require": {
-        "slim/slim": "^3.0",
-        "slim/php-view": "^2.2",
-        "slim/http-cache": "^0.3.0",
-        "twig/twig": "^1.32",
-        "slim/twig-view": "^2.2",
-        "vlucas/phpdotenv": "^2.4"
-    }
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "slim/slim": "^3.0",
+    "slim/php-view": "^2.2",
+    "slim/http-cache": "^0.3.0",
+    "twig/twig": "^1.32",
+    "slim/twig-view": "^2.2",
+    "vlucas/phpdotenv": "^2.4",
+    "jv2222/ezsql": "dev-master"
+  }
 }

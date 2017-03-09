@@ -1,10 +1,13 @@
 <?php
+//load composer packages
 require 'vendor/autoload.php';
 
-//slim config
+//environment variables
 require_once('app/services/config.php');
-loadEnvConfig();
+$envConfig = new \Services\Config();
+$envConfig->validateLoadedConfig();
 
+//slim config
 $config = [];
 if (getenv('DEBUG') === true){
     $config['settings'] = [
@@ -44,7 +47,7 @@ $container['view'] = function ($container) {
     return $view;
 };
 
-//load bootstrapper
-include_once('app/services/bootstrapper.php');
+//bootstrap remaining files
+require_once('app/services/bootstrapper.php');
 
 $app->run();

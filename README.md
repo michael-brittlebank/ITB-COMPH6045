@@ -6,6 +6,7 @@ The website is built upon PHP and the [Slim](https://www.slimframework.com/) rou
 
 After cloning the repo, run
 ```
+cp .env_example .env
 composer install
 npm install
 bower install
