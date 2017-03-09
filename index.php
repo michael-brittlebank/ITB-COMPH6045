@@ -5,7 +5,7 @@ define('DEBUG', true);
 
 //app constants
 define('VIEW_DIRECTORY','webapp/views/');
-define('META_TITLE_PREFIX','Zero Trouble | ');
+define('META_TITLE_PREFIX','My Store | ');
 
 //slim config
 $config = [];

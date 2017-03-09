@@ -12,14 +12,14 @@ $app->get('/checkout/cart', function ($request, $response, $args) use ($app) {
     } else {
         throw new \Slim\Exception\NotFoundException($request, $response);
     }
-});
+})->setName('cart');
 
 //checkout page
 $app->get('/checkout', function ($request, $response, $args) use ($app) {
-    $pageName = strtolower($args['page']);
+    $pageName = 'checkout';
     $fileName = '/checkout/page.twig';
     $viewData['metaTitle'] = META_TITLE_PREFIX.ucwords(str_replace('-',' ',$pageName));
     $viewData['pageTitle'] = ucwords(str_replace('-',' ',$pageName));
     $viewData['activePage'] = 'shop';
     return $this->view->render($response, $fileName, array_merge($viewData, Services\Util::getGlobalVariables()));
-});
+})->setName('checkout');

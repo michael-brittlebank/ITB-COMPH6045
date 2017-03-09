@@ -12,7 +12,7 @@ $app->get('/shop', function ($request, $response, $args) use ($app) {
     } else {
         throw new \Slim\Exception\NotFoundException($request, $response);
     }
-});
+})->setName('shop');
 
 //product detail pages
 $app->get('/shop/{page}', function ($request, $response, $args) use ($app) {
