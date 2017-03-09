@@ -50,6 +50,9 @@ foreach($middlewareFiles as $middleware){
 $controllerPath = 'controllers';
 $controllerFiles = [
     'errors',
+    'shop',
+    'checkout',
+    'user',
     'pages'
 ];
 

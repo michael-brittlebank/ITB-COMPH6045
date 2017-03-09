@@ -11,41 +11,29 @@
         <nav class="col-sm-10 col-lg-8 text-right hide-for-small">
             <ul class="standard-menu">
                 <li class="<?php echo isActiveMenu('favourites',$data);?>">
-                    <a href="/favourites">Favourites</a>
-                    <ul class="sub-menu">
-                        <li class="<?php echo isActiveSubMenu('activities',$data);?>">
-                            <a href="/favourites/activities">Activities</a>
-                        </li>
-                        <li class="<?php echo isActiveSubMenu('places',$data);?>">
-                            <a href="/favourites/places">Places</a>
-                        </li>
-                        <li class="<?php echo isActiveSubMenu('toys',$data);?>">
-                            <a href="/favourites/toys">Toys</a>
-                        </li>
-                    </ul>
+                    <a href="/shop">Shop</a>
                 </li>
                 <li class="<?php echo isActiveMenu('growing-up',$data);?>">
-                    <a href="/growing-up">Growing Up</a>
+                    <a href="/checkout">Checkout</a>
                     <ul class="sub-menu">
                         <li class="<?php echo isActiveSubMenu('puppyhood',$data);?>">
-                            <a href="/growing-up/puppyhood">Puppyhood</a>
-                        </li>
-                        <li class="<?php echo isActiveSubMenu('adolescence',$data);?>">
-                            <a href="/growing-up/adolescence">Adolescence</a>
-                        </li>
-                        <li class="<?php echo isActiveSubMenu('adulthood',$data);?>">
-                            <a href="/growing-up/adulthood">Adulthood</a>
+                            <a href="/checkout/cart">Cart</a>
                         </li>
                     </ul>
                 </li>
                 <li class="<?php echo isActiveMenu('barkbook',$data);?>">
-                    <a href="/barkbook">Barkbook</a>
+                    <a href="/login">Login</a>
                 </li>
                 <li class="<?php echo isActiveMenu('gallery',$data);?>">
-                    <a href="/gallery">Gallery</a>
+                    <a href="/register">Register</a>
                 </li>
                 <li class="<?php echo isActiveMenu('contact',$data);?>">
-                    <a href="/contact">Contact</a>
+                    <a href="/about">About</a>
+                    <ul class="sub-menu">
+                        <li class="<?php echo isActiveSubMenu('puppyhood',$data);?>">
+                            <a href="/contact">Contact</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
