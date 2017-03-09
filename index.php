@@ -24,7 +24,7 @@ $config['cache'] = function () {
 $app = new \Slim\App($config);
 
 //caching
-$app->add(new \Slim\HttpCache\Cache('public', 86400));
+//$app->add(new \Slim\HttpCache\Cache('public', 86400));
 
 //get slim container
 $container = $app->getContainer();
@@ -36,8 +36,8 @@ $container['cache'] = function () {
 //register view system with slim
 $container['view'] = function ($container) {
     $view = new \Slim\Views\Twig(VIEW_DIRECTORY, [
-        'cache' => false
 //        'cache' => 'webapp/public/cache'
+        'cache' => false
     ]);
 
     // Instantiate and add Slim specific extension

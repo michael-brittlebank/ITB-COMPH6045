@@ -16,35 +16,20 @@ module.exports = function(grunt){
             'webapp/javascript/app.js',
             'webapp/javascript/**/*.js'
         ],
-        css: [
-            'webapp/css/app.css',
-            'webapp/css/**/*.css'
+        baseSass: [
+            'webapp/sass/app.base.scss',
+            'webapp/sass/vendor/**/*.scss'
+        ],
+        mainSass: [
+            'webapp/sass/**/*.scss',
+            '!webapp/sass/app.base.scss',
+            '!webapp/sass/vendor/**/*.scss'
         ],
         images: [
             'webapp/images/**/*'
         ]
     };
     grunt.initConfig({
-        /*
-         Minifies and concatenates CSS
-         https://github.com/gruntjs/grunt-contrib-cssmin
-         */
-        cssmin: {
-            options: {
-                shorthandCompacting: false,
-                roundingPrecision: -1,
-                sourceMap: true
-            },
-            target: {
-                files: {
-                    'webapp/public/app.main.min.css': [
-                        'webapp/vendor/font-awesome-4.7.0/css/font-awesome.css',
-                        'webapp/bower_components/normalize-css/normalize.css',
-                        'webapp/bower_components/slick-carousel/slick/slick.css'
-                    ].concat(watchFiles.css)
-                }
-            }
-        },
         /*
          Copies assets into the build folder
          https://github.com/gruntjs/grunt-contrib-copy
@@ -53,9 +38,18 @@ module.exports = function(grunt){
             fonts: {
                 expand: true,
                 src: [
-                    'webapp/vendor/font-awesome-4.7.0/fonts/**'
+                    'webapp/assets/fonts/**'
                 ],
                 dest: 'webapp/public/fonts/',
+                flatten: true,
+                filter: 'isFile'
+            },
+            files: {
+                expand: true,
+                src: [
+                    'webapp/assets/files/**'
+                ],
+                dest: 'webapp/public/files/',
                 flatten: true,
                 filter: 'isFile'
             }
@@ -94,14 +88,56 @@ module.exports = function(grunt){
          https://github.com/nDmitry/grunt-postcss
          */
         postcss: {
-            options: {
-                map: true, // inline sourcemaps,
-                processors: [
-                    require('autoprefixer')({browsers: 'last 2 versions'}) // add vendor prefixes
-                ]
+            base: {
+                options: {
+                    map: true, // inline sourcemaps,
+                    processors: [
+                        require('autoprefixer')({browsers: 'last 2 versions'}) // add vendor prefixes
+                    ]
+                },
+                dist: {
+                    src: 'webapp/public/app.base.min.css'
+                }
             },
-            dist: {
-                src: 'webapp/public/app.main.min.css'
+            main: {
+                options: {
+                    map: true, // inline sourcemaps,
+                    processors: [
+                        require('autoprefixer')({browsers: 'last 2 versions'}) // add vendor prefixes
+                    ]
+                },
+                dist: {
+                    src: 'webapp/public/app.main.min.css'
+                }
+            }
+        },
+        /*
+         Compiles Sass to CSS
+         https://github.com/gruntjavascript/grunt-contrib-sass
+         */
+        sass: {
+            base: {
+                files: {
+                    'webapp/public/app.base.min.css': 'webapp/sass/app.base.scss'
+                },
+                options: {
+                    style: 'compressed',
+                    trace: true,
+                    loadPath: [
+                        'webapp/bower_components/css-modal',
+                        'webapp/bower_components/components-font-awesome/scss'
+                    ]
+                }
+            },
+            main: {
+                files: {
+                    'webapp/public/app.main.min.css': 'webapp/sass/app.main.scss'
+                },
+                options: {
+                    style: 'compressed',
+                    trace: true,
+                    loadPath: []
+                }
             }
         },
         /*
@@ -144,9 +180,16 @@ module.exports = function(grunt){
          https://github.com/gruntjs/grunt-contrib-watch
          */
         watch: {
-            css: {
-                files: watchFiles.css,
-                tasks: ['cssmin','postcss'],
+            baseSass: {
+                files: watchFiles.baseSass,
+                tasks: ['sass:base','postcss:base'],
+                options: {
+                    livereload: true
+                }
+            },
+            mainSass: {
+                files: watchFiles.mainSass,
+                tasks: ['sass:main','postcss:main'],
                 options: {
                     livereload: true
                 }
@@ -173,7 +216,7 @@ module.exports = function(grunt){
         'newer:copy',
         'newer:imagemin',
         'newer:uglify',
-        'newer:cssmin',
+        'newer:sass',
         'postcss',
         'watch'
     ]);
@@ -183,7 +226,7 @@ module.exports = function(grunt){
         'newer:copy',
         'newer:imagemin',
         'uglify',
-        'cssmin',
+        'sass',
         'postcss'
     ]);
 
