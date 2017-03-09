@@ -6,6 +6,7 @@
 $servicesPath = 'services';
 $servicesFiles = [
     'util',
+    'database'
 ];
 
 //load files

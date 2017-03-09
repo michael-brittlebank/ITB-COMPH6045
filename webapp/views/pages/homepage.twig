@@ -21,6 +21,9 @@
                 </section>
                 <section class="col-sm-12">
                     <h3><a href="{{ path_for('shop') }}">Shop Now</a></h3>
+                    {% for user in users %}
+                        {{ user.first_name }}
+                    {% endfor %}
                     <p>small product grid</p>
                 </section>
             </div>
