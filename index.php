@@ -1,15 +1,12 @@
 <?php
 require 'vendor/autoload.php';
-//environment variables
-define('DEBUG', true);
-
-//app constants
-define('VIEW_DIRECTORY','webapp/views/');
-define('META_TITLE_PREFIX','My Store | ');
 
 //slim config
+require_once('app/services/config.php');
+loadEnvConfig();
+
 $config = [];
-if (DEBUG === true){
+if (getenv('DEBUG') === true){
     $config['settings'] = [
         'displayErrorDetails' => true
     ];
@@ -24,7 +21,7 @@ $config['cache'] = function () {
 $app = new \Slim\App($config);
 
 //caching
-//$app->add(new \Slim\HttpCache\Cache('public', 86400));
+$app->add(new \Slim\HttpCache\Cache('public', 86400));
 
 //get slim container
 $container = $app->getContainer();
@@ -35,7 +32,7 @@ $container['cache'] = function () {
 
 //register view system with slim
 $container['view'] = function ($container) {
-    $view = new \Slim\Views\Twig(VIEW_DIRECTORY, [
+    $view = new \Slim\Views\Twig(getenv('VIEW_DIRECTORY'), [
 //        'cache' => 'webapp/public/cache'
         'cache' => false
     ]);

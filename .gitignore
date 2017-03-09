@@ -8,5 +8,8 @@ vendor/
 node_modules/
 webapp/bower_components/
 
+#environment config
+.env
+
 #build files
 webapp/public/

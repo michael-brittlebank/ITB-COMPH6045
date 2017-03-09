@@ -5,7 +5,7 @@ namespace Services;
 class Util {
     public static function getGlobalVariables(){
         return [
-            'viewsDirectory' => VIEW_DIRECTORY,
+            'viewsDirectory' => getenv('VIEW_DIRECTORY'),
             'imagesDirectory' => '/public/images/'
         ];
     }

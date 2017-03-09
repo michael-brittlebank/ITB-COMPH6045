@@ -4,6 +4,7 @@
         "slim/php-view": "^2.2",
         "slim/http-cache": "^0.3.0",
         "twig/twig": "^1.32",
-        "slim/twig-view": "^2.2"
+        "slim/twig-view": "^2.2",
+        "vlucas/phpdotenv": "^2.4"
     }
 }
