@@ -2,7 +2,7 @@
 
 //homepage
 $app->get('/', function ($request, $response) {
-    $viewData['metaTitle'] = 'Zero Trouble';
+    $viewData['metaTitle'] = 'My Store';
     $viewData['pageTitle'] = '';
     $viewData['users'] = \Services\Database::getConnection()->get_results("SELECT * FROM user");
     return $this->view->render($response, 'pages/homepage.twig', array_merge($viewData, Services\Util::getGlobalVariables()));
