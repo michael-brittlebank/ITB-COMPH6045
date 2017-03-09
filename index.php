@@ -34,10 +34,18 @@ $container['cache'] = function () {
 };
 
 //register view system with slim
-$container['view'] = function () {
-    return new \Slim\Views\PhpRenderer(VIEW_DIRECTORY);
+$container['view'] = function ($container) {
+    $view = new \Slim\Views\Twig(VIEW_DIRECTORY, [
+        'cache' => false
+//        'cache' => 'webapp/public/cache'
+    ]);
+
+    // Instantiate and add Slim specific extension
+    $basePath = rtrim(str_ireplace('index.php', '', $container['request']->getUri()->getBasePath()), '/');
+    $view->addExtension(new Slim\Views\TwigExtension($container['router'], $basePath));
+
+    return $view;
 };
-$container['renderer'] = new \Slim\Views\PhpRenderer(VIEW_DIRECTORY);
 
 //load bootstrapper
 include_once('app/services/bootstrapper.php');

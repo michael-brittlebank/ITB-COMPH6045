@@ -1,4 +1,6 @@
-<?php include_once($data['viewsDirectory'].'partials/header.phtml'); ?>
+{% extends "layouts/main.twig" %}
+{% block metaTitle metaTitle %}
+{% block content %}
     <main id="page-contact" class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -24,4 +26,4 @@
             </section>
         </div>
     </main>
-<?php include_once($data['viewsDirectory'].'partials/footer.phtml');
+{% endblock %}

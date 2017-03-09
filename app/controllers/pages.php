@@ -4,7 +4,7 @@
 $app->get('/', function ($request, $response) {
     $viewData['metaTitle'] = 'Zero Trouble';
     $viewData['pageTitle'] = '';
-    return $this->renderer->render($response, 'homepage.phtml', array_merge($viewData, Services\Util::getGlobalVariables()));
+    return $this->view->render($response, 'pages/homepage.twig', array_merge($viewData, Services\Util::getGlobalVariables()));
 });
 
 //default page handler
@@ -18,7 +18,7 @@ $app->get('/{page}', function ($request, $response, $args) use ($app) {
         if(stripos($pageName,'barkbook')!== false){
             $viewData['barkbookData'] = Models\Barkbook::getBarkbookData();
         }
-        return $this->renderer->render($response, $fileName, array_merge($viewData, Services\Util::getGlobalVariables()));
+        return $this->view->render($response, $fileName, array_merge($viewData, Services\Util::getGlobalVariables()));
     } else {
         throw new \Slim\Exception\NotFoundException($request, $response);
     }
@@ -37,7 +37,7 @@ $app->get('/{directory}/{page}', function ($request, $response, $args) use ($app
         if(stripos($directoryName,'barkbook')!== false){
             $viewData['barkbookData'] = Models\Barkbook::getBarkbookFriendByName($pageName);
         }
-        return $this->renderer->render($response, $viewTemplate, array_merge($viewData, Services\Util::getGlobalVariables()));
+        return $this->view->render($response, $viewTemplate, array_merge($viewData, Services\Util::getGlobalVariables()));
     } else {
         throw new \Slim\Exception\NotFoundException($request, $response);
     }

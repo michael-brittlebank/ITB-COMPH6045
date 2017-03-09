@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block metaTitle %}{% endblock %}</title>
+    {% include ('partials/head.twig') %}
+</head>
+<body>
+{% include ('partials/header.twig') %}
+{% block content %}{% endblock %}
+{% include ('partials/footer.twig') %}
+</body>
+</html>

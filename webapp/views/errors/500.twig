@@ -1,0 +1,16 @@
+{% extends "layouts/main.twig" %}
+{% block metaTitle metaTitle %}
+{% block content %}
+    {% if exception %}
+        {{ exception }}
+    {% else %}
+        <main class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h1>500 - Error</h1>
+                    <h3>Sorry, something went wrong.  Please try again later.</h3>
+                </div>
+            </div>
+        </main>
+    {% endif %}
+{% endblock %}

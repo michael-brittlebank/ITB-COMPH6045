@@ -6,7 +6,7 @@ $container['notFoundHandler'] = function ($container) {
         $viewData['pageTitle'] = '404 Error';
         $viewData['viewsDirectory'] = VIEW_DIRECTORY;
         return $container['view']
-            ->render($response, 'errors/404.phtml', $viewData)
+            ->render($response, 'errors/404.twig', $viewData)
             ->withStatus(404);
     };
 };
@@ -20,7 +20,7 @@ $container['errorHandler'] = function ($container) {
             $viewData['exception'] = $exception;
         }
         return $container['view']
-            ->render($response, 'errors/500.phtml', $viewData)
+            ->render($response, 'errors/500.twig', $viewData)
             ->withStatus(500);
     };
 };
