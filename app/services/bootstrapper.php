@@ -6,7 +6,8 @@
 $servicesPath = 'services';
 $servicesFiles = [
     'util',
-    'database'
+    'database',
+    'authentication'
 ];
 
 //load files
@@ -35,7 +36,8 @@ foreach($modelsFiles as $models){
 $middlewarePath = 'middleware';
 $middlewareFiles = [
     'assets',
-    'trailing-slash'
+    'trailing-slash',
+    'authentication'
 ];
 
 //load files

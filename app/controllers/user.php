@@ -32,10 +32,6 @@ $app->get('/profile', function ($request, $response, $args) use ($app) {
 
 //user logout route
 $app->get('/logout', function ($request, $response, $args) use ($app) {
-    $pageName = 'logout';
-    $fileName = '/user/'.$pageName.'.twig';
-    $viewData['metaTitle'] = getenv('META_TITLE_PREFIX').ucwords(str_replace('-',' ',$pageName));
-    $viewData['pageTitle'] = ucwords(str_replace('-',' ',$pageName));
-    $viewData['activePage'] = $pageName;
-    return $this->view->render($response, $fileName, array_merge($viewData, Services\Util::getGlobalVariables()));
+    Services\Authentication::endUserSession();
+    return $this->redirect('/');
 })->setName('logout');
