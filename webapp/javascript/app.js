@@ -1,25 +1,31 @@
 /*
-
  this follows the namespacing pattern listed here https://addyosmani.com/blog/essential-js-namespacing/
-
  */
 
-
-//chose a better global variable name to reduce chances of conflict
 var app = {
 
+    //libraries (highest level for ease of use)
+    ajax: {},
+    animations: {},
+    helpers: {},
+    mediaQueries: {},
+
     //modules
-    carousel: {},
+    modules: {
+        carousel: {}
+    },
+
+    //templates
+    views: {
+        login: {}
+    },
 
     //functions
     init: function(){
-        var carousel = app.carousel;
-        
-        //modules
-        if (carousel.hasCarousels()){
-            carousel.init();
-        }
+        var views = app.views;
 
+        //views
+        views.login.init();
     }
 };
 
