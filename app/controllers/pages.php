@@ -13,8 +13,8 @@ $app->get('/{page}', function ($request, $response, $args) use ($app) {
     $pageName = strtolower($args['page']);
     $fileName = '/pages/'.$pageName.'.twig';
     if(file_exists(join('/',[getenv('VIEW_DIRECTORY'),$fileName]))){
-        $viewData['metaTitle'] = getenv('META_TITLE_PREFIX').ucwords(str_replace('-',' ',$pageName));
-        $viewData['pageTitle'] = ucwords(str_replace('-',' ',$pageName));
+        $viewData['metaTitle'] = \Services\Util::getMetaTitle($pageName);
+        $viewData['pageTitle'] = \Services\Util::getPageTitle($pageName);
         $viewData['activePage'] = $pageName;
         return $this->view->render($response, $fileName, array_merge($viewData, Services\Util::getGlobalVariables()));
     } else {
@@ -29,8 +29,8 @@ $app->get('/{directory}/{page}', function ($request, $response, $args) use ($app
     $fileName = $pageName.'.twig';
     $viewTemplate = join('/',[$directoryName,$fileName]);
     if(file_exists(join('/',[getenv('VIEW_DIRECTORY'),$viewTemplate]))){
-        $viewData['metaTitle'] = getenv('META_TITLE_PREFIX').ucwords(str_replace('-',' ',$pageName));
-        $viewData['pageTitle'] = ucwords(str_replace('-',' ',$pageName));
+        $viewData['metaTitle'] = \Services\Util::getMetaTitle($pageName);
+        $viewData['pageTitle'] = \Services\Util::getPageTitle($pageName);
         $viewData['activePage'] = $directoryName;
         return $this->view->render($response, $viewTemplate, array_merge($viewData, Services\Util::getGlobalVariables()));
     } else {

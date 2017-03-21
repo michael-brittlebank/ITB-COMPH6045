@@ -60,6 +60,13 @@ iframe {
   border-bottom: 1px solid $color-dark-grey;
 }
 
+input {
+  @include transition-with-defaults(border);
+  &.error {
+    border: 1px solid red;
+  }
+}
+
 //helper classes
 //-----------------------------
 .faded-out {
