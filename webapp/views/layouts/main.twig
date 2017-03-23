@@ -2,11 +2,11 @@
 <html>
 <head>
     <title>{% block metaTitle %}{% endblock %}</title>
-    {% include ('partials/head.twig') %}
+    {% include ('components/head.twig') %}
 </head>
 <body>
-{% include ('partials/header.twig') %}
+{% include ('components/header.twig') %}
 {% block content %}{% endblock %}
-{% include ('partials/footer.twig') %}
+{% include ('components/footer.twig') %}
 </body>
 </html>
