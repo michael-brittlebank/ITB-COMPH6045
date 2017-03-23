@@ -33,8 +33,6 @@ $isUserAdmin = function ($request, $response, $next) {
     if (isset($_SESSION['user']) && $_SESSION['user']->isAdmin()) {
         return $next($request, $response);
     } else {
-        var_dump($_SESSION['user'],$_SESSION['user']->isAdmin());
-        die();
         return $response->withRedirect('/login');
     }
 };
