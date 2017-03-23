@@ -57,7 +57,8 @@ $controllerFiles = [
     'shop',
     'checkout',
     'user',
-    'pages'
+    'pages',
+    'admin'
 ];
 
 //load files

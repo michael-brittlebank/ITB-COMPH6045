@@ -25,7 +25,7 @@ $isUserLoggedIn = function ($request, $response, $next) {
     if (isset($_SESSION['expiry'])) {
         return $next($request, $response);
     } else {
-        return $response->withRedirect('login');
+        return $response->withRedirect('/login');
     }
 };
 
@@ -33,6 +33,8 @@ $isUserAdmin = function ($request, $response, $next) {
     if (isset($_SESSION['user']) && $_SESSION['user']->isAdmin()) {
         return $next($request, $response);
     } else {
-        return $response->withRedirect('/');
+        var_dump($_SESSION['user'],$_SESSION['user']->isAdmin());
+        die();
+        return $response->withRedirect('/login');
     }
 };

@@ -28,8 +28,7 @@
                 }
             )
                 .then(function(){
-                    console.log('success');
-                    // window.location.href = '/';
+                    window.location.href = '/profile';
                 })
                 .catch(function(error){
                     //todo, error messages based on status codes
