@@ -17,6 +17,8 @@ class Authentication {
                     //successfully authenticated
                     session_start();
                     session_regenerate_id(true);
+                    $_SESSION['user'] = $user;
+                    $_SESSION['expiry'] = self::getSessionExpiryTime();
                     return Util::createResponse(200);
                 } else {
                     //invalid password
@@ -51,5 +53,10 @@ class Authentication {
 
     public static function createSalt(){
         return mcrypt_create_iv(22, MCRYPT_DEV_URANDOM);
+    }
+    
+    public static function getSessionExpiryTime(){
+        $minutes = 30 * ($secondsInMinute = 60);
+        return time() + $minutes;
     }
 }

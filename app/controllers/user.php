@@ -40,10 +40,10 @@ $app->get('/profile', function ($request, $response, $args) use ($app) {
     $viewData['pageTitle'] = \Services\Util::getPageTitle($pageName);
     $viewData['activePage'] = $pageName;
     return $this->view->render($response, $fileName, array_merge($viewData, Services\Util::getGlobalVariables()));
-})->setName('profile');
+})->setName('profile')->add($isUserLoggedIn);
 
 //user logout route
 $app->get('/logout', function ($request, $response, $args) use ($app) {
     Services\Authentication::endUserSession();
-    return $this->redirect('/');
+    return $response->withRedirect('/');
 })->setName('logout');
