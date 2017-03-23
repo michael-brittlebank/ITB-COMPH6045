@@ -7,7 +7,8 @@ $servicesPath = 'services';
 $servicesFiles = [
     'util',
     'database',
-    'authentication'
+    'authentication',
+    'user'
 ];
 
 //load files

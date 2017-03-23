@@ -2,18 +2,24 @@
 
 namespace Models;
 
+use Services\Authentication;
+
 class User {
 
     private $firstName;
     private $lastName;
     private $email;
     private $role;
-
-    public function __construct($firstName, $lastName, $email, $role){
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->email = $email;
-        $this->role = $role;
+    private $passwordSalt;
+    private $passwordHash;
+    
+    public function __construct($user){
+        $this->firstName = $user->first_name;
+        $this->lastName = $user->last_name;
+        $this->email = $user->email;
+        $this->role = $user->role;
+        $this->passwordSalt = $user->password_salt;
+        $this->passwordHash = $user->password_hash;
     }
 
     public function isAdmin(){
@@ -31,5 +37,9 @@ class User {
 
     public function toString(){
         return $this->firstName.' '.$this->lastName;
+    }
+    
+    public function authenticateUserPassword($plainTextPassword){
+        return Authentication::encryptPassword($plainTextPassword, $this->passwordSalt) === $this->passwordHash;
     }
 }

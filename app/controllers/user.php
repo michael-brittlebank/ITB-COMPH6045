@@ -12,7 +12,14 @@ $app->get('/login', function ($request, $response, $args) use ($app) {
 
 //user login form
 $app->put('/login', function ($request, $response, $args) use ($app) {
-    return 'hello login';
+    $parsedBody = $request->getParsedBody();
+    if (!isset($parsedBody['email']) || !isset($parsedBody['password'])){
+        $status = 400;
+        return $response->withJson(\Services\Util::createResponse($status), $status);
+    } else {
+        $userSession = \Services\Authentication::startUserSession($parsedBody['email'],$parsedBody['password']);
+        return $response->withJson($userSession, $userSession['status']);
+    }
 });
 
 //new user page

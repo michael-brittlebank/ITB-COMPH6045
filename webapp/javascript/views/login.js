@@ -26,7 +26,23 @@
                     email: email,
                     password: password
                 }
-            );
+            )
+                .then(function(){
+                    console.log('success');
+                    // window.location.href = '/';
+                })
+                .catch(function(error){
+                    //todo, error messages based on status codes
+                    console.log('error', error);
+                    switch (error.jqXHR.status){
+                        case 400:
+                            console.log(error);
+                            break;
+                        case 401:
+                            console.log('401');
+                            break;
+                    }
+                });
         }
     }
 
