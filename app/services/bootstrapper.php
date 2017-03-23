@@ -57,12 +57,30 @@ $controllerFiles = [
     'shop',
     'checkout',
     'user',
-    'pages',
-    'admin'
+    'admin',
+    'pages'
 ];
 
 //load files
 foreach($controllerFiles as $controller){
     $filePath = join('/',[$_SERVER['DOCUMENT_ROOT'], 'app', $controllerPath, $controller.'.php']);
+    include_once($filePath);
+}
+
+/**
+ * routes
+ */
+$routePath = 'routes';
+$routeFiles = [
+    'shop',
+    'checkout',
+    'user',
+    'admin',
+    'pages'
+];
+
+//load files
+foreach($routeFiles as $route){
+    $filePath = join('/',[$_SERVER['DOCUMENT_ROOT'], 'app', $routePath, $route.'.php']);
     include_once($filePath);
 }

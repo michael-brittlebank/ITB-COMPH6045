@@ -1,21 +1,33 @@
 <?php
 
-//user cart page
-$app->get('/checkout/cart', function ($request, $response, $args) use ($app) {
-    $pageName = 'cart';
-    $fileName = '/checkout/'.$pageName.'.twig';
-    $viewData['metaTitle'] = \Services\Util::getMetaTitle($pageName);
-    $viewData['pageTitle'] = \Services\Util::getPageTitle($pageName);
-    $viewData['activePage'] = $pageName;
-    return $this->view->render($response, $fileName, array_merge($viewData, Services\Util::getGlobalVariables()));
-})->setName('cart');
+namespace Controllers;
 
-//checkout page
-$app->get('/checkout', function ($request, $response, $args) use ($app) {
-    $pageName = 'checkout';
-    $fileName = '/checkout/page.twig';
-    $viewData['metaTitle'] = \Services\Util::getMetaTitle($pageName);
-    $viewData['pageTitle'] = \Services\Util::getPageTitle($pageName);
-    $viewData['activePage'] = 'shop';
-    return $this->view->render($response, $fileName, array_merge($viewData, Services\Util::getGlobalVariables()));
-})->setName('checkout');
+use Interop\Container\ContainerInterface;
+use \Services;
+
+class Checkout {
+
+    protected $view;
+
+    public function __construct(ContainerInterface $ci) {
+        $this->view = $ci->view;
+    }
+
+    public function getCartPage ($request, $response, $args) {
+        $pageName = 'cart';
+        $fileName = '/checkout/'.$pageName.'.twig';
+        $viewData['metaTitle'] = Services\Util::getMetaTitle($pageName);
+        $viewData['pageTitle'] = Services\Util::getPageTitle($pageName);
+        $viewData['activePage'] = $pageName;
+        return $this->view->render($response, $fileName, array_merge($viewData, Services\Util::getGlobalVariables()));
+    }
+
+    public function getCheckoutPage ($request, $response, $args) {
+        $pageName = 'checkout';
+        $fileName = '/checkout/page.twig';
+        $viewData['metaTitle'] = Services\Util::getMetaTitle($pageName);
+        $viewData['pageTitle'] = Services\Util::getPageTitle($pageName);
+        $viewData['activePage'] = 'shop';
+        return $this->view->render($response, $fileName, array_merge($viewData, Services\Util::getGlobalVariables()));
+    }
+}
