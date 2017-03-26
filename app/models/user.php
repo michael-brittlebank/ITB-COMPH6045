@@ -26,17 +26,13 @@ class User {
         return $this->role === 1;
     }
 
-    public function getUserObject(){
+    public function toString(){
         return [
             'firstName'=>$this->firstName,
             'lastName'=>$this->lastName,
             'email'=>$this->email,
             'role'=>$this->role
         ];
-    }
-
-    public function toString(){
-        return $this->firstName.' '.$this->lastName;
     }
     
     public function authenticateUserPassword($plainTextPassword){
