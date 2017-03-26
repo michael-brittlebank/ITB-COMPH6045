@@ -38,7 +38,8 @@ $middlewarePath = 'middleware';
 $middlewareFiles = [
     'assets',
     'trailing-slash',
-    'authentication'
+    'authentication',
+    'data'
 ];
 
 //load files

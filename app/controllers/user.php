@@ -14,12 +14,9 @@ class User {
     }
 
     public function getLoginPage ($request, $response, $args) {
-        $pageName = 'login';
-        $fileName = '/user/'.$pageName.'.twig';
-        $viewData['metaTitle'] = Services\Util::getMetaTitle($pageName);
-        $viewData['pageTitle'] = Services\Util::getPageTitle($pageName);
-        $viewData['activePage'] = $pageName;
-        return $this->view->render($response, $fileName, array_merge($viewData, Services\Util::getGlobalVariables()));
+        $viewData['metaTitle'] = Services\Util::getMetaTitle('login');
+        $viewData['globals'] = $request->getAttribute('globals');
+        return $this->view->render($response, '/user/login.twig', $viewData);
     }
 
     public function submitLogin ($request, $response, $args) {
@@ -34,21 +31,15 @@ class User {
     }
 
     public function getRegisterPage ($request, $response, $args) {
-        $pageName = 'register';
-        $fileName = '/user/' . $pageName . '.twig';
-        $viewData['metaTitle'] = Services\Util::getMetaTitle($pageName);
-        $viewData['pageTitle'] = Services\Util::getPageTitle($pageName);
-        $viewData['activePage'] = $pageName;
-        return $this->view->render($response, $fileName, array_merge($viewData, Services\Util::getGlobalVariables()));
+        $viewData['metaTitle'] = Services\Util::getMetaTitle('register');
+        $viewData['globals'] = $request->getAttribute('globals');
+        return $this->view->render($response, '/user/register.twig', $viewData);
     }
 
     public function getProfilePage ($request, $response, $args) {
-        $pageName = 'profile';
-        $fileName = '/user/'.$pageName.'.twig';
-        $viewData['metaTitle'] = Services\Util::getMetaTitle($pageName);
-        $viewData['pageTitle'] = Services\Util::getPageTitle($pageName);
-        $viewData['activePage'] = $pageName;
-        return $this->view->render($response, $fileName, array_merge($viewData, Services\Util::getGlobalVariables()));
+        $viewData['metaTitle'] = Services\Util::getMetaTitle('profile');
+        $viewData['globals'] = $request->getAttribute('globals');
+        return $this->view->render($response, '/user/profile.twig', $viewData);
     }
 
     public function submitLogout ($request, $response, $args) {

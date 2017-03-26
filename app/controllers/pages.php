@@ -15,35 +15,19 @@ class Pages {
 
     public function getHomepage ($request, $response) {
         $viewData['metaTitle'] = 'My Store';
-        $viewData['pageTitle'] = '';
-        return $this->view->render($response, 'pages/homepage.twig', array_merge($viewData, Services\Util::getGlobalVariables()));
+        $viewData['globals'] = $request->getAttribute('globals');
+        return $this->view->render($response, 'pages/homepage.twig', $viewData);
     }
 
-    public function getDefaultPageHandler ($request, $response, $args) {
-        $pageName = strtolower($args['page']);
-        $fileName = '/pages/'.$pageName.'.twig';
-        if(file_exists(join('/',[getenv('VIEW_DIRECTORY'),$fileName]))){
-            $viewData['metaTitle'] = \Services\Util::getMetaTitle($pageName);
-            $viewData['pageTitle'] = \Services\Util::getPageTitle($pageName);
-            $viewData['activePage'] = $pageName;
-            return $this->view->render($response, $fileName, array_merge($viewData, Services\Util::getGlobalVariables()));
-        } else {
-            throw new \Slim\Exception\NotFoundException($request, $response);
-        }
+    public function getContactPage ($request, $response) {
+        $viewData['metaTitle'] = Services\Util::getMetaTitle('contact');
+        $viewData['globals'] = $request->getAttribute('globals');
+        return $this->view->render($response, 'pages/contact.twig', $viewData);
     }
 
-    public function getDefaultSubdirectoryPageHandler ($request, $response, $args) {
-        $pageName = strtolower($args['page']);
-        $directoryName = strtolower($args['directory']);
-        $fileName = $pageName.'.twig';
-        $viewTemplate = join('/',[$directoryName,$fileName]);
-        if(file_exists(join('/',[getenv('VIEW_DIRECTORY'),$viewTemplate]))){
-            $viewData['metaTitle'] = \Services\Util::getMetaTitle($pageName);
-            $viewData['pageTitle'] = \Services\Util::getPageTitle($pageName);
-            $viewData['activePage'] = $directoryName;
-            return $this->view->render($response, $viewTemplate, array_merge($viewData, Services\Util::getGlobalVariables()));
-        } else {
-            throw new \Slim\Exception\NotFoundException($request, $response);
-        }
+    public function getAboutPage ($request, $response) {
+        $viewData['metaTitle'] = Services\Util::getMetaTitle('about');
+        $viewData['globals'] = $request->getAttribute('globals');
+        return $this->view->render($response, 'pages/about.twig', $viewData);
     }
 }

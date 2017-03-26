@@ -3,9 +3,8 @@
 //404
 $container['notFoundHandler'] = function ($container) {
     return function ($request, $response) use ($container) {
-        $viewData['pageTitle'] = '404 Error';
-        $viewData['viewsDirectory'] = getenv('VIEW_DIRECTORY');
-        $viewData['metaTitle'] = 'Error - 404';
+        $viewData['metaTitle'] = Services\Util::getErrorMetaTitle('404');
+        $viewData['globals'] = $request->getAttribute('globals');
         return $container['view']
             ->render($response, 'errors/404.twig', $viewData)
             ->withStatus(404);
@@ -15,9 +14,8 @@ $container['notFoundHandler'] = function ($container) {
 //general error
 $container['errorHandler'] = function ($container) {
     return function ($request, $response, $exception) use ($container) {
-        $viewData['pageTitle'] = '500 Error';
-        $viewData['viewsDirectory'] = getenv('VIEW_DIRECTORY');
-        $viewData['metaTitle'] = 'Error - 500';
+        $viewData['metaTitle'] = Services\Util::getErrorMetaTitle('500');
+        $viewData['globals'] = $request->getAttribute('globals');
         if (getenv('DEBUG')){
             $viewData['exception'] = $exception;
         }

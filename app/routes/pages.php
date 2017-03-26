@@ -1,10 +1,8 @@
 <?php
 
 //homepage
-$app->get('/', \Controllers\Pages::class.':getHomepage');
+$app->get('/', \Controllers\Pages::class.':getHomepage')->setName('homepage');
 
-//default page handler
-$app->get('/{page}', \Controllers\Pages::class.':getDefaultPageHandler');
+$app->get('/contact', \Controllers\Pages::class.':getContactPage')->setName('contact');
 
-//subdirectory pages
-$app->get('/{directory}/{page}', \Controllers\Pages::class.':getDefaultSubdirectoryPageHandler');
+$app->get('/about', \Controllers\Pages::class.':getAboutPage')->setName('about');

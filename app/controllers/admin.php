@@ -14,29 +14,20 @@ class Admin {
     }
 
     public function getDashboardPage ($request, $response) {
-        $pageName = 'page';
-        $fileName = '/admin/'.$pageName.'.twig';
-        $viewData['metaTitle'] = Services\Util::getMetaTitle('admin');
-        $viewData['pageTitle'] = Services\Util::getPageTitle('admin');
-        $viewData['activePage'] = $pageName;
-        return $this->view->render($response, $fileName, array_merge($viewData, Services\Util::getGlobalVariables()));
+        $viewData['metaTitle'] = Services\Util::getAdminMetaTitle('dashboard');
+        $viewData['globals'] = $request->getAttribute('globals');
+        return $this->view->render($response, '/admin/page.twig', $viewData);
     }
 
     public function getNewProductPage ($request, $response) {
-        $pageName = 'new';
-        $fileName = '/admin/products/'.$pageName.'.twig';
-        $viewData['metaTitle'] = Services\Util::getMetaTitle('admin');
-        $viewData['pageTitle'] = Services\Util::getPageTitle('admin');
-        $viewData['activePage'] = $pageName;
-        return $this->view->render($response, $fileName, array_merge($viewData, Services\Util::getGlobalVariables()));
+        $viewData['metaTitle'] = Services\Util::getAdminMetaTitle('new product');
+        $viewData['globals'] = $request->getAttribute('globals');
+        return $this->view->render($response, '/admin/products/new.twig', $viewData);
     }
 
     public function getEditProductPage ($request, $response) {
-        $pageName = 'edit';
-        $fileName = '/admin/products/'.$pageName.'.twig';
-        $viewData['metaTitle'] = Services\Util::getMetaTitle('admin');
-        $viewData['pageTitle'] = Services\Util::getPageTitle('admin');
-        $viewData['activePage'] = $pageName;
-        return $this->view->render($response, $fileName, array_merge($viewData, Services\Util::getGlobalVariables()));
+        $viewData['metaTitle'] = Services\Util::getAdminMetaTitle('edit product');
+        $viewData['globals'] = $request->getAttribute('globals');
+        return $this->view->render($response, '/admin/products/edit.twig', $viewData);
     }
 }

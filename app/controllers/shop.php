@@ -14,20 +14,14 @@ class Shop {
     }
 
     public function getShopPage ($request, $response, $args) {
-        $pageName = 'shop';
-        $fileName = '/shop/page.twig';
-        $viewData['metaTitle'] = Services\Util::getMetaTitle($pageName);
-        $viewData['pageTitle'] = Services\Util::getPageTitle($pageName);
-        $viewData['activePage'] = $pageName;
-        return $this->view->render($response, $fileName, array_merge($viewData, Services\Util::getGlobalVariables()));
+        $viewData['metaTitle'] = Services\Util::getMetaTitle('shop');
+        $viewData['globals'] = $request->getAttribute('globals');
+        return $this->view->render($response, '/shop/page.twig', $viewData);
     }
 
     public function getProductPage ($request, $response, $args) {
-        $pageName = strtolower($args['page']);
-        $fileName = '/shop/product.twig';
-        $viewData['metaTitle'] = Services\Util::getMetaTitle($pageName);
-        $viewData['pageTitle'] = Services\Util::getPageTitle($pageName);
-        $viewData['activePage'] = 'shop';
-        return $this->view->render($response, $fileName, array_merge($viewData, Services\Util::getGlobalVariables()));
+        $viewData['metaTitle'] = Services\Util::getMetaTitle(strtolower($args['page']));
+        $viewData['globals'] = $request->getAttribute('globals');
+        return $this->view->render($response, '/shop/product.twig', $viewData);
     }
 }
