@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 //load composer packages
 require 'vendor/autoload.php';
 

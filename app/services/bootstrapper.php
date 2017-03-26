@@ -31,6 +31,9 @@ foreach($modelsFiles as $models){
     include_once($filePath);
 }
 
+//start the session after the core files are loaded
+session_start();
+
 /**
  * middleware
  */

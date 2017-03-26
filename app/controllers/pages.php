@@ -16,18 +16,21 @@ class Pages {
     public function getHomepage ($request, $response) {
         $viewData['metaTitle'] = 'My Store';
         $viewData['globals'] = $request->getAttribute('globals');
+        $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, 'pages/homepage.twig', $viewData);
     }
 
     public function getContactPage ($request, $response) {
         $viewData['metaTitle'] = Services\Util::getMetaTitle('contact');
         $viewData['globals'] = $request->getAttribute('globals');
+        $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, 'pages/contact.twig', $viewData);
     }
 
     public function getAboutPage ($request, $response) {
         $viewData['metaTitle'] = Services\Util::getMetaTitle('about');
         $viewData['globals'] = $request->getAttribute('globals');
+        $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, 'pages/about.twig', $viewData);
     }
 }

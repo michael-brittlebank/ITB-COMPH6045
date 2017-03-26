@@ -16,6 +16,7 @@ class User {
     public function getLoginPage ($request, $response, $args) {
         $viewData['metaTitle'] = Services\Util::getMetaTitle('login');
         $viewData['globals'] = $request->getAttribute('globals');
+        $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, '/user/login.twig', $viewData);
     }
 
@@ -33,12 +34,14 @@ class User {
     public function getRegisterPage ($request, $response, $args) {
         $viewData['metaTitle'] = Services\Util::getMetaTitle('register');
         $viewData['globals'] = $request->getAttribute('globals');
+        $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, '/user/register.twig', $viewData);
     }
 
     public function getProfilePage ($request, $response, $args) {
         $viewData['metaTitle'] = Services\Util::getMetaTitle('profile');
         $viewData['globals'] = $request->getAttribute('globals');
+        $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, '/user/profile.twig', $viewData);
     }
 
