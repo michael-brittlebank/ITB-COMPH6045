@@ -18,10 +18,10 @@ class Authentication {
                     session_regenerate_id(true);
                     $_SESSION['user'] = $user;
                     $_SESSION['expiry'] = self::getSessionExpiryTime();
-                    return Util::createResponse(200);
+                    return true;
                 } else {
                     //invalid password
-                    return Util::createResponse(401);
+                    return false;
                 }
             }
         }
