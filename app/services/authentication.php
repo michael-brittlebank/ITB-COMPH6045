@@ -15,7 +15,6 @@ class Authentication {
             } else {
                 if ($user->authenticateUserPassword($password)){
                     //successfully authenticated
-                    session_start();
                     session_regenerate_id(true);
                     $_SESSION['user'] = $user;
                     $_SESSION['expiry'] = self::getSessionExpiryTime();
@@ -30,7 +29,6 @@ class Authentication {
 
     public static function endUserSession(){
         //http://php.net/manual/en/function.session-destroy.php
-        session_start();
         // Unset all of the session variables.
         $_SESSION = array();
         // If it's desired to kill the session, also delete the session cookie.

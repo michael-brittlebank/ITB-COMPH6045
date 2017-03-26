@@ -4,9 +4,6 @@ use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
 $app->add(function (Request $request, Response $response, callable $next) {
-    //start session for all requests
-    session_start();
-
     //validate user session
     if (isset($_SESSION['expiry'])){
         if (time() > $_SESSION['expiry']){
