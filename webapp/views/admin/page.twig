@@ -1,7 +1,30 @@
 {% extends "layouts/main.twig" %}
-{% block metaTitle metaTitle %}
 {% block content %}
     <main>
-        show all products
+        <h1>Products</h1>
+        {% if products %}
+            <table>
+                {% for product in products %}
+                    <tr>
+                        <td>
+                            {{ title }}
+                        </td>
+                        <td>
+                            €{{ price }}
+                        </td>
+                        <td>
+                            <a href="{{ path_for('admin-edit') }}/{{ id }}" class="button">Edit</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+            {{ productCount }}
+            {{ currentPage }}
+            {#todo, pagination#}
+        {% else %}
+            <p>
+                No products available
+            </p>
+        {% endif %}
     </main>
 {% endblock %}

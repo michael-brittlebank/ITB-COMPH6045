@@ -8,7 +8,8 @@ $servicesFiles = [
     'util',
     'database',
     'authentication',
-    'user'
+    'users',
+    'products'
 ];
 
 //load files
@@ -23,6 +24,7 @@ foreach($servicesFiles as $services){
 $modelsPath = 'models';
 $modelsFiles = [
     'user',
+    'product',
 ];
 
 //load files

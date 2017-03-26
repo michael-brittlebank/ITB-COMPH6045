@@ -8,7 +8,7 @@ class Authentication {
             //missing parameters
             return Util::createResponse(400);
         } else {
-            $user = User::getUserByEmail($email);
+            $user = Users::getUserByEmail($email);
             if (is_null($user)){
                 //invalid email
                 return Util::createResponse(401);

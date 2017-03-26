@@ -14,7 +14,14 @@ class Admin {
     }
 
     public function getDashboardPage ($request, $response) {
+        $page = $request->getQueryParam('page');
+        if(is_null($page)){
+            $page = 1;
+        }
         $viewData['metaTitle'] = Services\Util::getAdminMetaTitle('dashboard');
+        $viewData['products'] = Services\Products::getProducts(20,$page);
+        $viewData['productCount'] = Services\Products::getProductCount();
+        $viewData['currentPage'] = $page;
         $viewData['globals'] = $request->getAttribute('globals');
         $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, '/admin/page.twig', $viewData);
