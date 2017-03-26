@@ -33,6 +33,20 @@ class Admin {
         $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, '/admin/products/new.twig', $viewData);
     }
+    
+    public function submitNewProduct ($request, $response) {
+        $parsedBody = $request->getParsedBody();
+        if (!isset($parsedBody['title']) || !isset($parsedBody['price'])){
+            $status = 400;
+            return $response->withJson(Services\Util::createResponse($status), $status);
+        } else {
+            if (Services\Products::createNewProduct($parsedBody['title'],$parsedBody['price'])){
+                return $response->withJson(Services\Util::createResponse(200), 200);
+            } else {
+                return $response->withJson(Services\Util::createResponse(401), 401);
+            }
+        }
+    }
 
     public function getEditProductPage ($request, $response) {
         $viewData['metaTitle'] = Services\Util::getAdminMetaTitle('edit product');

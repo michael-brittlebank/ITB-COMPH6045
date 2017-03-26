@@ -9,8 +9,8 @@ class Products {
         $offset = $limit*($page-1);
         $result = Database::getConnection()->get_results("SELECT * FROM product ORDER BY id LIMIT $limit OFFSET $offset");
         if (!is_null($result)){
-            var_dump($result);
-            die();
+//            var_dump($result);
+//            die();
             //todo, foreach
             return new Product($result);
         } else {
@@ -25,5 +25,10 @@ class Products {
         } else {
             return 0;
         }
+    }
+
+    public static function createNewProduct($productTitle, $productPrice){
+        $result = Database::getConnection()->query("INSERT INTO product (title, price) VALUES ('$productTitle',$productPrice)");
+        return !is_null($result);
     }
 }

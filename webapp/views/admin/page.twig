@@ -2,6 +2,7 @@
 {% block content %}
     <main>
         <h1>Products</h1>
+        <a href="{{ path_for('admin-new') }}" class="button">Create Product</a>
         {% if products %}
             <table>
                 {% for product in products %}

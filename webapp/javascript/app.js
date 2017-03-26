@@ -30,8 +30,11 @@ var app = {
     init: function(){
         var views = app.views;
 
-        //views
-        views.login.init();
+        //user
+        views.user.login.init();
+
+        //admin
+        views.admin.create.init();
     }
 };
 
