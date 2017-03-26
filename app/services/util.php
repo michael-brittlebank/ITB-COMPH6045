@@ -48,4 +48,12 @@ class Util {
             'message'=>$message
         );
     }
+
+    public static function prepareObjectArrayForView($objectArray){
+        $preparedArray = array();
+        foreach ($objectArray as $object){
+            array_push($preparedArray,$object->toString());
+        }
+        return $preparedArray;
+    }
 }

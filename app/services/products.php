@@ -9,10 +9,11 @@ class Products {
         $offset = $limit*($page-1);
         $result = Database::getConnection()->get_results("SELECT * FROM product ORDER BY id LIMIT $limit OFFSET $offset");
         if (!is_null($result)){
-//            var_dump($result);
-//            die();
-            //todo, foreach
-            return new Product($result);
+            $productList = array();
+            foreach ($result as $product){
+                array_push($productList, new Product($product));
+            }
+            return $productList;
         } else {
             return array();
         }

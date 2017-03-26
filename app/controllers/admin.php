@@ -19,7 +19,7 @@ class Admin {
             $page = 1;
         }
         $viewData['metaTitle'] = Services\Util::getAdminMetaTitle('dashboard');
-        $viewData['products'] = Services\Products::getProducts(20,$page);
+        $viewData['products'] = Services\Util::prepareObjectArrayForView(Services\Products::getProducts(20,$page));
         $viewData['productCount'] = Services\Products::getProductCount();
         $viewData['currentPage'] = $page;
         $viewData['globals'] = $request->getAttribute('globals');

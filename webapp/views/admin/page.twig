@@ -8,13 +8,13 @@
                 {% for product in products %}
                     <tr>
                         <td>
-                            {{ title }}
+                            {{ product.title }}
                         </td>
                         <td>
-                            €{{ price }}
+                            €{{ product.price }}
                         </td>
                         <td>
-                            <a href="{{ path_for('admin-edit') }}/{{ id }}" class="button">Edit</a>
+                            <a href="{{ path_for('admin-edit', {productId: product.id}) }}" class="button">Edit</a>
                         </td>
                     </tr>
                 {% endfor %}
