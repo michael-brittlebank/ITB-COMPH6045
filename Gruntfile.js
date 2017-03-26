@@ -152,7 +152,8 @@ module.exports = function(grunt){
                         'webapp/bower_components/bluebird/js/browser/bluebird.min.js',
                         'webapp/bower_components/velocity/velocity.min.js',
                         'webapp/bower_components/velocity/velocity.ui.min.js',
-                        'webapp/bower_components/slick-carousel/slick/slick.min.js'
+                        'webapp/bower_components/slick-carousel/slick/slick.min.js',
+                        'webapp/bower_components/css-modal/modal.js'
                     ]
                 },
                 options: {

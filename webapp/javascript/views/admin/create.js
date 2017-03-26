@@ -4,6 +4,7 @@
         that = app.views.admin.create,
         helpers = app.helpers,
         ajax = app.ajax,
+        modals = app.modals,
         newProductForm,
         titleInput,
         priceInput,
@@ -34,19 +35,21 @@
                 }
             )
                 .then(function(){
-                    //todo, success message
-                    console.log('succes');
-                    // window.location.href = '/profile';
+                    modals.openSuccessModal('Success','Product created successfully');
+                    titleInput.val('');
+                    priceInput.val('');
+                    urlInput.val('');
                 })
                 .catch(function(error){
-                    //todo, error messages based on status codes
-                    console.log('error', error);
                     switch (error.jqXHR.status){
                         case 400:
-                            console.log(error);
+                            modals.openErrorModal('Error','Product could not be created. Ensure product url is unique');
                             break;
                         case 401:
-                            console.log('401');
+                            modals.openErrorModal('Error','Product could not be created. Contact your site administrator');
+                            break;
+                        default:
+                            modals.openErrorModal('Error','Product could not be created. Contact your site administrator');
                             break;
                     }
                 });
@@ -60,7 +63,7 @@
             titleInput = $('#create-product-title');
             priceInput = $('#create-product-price');
             urlInput = $('#create-product-url');
-            
+
             //bindings
             newProductForm.on('submit',function(event){
                 event.preventDefault();

@@ -32,6 +32,6 @@ class Products {
     public static function createNewProduct($productTitle, $productPrice, $productUrl){
         $productUrl = preg_replace('/[\s-]+/', '-', strtolower($productUrl));;
         $result = Database::getConnection()->query("INSERT INTO product (title, price, url_key) VALUES ('$productTitle',$productPrice, '$productUrl')");
-        return !is_null($result);
+        return $result === 1;
     }
 }

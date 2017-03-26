@@ -9,6 +9,7 @@ var app = {
     animations: {},
     helpers: {},
     mediaQueries: {},
+    modals: {},
 
     //modules
     modules: {
@@ -30,6 +31,9 @@ var app = {
     init: function(){
         var views = app.views;
 
+        //libs        
+        app.modals.init();
+        
         //user
         views.user.login.init();
 

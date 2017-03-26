@@ -31,8 +31,14 @@ a {
   cursor: pointer;
   text-decoration: none;
   @include transition-with-defaults(color);
+  span {
+    @include transition-with-defaults(color);
+  }
   &:hover {
     color: $color-anchor-hover;
+    span {
+      color: $color-anchor-hover;
+    }
   }
 }
 
