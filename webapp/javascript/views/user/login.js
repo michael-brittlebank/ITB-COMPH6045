@@ -4,6 +4,7 @@
         that = app.views.user.login,
         helpers = app.helpers,
         ajax = app.ajax,
+        modals = app.modals,
         loginForm,
         emailInput,
         passwordInput;
@@ -31,14 +32,16 @@
                     window.location.href = '/profile';
                 })
                 .catch(function(error){
-                    //todo, error messages based on status codes
-                    console.log('error', error);
                     switch (error.jqXHR.status){
                         case 400:
-                            console.log(error);
+                            modals.openErrorModal('Error','Could not log in. Ensure email and password are correct');
+
                             break;
                         case 401:
-                            console.log('401');
+                            modals.openErrorModal('Error','Product could not be created. Contact your site administrator');
+                            break;
+                        default:
+                            modals.openErrorModal('Error','Product could not be created. Contact your site administrator');
                             break;
                     }
                 });
