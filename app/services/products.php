@@ -5,6 +5,7 @@ namespace Services;
 use \Models\Product;
 
 class Products {
+
     public static function getProducts($limit,$page){
         $offset = $limit*($page-1);
         $result = Database::getConnection()->get_results("SELECT * FROM product ORDER BY id LIMIT $limit OFFSET $offset");
@@ -28,8 +29,9 @@ class Products {
         }
     }
 
-    public static function createNewProduct($productTitle, $productPrice){
-        $result = Database::getConnection()->query("INSERT INTO product (title, price) VALUES ('$productTitle',$productPrice)");
+    public static function createNewProduct($productTitle, $productPrice, $productUrl){
+        $productUrl = preg_replace('/[\s-]+/', '-', strtolower($productUrl));;
+        $result = Database::getConnection()->query("INSERT INTO product (title, price, url_key) VALUES ('$productTitle',$productPrice, '$productUrl')");
         return !is_null($result);
     }
 }

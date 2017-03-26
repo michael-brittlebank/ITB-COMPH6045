@@ -38,11 +38,11 @@ class Admin {
     
     public function submitNewProduct ($request, $response) {
         $parsedBody = $request->getParsedBody();
-        if (!isset($parsedBody['title']) || !isset($parsedBody['price'])){
+        if (!isset($parsedBody['title']) || !isset($parsedBody['price']) || !isset($parsedBody['url'])){
             $status = 400;
             return $response->withJson(Services\Util::createResponse($status), $status);
         } else {
-            if (Services\Products::createNewProduct($parsedBody['title'],$parsedBody['price'])){
+            if (Services\Products::createNewProduct($parsedBody['title'],$parsedBody['price'],$parsedBody['url'])){
                 return $response->withJson(Services\Util::createResponse(200), 200);
             } else {
                 return $response->withJson(Services\Util::createResponse(401), 401);

@@ -6,11 +6,13 @@
         ajax = app.ajax,
         newProductForm,
         titleInput,
-        priceInput;
+        priceInput,
+        urlInput;
 
     function submitNewProductForm(){
         var title = titleInput.val(),
-            price = priceInput.val();
+            price = priceInput.val(),
+            url = urlInput.val();
         helpers.resetForm(newProductForm);
         if (helpers.isEmpty(title)){
             titleInput.addClass(helpers.errorClass);
@@ -18,13 +20,17 @@
         if (helpers.isEmpty(price)){
             priceInput.addClass(helpers.errorClass);
         }
+        if (helpers.isEmpty(url)){
+            urlInput.addClass(helpers.errorClass);
+        }
         if (helpers.isFormValid(newProductForm)){
             ajax.ajax(
                 'POST',
                 '/admin/create',
                 {
                     title: title,
-                    price: price
+                    price: price,
+                    url: url
                 }
             )
                 .then(function(){
@@ -53,11 +59,16 @@
             newProductForm = $('#admin-create-product-form');
             titleInput = $('#create-product-title');
             priceInput = $('#create-product-price');
-
+            urlInput = $('#create-product-url');
+            
             //bindings
             newProductForm.on('submit',function(event){
                 event.preventDefault();
                 submitNewProductForm();
+            });
+
+            urlInput.on('input', function() {
+                $(this).val($(this).val().replace(/[\s-]+/g, '-').toLowerCase());
             });
         }
     };

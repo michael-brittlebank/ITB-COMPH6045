@@ -2,9 +2,18 @@
 {% block content %}
     <main>
         <h1>Products</h1>
-        <a href="{{ path_for('admin-new') }}" class="button">Create Product</a>
+        <a href="{{ path_for('admin-new') }}" class="button">Create New Product</a>
         {% if products %}
             <table>
+                <thead>
+                <tr>
+                    <td>Title</td>
+                    <td>Price</td>
+                    <td>Url</td>
+                    <td>Edit</td>
+                </tr>
+                </thead>
+                <tbody>
                 {% for product in products %}
                     <tr>
                         <td>
@@ -14,10 +23,14 @@
                             €{{ product.price }}
                         </td>
                         <td>
+                            <a href="{{ path_for('shop-product', {product: product.urlKey}) }}">{{ path_for('shop-product', {product: product.urlKey}) }}</a>
+                        </td>
+                        <td>
                             <a href="{{ path_for('admin-edit', {productId: product.id}) }}" class="button">Edit</a>
                         </td>
                     </tr>
                 {% endfor %}
+                </tbody>
             </table>
             {% for i in range(1, (productCount/pageLimit)|round(0, 'ceil')) %}
                 {% if i == currentPage %}

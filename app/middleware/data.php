@@ -6,7 +6,8 @@ $app->add(function (Request $request, Response $response, callable $next) {
     $path = $request->getUri()->getPath();
     $request = $request->withAttribute('globals', array(
         'path' => $path,
-        'imagesDirectory' => '/public/images/'
+        'imagesDirectory' => '/public/images/',
+        'shopPath' => '/shop/'
     ));
     return $next($request, $response);
 });

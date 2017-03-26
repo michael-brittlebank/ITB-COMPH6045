@@ -4,4 +4,4 @@
 $app->get('/shop', \Controllers\Shop::class.':getShopPage')->setName('shop');
 
 //product detail pages
-$app->get('/shop/{page}', \Controllers\Shop::class.':getProductPage');
+$app->get('/shop/{product}', \Controllers\Shop::class.':getProductPage')->setName('shop-product');
