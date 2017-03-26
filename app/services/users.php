@@ -13,4 +13,8 @@ class Users {
             return null;
         }
     }
+
+    public static function createNewUser(){
+    
+    }
 }

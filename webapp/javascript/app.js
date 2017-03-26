@@ -17,7 +17,13 @@ var app = {
 
     //templates
     views: {
-        login: {}
+        admin: {
+            create: {},
+            edit: {}
+        },
+        user: {
+            login: {}
+        }
     },
 
     //functions

@@ -26,8 +26,11 @@ class User {
             $status = 400;
             return $response->withJson(Services\Util::createResponse($status), $status);
         } else {
-            $userSession = Services\Authentication::startUserSession($parsedBody['email'],$parsedBody['password']);
-            return $response->withJson($userSession, $userSession['status']);
+            if(Services\Authentication::startUserSession($parsedBody['email'],$parsedBody['password'])){
+                return $response->withJson(Services\Util::createResponse(200), 200);
+            } else {
+                return $response->withJson(Services\Util::createResponse(401), 401);
+            }
         }
     }
 

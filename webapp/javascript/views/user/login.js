@@ -1,7 +1,7 @@
 (function(){
 
     var $ = jQuery,
-        that = app.views.login,
+        that = app.views.user.login,
         helpers = app.helpers,
         ajax = app.ajax,
         loginForm,
@@ -46,11 +46,11 @@
     }
 
     this.init = function(){
-        if ($('#page-login').length > 0){
+        if ($('#page-user-login').length > 0){
             //variables
-            loginForm = $('#login-form');
-            emailInput = $('#login-email');
-            passwordInput = $('#login-password');
+            loginForm = $('#user-login-form');
+            emailInput = $('#user-login-email');
+            passwordInput = $('#user-login-password');
 
             //bindings
             loginForm.on('submit',function(event){
@@ -60,4 +60,4 @@
         }
     };
 
-}).apply(app.views.login);
+}).apply(app.views.user.login);
