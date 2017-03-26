@@ -19,9 +19,13 @@
                     </tr>
                 {% endfor %}
             </table>
-            {{ productCount }}
-            {{ currentPage }}
-            {#todo, pagination#}
+            {% for i in range(1, (productCount/pageLimit)|round(0, 'ceil')) %}
+                {% if i == currentPage %}
+                    <span>{{ i }}</span>
+                {% else %}
+                    <a href="{{ path_for('admin-dashboard') }}?page={{ i }}" class="pagination-button">{{ i }}</a>
+                {% endif %}
+            {% endfor %}
         {% else %}
             <p>
                 No products available

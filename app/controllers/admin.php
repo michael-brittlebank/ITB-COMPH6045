@@ -14,13 +14,15 @@ class Admin {
     }
 
     public function getDashboardPage ($request, $response) {
+        $pageLimit = 10;
         $page = $request->getQueryParam('page');
         if(is_null($page)){
             $page = 1;
         }
         $viewData['metaTitle'] = Services\Util::getAdminMetaTitle('dashboard');
-        $viewData['products'] = Services\Util::prepareObjectArrayForView(Services\Products::getProducts(20,$page));
+        $viewData['products'] = Services\Util::prepareObjectArrayForView(Services\Products::getProducts($pageLimit,$page));
         $viewData['productCount'] = Services\Products::getProductCount();
+        $viewData['pageLimit'] = $pageLimit;
         $viewData['currentPage'] = $page;
         $viewData['globals'] = $request->getAttribute('globals');
         $viewData['user'] = $request->getAttribute('user');
