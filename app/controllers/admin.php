@@ -38,7 +38,7 @@ class Admin {
     
     public function submitNewProduct ($request, $response) {
         $parsedBody = $request->getParsedBody();
-        if (!isset($parsedBody['title']) || !isset($parsedBody['price']) || !isset($parsedBody['url'])){
+        if (!Services\Util::bodyParserIsValid($parsedBody, array('title','price','url'))){
             $status = 400;
             return $response->withJson(Services\Util::createResponse($status), $status);
         } else {
@@ -66,11 +66,11 @@ class Admin {
     
     public static function submitEditProduct($request, $response){
         $parsedBody = $request->getParsedBody();
-        if (!isset($parsedBody['title']) || !isset($parsedBody['price']) || !isset($parsedBody['url'])){
+        if (!Services\Util::bodyParserIsValid($parsedBody, array('title','price','url','id'))){
             $status = 400;
             return $response->withJson(Services\Util::createResponse($status), $status);
         } else {
-            if (Services\Products::updateProduct($parsedBody['title'],$parsedBody['price'],$parsedBody['url'])){
+            if (Services\Products::updateProduct($parsedBody['title'],$parsedBody['price'],$parsedBody['url'],$parsedBody['id'])){
                 return $response->withJson(Services\Util::createResponse(200), 200);
             } else {
                 return $response->withJson(Services\Util::createResponse(401), 401);

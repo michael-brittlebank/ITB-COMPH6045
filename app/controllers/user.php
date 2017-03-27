@@ -13,16 +13,16 @@ class User {
         $this->view = $ci->view;
     }
 
-    public function getLoginPage ($request, $response, $args) {
+    public function getLoginPage ($request, $response) {
         $viewData['metaTitle'] = Services\Util::getMetaTitle('login');
         $viewData['globals'] = $request->getAttribute('globals');
         $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, '/user/login.twig', $viewData);
     }
 
-    public function submitLogin ($request, $response, $args) {
+    public function submitLogin ($request, $response) {
         $parsedBody = $request->getParsedBody();
-        if (!isset($parsedBody['email']) || !isset($parsedBody['password'])){
+        if (!Services\Util::bodyParserIsValid($parsedBody, array('email','password'))){
             $status = 400;
             return $response->withJson(Services\Util::createResponse($status), $status);
         } else {
@@ -34,21 +34,21 @@ class User {
         }
     }
 
-    public function getRegisterPage ($request, $response, $args) {
+    public function getRegisterPage ($request, $response) {
         $viewData['metaTitle'] = Services\Util::getMetaTitle('register');
         $viewData['globals'] = $request->getAttribute('globals');
         $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, '/user/register.twig', $viewData);
     }
 
-    public function getProfilePage ($request, $response, $args) {
+    public function getProfilePage ($request, $response) {
         $viewData['metaTitle'] = Services\Util::getMetaTitle('profile');
         $viewData['globals'] = $request->getAttribute('globals');
         $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, '/user/profile.twig', $viewData);
     }
 
-    public function submitLogout ($request, $response, $args) {
+    public function submitLogout ($request, $response) {
         Services\Authentication::endUserSession();
         return $response->withRedirect('/');
     }

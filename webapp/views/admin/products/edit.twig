@@ -11,6 +11,7 @@
                 <input type="number" id="edit-product-price" step="0.01" min="0.01" value="{{ product.price }}"/>
                 <label for="edit-product-url">Product Url</label>
                 /<input type="text" id="edit-product-url" value="{{ product.urlKey }}"/>
+                <input type="hidden" id="edit-product-id" value="{{ product.id }}" readonly="readonly"/>
                 <button type="submit">Submit</button>
             </fieldset>
         </form>

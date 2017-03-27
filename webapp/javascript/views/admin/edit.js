@@ -8,12 +8,14 @@
         newProductForm,
         titleInput,
         priceInput,
-        urlInput;
+        urlInput,
+        idInput;
 
     function submitEditProductForm(){
         var title = titleInput.val(),
             price = priceInput.val(),
-            url = urlInput.val();
+            url = urlInput.val(),
+            id = idInput.val();
         helpers.resetForm(newProductForm);
         if (helpers.isEmpty(title)){
             titleInput.addClass(helpers.errorClass);
@@ -31,14 +33,12 @@
                 {
                     title: title,
                     price: price,
-                    url: url
+                    url: url,
+                    id: id
                 }
             )
                 .then(function(){
                     modals.openSuccessModal('Success','Product edited successfully');
-                    titleInput.val('');
-                    priceInput.val('');
-                    urlInput.val('');
                 })
                 .catch(function(error){
                     switch (error.jqXHR.status){
@@ -63,6 +63,7 @@
             titleInput = $('#edit-product-title');
             priceInput = $('#edit-product-price');
             urlInput = $('#edit-product-url');
+            idInput = $('#edit-product-id');
 
             //bindings
             newProductForm.on('submit',function(event){

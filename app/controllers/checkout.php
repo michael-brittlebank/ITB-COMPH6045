@@ -13,14 +13,14 @@ class Checkout {
         $this->view = $ci->view;
     }
 
-    public function getCartPage ($request, $response, $args) {
+    public function getCartPage ($request, $response) {
         $viewData['metaTitle'] = Services\Util::getMetaTitle('cart');
         $viewData['globals'] = $request->getAttribute('globals');
         $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, '/checkout/cart.twig', $viewData);
     }
 
-    public function getCheckoutPage ($request, $response, $args) {
+    public function getCheckoutPage ($request, $response) {
         $viewData['metaTitle'] = Services\Util::getMetaTitle('checkout');
         $viewData['globals'] = $request->getAttribute('globals');
         $viewData['user'] = $request->getAttribute('user');

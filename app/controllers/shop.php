@@ -13,7 +13,7 @@ class Shop {
         $this->view = $ci->view;
     }
 
-    public function getShopPage ($request, $response, $args) {
+    public function getShopPage ($request, $response) {
         $viewData['metaTitle'] = Services\Util::getMetaTitle('shop');
         $viewData['globals'] = $request->getAttribute('globals');
         $viewData['user'] = $request->getAttribute('user');

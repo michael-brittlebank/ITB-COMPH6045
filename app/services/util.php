@@ -56,4 +56,14 @@ class Util {
         }
         return $preparedArray;
     }
+    
+    public static function bodyParserIsValid($parsedBody, $requiredParameters){
+        $isValid = true;
+        foreach($requiredParameters as $parameter){
+            if (!isset($parsedBody[$parameter])){
+                $isValid = false;
+            }
+        }
+        return $isValid;
+    }
 }

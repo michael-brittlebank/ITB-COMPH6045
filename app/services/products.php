@@ -44,9 +44,9 @@ class Products {
         }
     }
 
-    public static function updateProduct($productTitle, $productPrice, $productUrl){
+    public static function updateProduct($productTitle, $productPrice, $productUrl, $productId){
         $productUrl = preg_replace('/[\s-]+/', '-', strtolower($productUrl));;
-        $result = Database::getConnection()->query("UPDATE product SET title = '$productTitle', price=$productPrice, url_key='$productUrl' WHERE url_key='$productUrl'");
+        $result = Database::getConnection()->query("UPDATE product SET title = '$productTitle', price=$productPrice, url_key='$productUrl' WHERE id='$productId'");
         return $result === 1;
     }
 }
