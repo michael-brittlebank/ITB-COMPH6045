@@ -29,6 +29,9 @@ var app = {
 
     //functions
     init: function(){
+        //reset modals
+        window.location.hash = '';
+
         var views = app.views;
 
         //libs        
@@ -39,6 +42,7 @@ var app = {
 
         //admin
         views.admin.create.init();
+        views.admin.edit.init();
     }
 };
 

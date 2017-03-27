@@ -10,4 +10,5 @@ $app->group('/admin', function () use ($app) {
 
     //edit product
     $app->get('/edit/{productId}', \Controllers\Admin::class.':getEditProductPage')->setName('admin-edit');
+    $app->put('/edit', \Controllers\Admin::class.':submitEditProduct');
 })->add($isUserAdmin);

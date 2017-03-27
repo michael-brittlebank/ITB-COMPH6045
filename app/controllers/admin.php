@@ -50,10 +50,31 @@ class Admin {
         }
     }
 
-    public function getEditProductPage ($request, $response) {
+    public function getEditProductPage ($request, $response, $args) {
+        $productId = $args['productId'];
+        $product = Services\Products::getProductById($productId);
         $viewData['metaTitle'] = Services\Util::getAdminMetaTitle('edit product');
         $viewData['globals'] = $request->getAttribute('globals');
         $viewData['user'] = $request->getAttribute('user');
-        return $this->view->render($response, '/admin/products/edit.twig', $viewData);
+        if(!is_null($product)){
+            $viewData['product'] = $product->toString();
+            return $this->view->render($response, '/admin/products/edit.twig', $viewData);   
+        } else {
+            throw new \Slim\Exception\NotFoundException($request, $response);
+        }
+    }
+    
+    public static function submitEditProduct($request, $response){
+        $parsedBody = $request->getParsedBody();
+        if (!isset($parsedBody['title']) || !isset($parsedBody['price']) || !isset($parsedBody['url'])){
+            $status = 400;
+            return $response->withJson(Services\Util::createResponse($status), $status);
+        } else {
+            if (Services\Products::updateProduct($parsedBody['title'],$parsedBody['price'],$parsedBody['url'])){
+                return $response->withJson(Services\Util::createResponse(200), 200);
+            } else {
+                return $response->withJson(Services\Util::createResponse(401), 401);
+            }
+        }
     }
 }

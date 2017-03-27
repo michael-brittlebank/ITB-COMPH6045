@@ -1,6 +1,18 @@
 {% extends "layouts/main.twig" %}
 {% block content %}
-    <main>
-        <h1>Edit {{ product.title }}</h1>
+    <main id="page-admin-edit-product">
+        <h1>Edit Product</h1>
+        <a href="{{ path_for('admin-dashboard') }}" class="button"><span class="fa fa-chevron-left"></span> Back</a>
+        <form id="admin-edit-product-form">
+            <fieldset>
+                <label for="edit-product-title">Product Title</label>
+                <input type="text" id="edit-product-title" value="{{ product.title }}"/>
+                <label for="edit-product-price">Price</label>
+                <input type="number" id="edit-product-price" step="0.01" min="0.01" value="{{ product.price }}"/>
+                <label for="edit-product-url">Product Url</label>
+                /<input type="text" id="edit-product-url" value="{{ product.urlKey }}"/>
+                <button type="submit">Submit</button>
+            </fieldset>
+        </form>
     </main>
 {% endblock %}

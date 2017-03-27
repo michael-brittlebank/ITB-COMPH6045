@@ -34,4 +34,19 @@ class Products {
         $result = Database::getConnection()->query("INSERT INTO product (title, price, url_key) VALUES ('$productTitle',$productPrice, '$productUrl')");
         return $result === 1;
     }
+
+    public static function getProductById($productId){
+        $result = Database::getConnection()->get_row("SELECT * FROM product WHERE id = '$productId'");
+        if (!is_null($result)){
+            return new Product($result);
+        } else {
+            return null;
+        }
+    }
+
+    public static function updateProduct($productTitle, $productPrice, $productUrl){
+        $productUrl = preg_replace('/[\s-]+/', '-', strtolower($productUrl));;
+        $result = Database::getConnection()->query("UPDATE product SET title = '$productTitle', price=$productPrice, url_key='$productUrl' WHERE url_key='$productUrl'");
+        return $result === 1;
+    }
 }
