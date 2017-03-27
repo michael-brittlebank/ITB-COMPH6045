@@ -23,7 +23,8 @@ var app = {
             edit: {}
         },
         user: {
-            login: {}
+            login: {},
+            profile: {}
         }
     },
 
@@ -39,6 +40,7 @@ var app = {
         
         //user
         views.user.login.init();
+        views.user.profile.init();
 
         //admin
         views.admin.create.init();

@@ -16,8 +16,8 @@ class Authentication {
                 if ($user->authenticateUserPassword($password)){
                     //successfully authenticated
                     session_regenerate_id(true);
-                    $_SESSION['user'] = $user;
-                    $_SESSION['expiry'] = self::getSessionExpiryTime();
+                    self::updateSessionUser($user);
+                    self::updateSessionExpiry();
                     return true;
                 } else {
                     //invalid password
@@ -25,6 +25,14 @@ class Authentication {
                 }
             }
         }
+    }
+    
+    public static function updateSessionUser($user){
+        $_SESSION['user'] = $user;
+    }
+    
+    public static function updateSessionExpiry(){
+        $_SESSION['expiry'] = self::getSessionExpiryTime();
     }
 
     public static function endUserSession(){

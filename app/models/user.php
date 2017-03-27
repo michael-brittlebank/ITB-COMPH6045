@@ -6,6 +6,7 @@ use Services\Authentication;
 
 class User {
 
+    private $id;
     private $firstName;
     private $lastName;
     private $email;
@@ -14,6 +15,7 @@ class User {
     private $passwordHash;
     
     public function __construct($user){
+        $this->id = (int)$user->id;
         $this->firstName = $user->first_name;
         $this->lastName = $user->last_name;
         $this->email = $user->email;
@@ -28,11 +30,16 @@ class User {
 
     public function toString(){
         return [
+            'id'=>$this->id,
             'firstName'=>$this->firstName,
             'lastName'=>$this->lastName,
             'email'=>$this->email,
             'role'=>$this->role
         ];
+    }
+    
+    public function isCurrentUser($userId){
+        return $this->id === (int)$userId;
     }
     
     public function authenticateUserPassword($plainTextPassword){

@@ -8,7 +8,7 @@ use \Services;
 class User {
 
     protected $view;
-    
+
     public function __construct(ContainerInterface $ci) {
         $this->view = $ci->view;
     }
@@ -46,6 +46,31 @@ class User {
         $viewData['globals'] = $request->getAttribute('globals');
         $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, '/user/profile.twig', $viewData);
+    }
+
+    public function submitEditProfile ($request, $response) {
+        $parsedBody = $request->getParsedBody();
+        if (!Services\Util::bodyParserIsValid($parsedBody, array('email','firstName','lastName','id'))){
+            $status = 400;
+            return $response->withJson(Services\Util::createResponse($status), $status);
+        } else {
+            if ($_SESSION['user']->isCurrentUser($parsedBody['id'])){
+                $result = Services\Users::updateUser($parsedBody['firstName'],$parsedBody['lastName'],$parsedBody['email'],$parsedBody['id']);
+                $user = Services\Users::getUserByEmail($parsedBody['email']);
+                Services\Authentication::updateSessionUser($user);
+                Services\Authentication::updateSessionExpiry();
+                if($result === 1) {
+                    return $response->withJson(Services\Util::createResponse(200), 200);
+                } else if($result === 0){
+                    return $response->withJson(Services\Util::createResponse(204), 204);
+                } else {
+                    return $response->withJson(Services\Util::createResponse(401), 401);
+                }
+            } else {
+                //cannot edit other user's profiles
+                return $response->withJson(Services\Util::createResponse(401), 401);
+            }
+        }
     }
 
     public function submitLogout ($request, $response) {

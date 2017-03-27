@@ -1,6 +1,17 @@
 {% extends "layouts/main.twig" %}
 {% block content %}
-    <main>
-        profile
+    <main id="page-user-profile">
+        <form id="user-profile-form">
+            <fieldset>
+                <label for="user-profile-first-name">First Name</label>
+                <input type="text" id="user-profile-first-name" value="{{ user.firstName }}"/>
+                <label for="user-profile-last-name">Last Name</label>
+                <input type="text" id="user-profile-last-name" value="{{ user.lastName }}"/>
+                <label for="user-profile-email">Email</label>
+                <input type="email" id="user-profile-email" value="{{ user.email }}"/>
+                <input type="hidden" id="user-profile-id" value="{{ user.id }}" readonly="readonly"/>
+                <button type="submit">Submit</button>
+            </fieldset>
+        </form>
     </main>
 {% endblock %}

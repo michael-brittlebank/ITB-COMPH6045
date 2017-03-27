@@ -11,9 +11,9 @@ class Product {
     private $urlKey;
 
     public function __construct($product){
-        $this->id = $product->id;
+        $this->id = (int)$product->id;
         $this->title = $product->title;
-        $this->price = $product->price;
+        $this->price = (double)$product->price;
         $this->categories = $product->categories;
         $this->urlKey = $product->url_key;
     }

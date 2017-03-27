@@ -9,6 +9,7 @@ $app->get('/register',\Controllers\User::class.':getRegisterPage')->setName('reg
 
 //user profile page
 $app->get('/profile', \Controllers\User::class.':getProfilePage')->setName('profile')->add($isUserLoggedIn);
+$app->put('/profile', \Controllers\User::class.':submitEditProfile')->add($isUserLoggedIn);
 
 //user logout route
 $app->get('/logout', \Controllers\User::class.':submitLogout')->setName('logout');

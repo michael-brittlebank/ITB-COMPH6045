@@ -29,6 +29,9 @@ class Util {
                 case 201:
                     $message = 'Created';
                     break;
+                case 204:
+                    $message = 'No Content';
+                    break;
                 case 400:
                     $message = 'Bad Request';
                     break;

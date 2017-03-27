@@ -11,7 +11,7 @@ $app->add(function (Request $request, Response $response, callable $next) {
             \Services\Authentication::endUserSession();
         } else {
             //update session expiry due to user activity
-            $_SESSION['expiry'] = \Services\Authentication::getSessionExpiryTime();
+            \Services\Authentication::updateSessionExpiry();
             $request = $request->withAttribute('user', $_SESSION['user']->toString());
         }
     }

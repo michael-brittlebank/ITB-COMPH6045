@@ -35,13 +35,12 @@
                     switch (error.jqXHR.status){
                         case 400:
                             modals.openErrorModal('Error','Could not log in. Ensure email and password are correct');
-
                             break;
                         case 401:
-                            modals.openErrorModal('Error','Product could not be created. Contact your site administrator');
+                            modals.openErrorModal('Error','Could not log in. Contact your site administrator');
                             break;
                         default:
-                            modals.openErrorModal('Error','Product could not be created. Contact your site administrator');
+                            modals.openErrorModal('Error','Could not log in. Contact your site administrator');
                             break;
                     }
                 });

@@ -17,4 +17,9 @@ class Users {
     public static function createNewUser(){
     
     }
+    
+    public static function updateUser($userFirstName, $userLastName, $userEmail, $userId){
+        $result = Database::getConnection()->query("UPDATE user SET first_name = '$userFirstName', last_name='$userLastName', email='$userEmail' WHERE id='$userId'");
+        return $result;
+    }
 }
