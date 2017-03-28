@@ -40,7 +40,7 @@
                                 €{{ product.price }}
                             </td>
                             <td class="text-center">
-                                <input type="number" value="{{ product.quantity }}" min="0" max="99"/>
+                                <input id="cart-product-{{ product.id }}-quantity" type="number" value="{{ product.quantity }}" min="0" max="99"/>
                             </td>
                             <td class="text-center">
                                 <a class="cart-product-button-update" href="#" data-product-id="{{ product.id }}">
