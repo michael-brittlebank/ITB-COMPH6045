@@ -17,6 +17,10 @@ class Product {
         $this->categories = $product->categories;
         $this->url = $product->url_key;
     }
+    
+    public function getTitle(){
+        return $this->title;
+    }
 
     public function toString(){
         return [

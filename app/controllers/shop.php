@@ -31,9 +31,16 @@ class Shop {
     }
 
     public function getProductPage ($request, $response, $args) {
-        $viewData['metaTitle'] = Services\Util::getMetaTitle(strtolower($args['page']));
+        $productUrlKey = strtolower($args['productUrlKey']);
+        $product = Services\Products::getProductByUrlKey($productUrlKey);
         $viewData['globals'] = $request->getAttribute('globals');
         $viewData['user'] = $request->getAttribute('user');
-        return $this->view->render($response, '/shop/product.twig', $viewData);
+        if(!is_null($product)){
+            $viewData['product'] = $product->toString();
+            $viewData['metaTitle'] = Services\Util::getMetaTitle($product->getTitle());
+            return $this->view->render($response, '/shop/product.twig', $viewData);
+        } else {
+            throw new \Slim\Exception\NotFoundException($request, $response);
+        }
     }
 }

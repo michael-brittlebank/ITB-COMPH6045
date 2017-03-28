@@ -63,4 +63,13 @@ class Products {
             return array();
         }
     }
+    
+    public static function getProductByUrlKey($urlKey){
+        $result = Database::getConnection()->get_row("SELECT * FROM product WHERE url_key = '$urlKey'");
+        if (!is_null($result)){
+            return new Product($result);
+        } else {
+            return null;
+        }
+    }
 }

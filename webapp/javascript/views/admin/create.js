@@ -71,6 +71,7 @@
             });
 
             urlInput.on('input', function() {
+                //todo, remove slashes and html encode other values
                 $(this).val($(this).val().replace(/[\s-]+/g, '-').toLowerCase());
             });
         }

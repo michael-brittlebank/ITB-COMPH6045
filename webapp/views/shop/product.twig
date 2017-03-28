@@ -2,7 +2,24 @@
 {% block content %}
     <main class="grid-container row">
         <div class="col-sm-12">
-            <h1>PDP</h1>
+            <a id="pdp-header-link" href="{{ path_for('shop') }}" class="header-link"><i class="fa fa-chevron-left"></i> Back</a>
+        </div>
+        <div class="col-sm-12 col-md-8">
+            <img src="//placeholdit.imgix.net/~text?txtsize=33&txt=Product%20Image&w=500&h=500"/>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <h1 class="no-margin">{{ product.title|capitalize }}</h1>
+            <h3>€{{ product.price }}</h3>
+            <hr/>
+            <div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In at metus non dui congue tempus. In vel sem vitae arcu convallis laoreet nec nec mi.
+                </p>
+                <p>
+                    Duis ut mi eget nisl dignissim pellentesque eget vitae mauris. Fusce a mi molestie, sodales lectus quis, mollis turpis. Vestibulum pulvinar et quam nec congue. In sit amet massa sapien.
+                </p>
+            </div>
+            <button type="button">Add to Cart</button>
         </div>
     </main>
 {% endblock %}
