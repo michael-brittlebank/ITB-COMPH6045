@@ -3,24 +3,25 @@
 body {
   //header placeholder
   padding-top: 65px;
-}
-
-p,a,blockquote,span,div,input,textarea {
   font-family: $global-font-proza-libre;
   color: $color-font-black;
 }
 
 h1,h2,h3,h4,h5 {
   font-family: $global-font-raleway;
-  color: $color-font-black;
 }
 
-img, input {
+img, input, textarea {
   max-width: 100%;
 }
 
-p {
+p, input, textarea {
   margin: 0 0 10px 0;
+}
+
+label, input, textarea {
+  width: 100%;
+  display: block;
 }
 
 hr {
@@ -28,6 +29,7 @@ hr {
 }
 
 a {
+  color: $color-font-black;
   cursor: pointer;
   text-decoration: none;
   @include transition-with-defaults(color);
@@ -47,23 +49,8 @@ iframe, table {
   max-width:100%;
 }
 
-.page-title, .post-title {
-  font-family: $global-font-raleway-thin;
-}
-
-.page-container, .post-container {
-  padding-top: 25px;
-  @include tablet-up {
-    padding-top: 55px;
-  }
-}
-
 .modal-content {
   padding: 10px;
-}
-
-.modal-title {
-  border-bottom: 1px solid $color-dark-grey;
 }
 
 input {
@@ -75,15 +62,6 @@ input {
 
 //helper classes
 //-----------------------------
-.faded-out {
-  display: none;
-  opacity: 0;
-}
-
-.hidden {
-  display: none;
-}
-
 .opaque {
   opacity: 0;
 }
@@ -173,6 +151,9 @@ input {
 
 //visibility
 //-----------------------------
+.hide {
+  display: none;
+}
 @include mobile {
   .hide-for-small {
     display: none;

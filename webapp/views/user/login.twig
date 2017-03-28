@@ -1,15 +1,15 @@
 {% extends "layouts/main.twig" %}
 {% block content %}
-    <main id="page-user-login">
-        <h1>Login</h1>
-        <form id="user-login-form">
-            <fieldset>
+    <main id="page-user-login" class="grid-container row">
+        <div class="col-sm-12">
+            <h1>Login</h1>
+            <form id="user-login-form">
                 <label for="user-login-email">Email</label>
                 <input type="email" id="user-login-email" name="email"/>
                 <label for="user-login-password">Password</label>
                 <input type="password" id="user-login-password" name="password"/>
-            </fieldset>
-            <button type="submit">Submit</button>
-        </form>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </main>
 {% endblock %}

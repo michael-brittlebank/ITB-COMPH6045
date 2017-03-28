@@ -1,18 +1,18 @@
 {% extends "layouts/main.twig" %}
 {% block content %}
-    <main id="page-admin-create-product">
-        <h1>Create New Product</h1>
-        <a href="{{ path_for('admin-dashboard') }}" class="button"><span class="fa fa-chevron-left"></span> Back</a>
-        <form id="admin-create-product-form">
-           <fieldset>
-               <label for="create-product-title">Product Title</label>
-               <input type="text" id="create-product-title"/>
-               <label for="create-product-price">Price</label>
-               <input type="number" id="create-product-price" step="0.01" min="0.01"/>
-               <label for="create-product-url">Product Url</label>
-               <input type="text" id="create-product-url"/>
-               <button type="submit">Submit</button>
-           </fieldset>
-       </form>
+    <main id="page-admin-create-product" class="grid-container row">
+        <div class="col-sm-12">
+            <h1>Create New Product</h1>
+            <a href="{{ path_for('admin-dashboard') }}" class="button"><span class="fa fa-chevron-left"></span> Back</a>
+            <form id="admin-create-product-form">
+                <label for="create-product-title">Product Title</label>
+                <input type="text" id="create-product-title"/>
+                <label for="create-product-price">Price</label>
+                <input type="number" id="create-product-price" step="0.01" min="0.01"/>
+                <label for="create-product-url">Product Url</label>
+                <input type="text" id="create-product-url"/>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </main>
 {% endblock %}

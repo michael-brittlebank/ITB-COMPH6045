@@ -1,6 +1,9 @@
 {% extends "layouts/main.twig" %}
 {% block content %}
-    <main>
-        checkout
+    <main class="grid-container row">
+        <div class="col-sm-12">
+            <h1>Checkout</h1>
+            <a href="{{ path_for('cart') }}"><i class="fa fa-chevron-left"></i>Back</a>
+        </div>
     </main>
 {% endblock %}
