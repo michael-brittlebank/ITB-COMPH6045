@@ -26,7 +26,7 @@ class User {
             $status = 400;
             return $response->withJson(Services\Util::createResponse($status), $status);
         } else {
-            if(Services\Authentication::startUserSession($parsedBody['email'],$parsedBody['password'])){
+            if(Services\Session::startUserSession($parsedBody['email'],$parsedBody['password'])){
                 return $response->withJson(Services\Util::createResponse(200), 200);
             } else {
                 return $response->withJson(Services\Util::createResponse(401), 401);
@@ -61,11 +61,11 @@ class User {
             $status = 400;
             return $response->withJson(Services\Util::createResponse($status), $status);
         } else {
-            if (Services\Authentication::getSessionUser()->isCurrentUser($parsedBody['id'])){
+            if (Services\Session::getSessionUser()->isCurrentUser($parsedBody['id'])){
                 $result = Services\Users::updateUser($parsedBody['firstName'],$parsedBody['lastName'],$parsedBody['email'],$parsedBody['id']);
                 $user = Services\Users::getUserByEmail($parsedBody['email']);
-                Services\Authentication::setSessionUser($user);
-                Services\Authentication::setSessionExpiry();
+                Services\Session::setSessionUser($user);
+                Services\Session::setSessionExpiry();
                 if($result === 1) {
                     return $response->withJson(Services\Util::createResponse(200), 200);
                 } else if($result === 0){
@@ -81,7 +81,7 @@ class User {
     }
 
     public function submitLogout ($request, $response) {
-        Services\Authentication::endUserSession();
+        Services\Session::endUserSession();
         return $response->withRedirect('/');
     }
 }

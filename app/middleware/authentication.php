@@ -5,14 +5,14 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 $app->add(function (Request $request, Response $response, callable $next) {
     //validate user session
-    if (\Services\Authentication::isUserSessionStarted()){
-        if (time() > \Services\Authentication::getSessionExpiry()){
+    if (\Services\Session::isUserSessionStarted()){
+        if (time() > \Services\Session::getSessionExpiry()){
             //expired session
-            \Services\Authentication::endUserSession();
+            \Services\Session::endUserSession();
         } else {
             //update session expiry due to user activity
-            \Services\Authentication::setSessionExpiry();
-            $request = $request->withAttribute('user', \Services\Authentication::getSessionUser()->toString());
+            \Services\Session::setSessionExpiry();
+            $request = $request->withAttribute('user', \Services\Session::getSessionUser()->toString());
         }
     }
 
@@ -20,7 +20,7 @@ $app->add(function (Request $request, Response $response, callable $next) {
 });
 
 $isUserLoggedIn = function ($request, $response, $next) {
-    if (\Services\Authentication::isUserSessionStarted()){
+    if (\Services\Session::isUserSessionStarted()){
         return $next($request, $response);
     } else {
         return $response->withRedirect('/login');
@@ -28,7 +28,7 @@ $isUserLoggedIn = function ($request, $response, $next) {
 };
 
 $isUserAdmin = function ($request, $response, $next) {
-    if (\Services\Authentication::isUserSessionStarted() && \Services\Authentication::getSessionUser()->isAdmin()) {
+    if (\Services\Session::isUserSessionStarted() && \Services\Session::getSessionUser()->isAdmin()) {
         return $next($request, $response);
     } else {
         return $response->withRedirect('/login');

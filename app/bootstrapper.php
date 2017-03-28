@@ -6,6 +6,7 @@
 $servicesPath = 'services';
 $servicesFiles = [
     'util',
+    'session',
     'database',
     'authentication',
     'users',
