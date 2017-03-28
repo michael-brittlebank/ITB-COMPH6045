@@ -1,5 +1,8 @@
-.cart-product-button-remove {
+.cart-product-button-update, .cart-product-button-remove {
   font-size: 1.5rem;
+}
+
+.cart-product-button-remove {
   color: $color-red;
   &:hover {
     color: lighten($color-red,30%);

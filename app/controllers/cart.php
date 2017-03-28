@@ -15,7 +15,18 @@ class Cart {
 
     public function getCartPage ($request, $response) {
         $cart = Services\Session::getSessionCart();
-        $viewData['cart'] = Services\Util::prepareObjectArrayForView(Services\Products::getProductsInCart($cart));
+        $cartProducts = Services\Util::prepareObjectArrayForView(Services\Products::getProductsInCart($cart));
+        $cartTotal = 0;
+        $shippingTotal = 15.00;
+        foreach ($cartProducts as $product){
+            $cartTotal += $product['quantity']*$product['price'];
+        }
+        $viewData['cart'] = array(
+            'products'=>$cartProducts,
+            'subtotal'=>number_format($cartTotal, 2),
+            'shippingTotal'=>number_format($shippingTotal, 2),
+            'total'=>number_format($cartTotal+$shippingTotal, 2)
+        );
         $viewData['metaTitle'] = Services\Util::getMetaTitle('cart');
         $viewData['globals'] = $request->getAttribute('globals');
         $viewData['user'] = $request->getAttribute('user');
