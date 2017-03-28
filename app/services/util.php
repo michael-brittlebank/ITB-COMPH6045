@@ -5,7 +5,7 @@ namespace Services;
 class Util {
 
     public static function getMetaTitle($pageName){
-        return getenv('META_TITLE_PREFIX').' | '.self::getPageTitle($pageName);
+        return getenv('SITE_NAME').' | '.self::getPageTitle($pageName);
     }
 
     public static function getAdminMetaTitle($pageName){

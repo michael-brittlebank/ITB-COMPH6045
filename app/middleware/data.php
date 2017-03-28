@@ -7,7 +7,8 @@ $app->add(function (Request $request, Response $response, callable $next) {
     $request = $request->withAttribute('globals', array(
         'path' => $path,
         'imagesDirectory' => '/public/images/',
-        'shopPath' => '/shop/'
+        'shopPath' => '/shop/',
+        'siteName' => getenv('SITE_NAME')
     ));
     return $next($request, $response);
 });

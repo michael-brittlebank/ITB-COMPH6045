@@ -17,7 +17,7 @@ class Config {
 
         //general values
         $this->dotenv->required([
-            'META_TITLE_PREFIX',
+            'SITE_NAME',
             'DEBUG'
         ]);
 
