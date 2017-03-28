@@ -19,7 +19,11 @@ class Session {
                     session_regenerate_id(true);
                     self::setSessionUser($user);
                     self::setSessionExpiry();
-                    self::setSessionCart(self::getSessionCart());
+                    $userCart = $user->getCart();
+                    $sessionCart = self::getSessionCart();
+                    $mergedCart = array_merge($userCart,$sessionCart);
+                    self::setSessionCart($mergedCart);
+                    Users::setUserCart($mergedCart);
                     return true;
                 } else {
                     //invalid password
@@ -75,7 +79,11 @@ class Session {
     }
 
     public static function getSessionCart(){
-        return $_SESSION['cart'];
+        if (isset($_SESSION['cart'])){
+            return $_SESSION['cart'];
+        } else {
+            return array();
+        }
     }
 
 }

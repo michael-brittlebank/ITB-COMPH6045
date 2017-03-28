@@ -4,20 +4,6 @@ namespace Services;
 
 class Cart {
 
-    public static function addToCart($productId){
-        $cart = Session::getSessionCart();
-        if(!is_array($cart)){
-            $cart = array();
-        }
-        if(isset($cart[$productId])){
-            $cart[$productId] = $cart[$productId]+1;
-        } else {
-            $cart[$productId] = 1;
-        }
-        Session::setSessionCart($cart);
-        return true;
-    }
-
     public static function updateCart($productId, $quantity){
         $cart = Session::getSessionCart();
         if(!is_array($cart)){
@@ -25,12 +11,20 @@ class Cart {
         }
         if(isset($cart[$productId])){
             if ($quantity < 1){
+                //remove from cart
                 unset($cart[$productId]);
             } else {
+                //update cart
                 $cart[$productId] = $quantity;
             }
+        } else {
+            //add to cart
+            $cart[$productId] = $quantity;
         }
         Session::setSessionCart($cart);
+        if(Session::isUserSessionStarted()){
+            Users::setUserCart($cart);
+        }
         return true;
     }
 }

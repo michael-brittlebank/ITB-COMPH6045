@@ -53,20 +53,6 @@ class Cart {
         return $this->view->render($response, '/shop/checkout.twig', $viewData);
     }
 
-    public function submitAddToCart($request, $response) {
-        $parsedBody = $request->getParsedBody();
-        if (!Services\Util::bodyParserIsValid($parsedBody, array('id'))) {
-            $status = 400;
-            return $response->withJson(Services\Util::createResponse($status), $status);
-        } else {
-            if (Services\Cart::addToCart($parsedBody['id'])) {
-                return $response->withJson(Services\Util::createResponse(200), 200);
-            } else {
-                return $response->withJson(Services\Util::createResponse(401), 401);
-            }
-        }
-    }
-
     public function submitUpdateCart($request, $response) {
         $parsedBody = $request->getParsedBody();
         if (!Services\Util::bodyParserIsValid($parsedBody, array('id','quantity'))){

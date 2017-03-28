@@ -12,10 +12,11 @@
         var id = idInput.val();
         if (helpers.isFormValid(addToCartForm)){
             ajax.ajax(
-                'POST',
+                'PUT',
                 '/cart',
                 {
-                    id: id
+                    id: id,
+                    quantity: 1
                 }
             )
                 .then(function(){

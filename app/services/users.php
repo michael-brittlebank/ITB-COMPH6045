@@ -22,4 +22,11 @@ class Users {
         $result = Database::getConnection()->query("UPDATE user SET first_name = '$userFirstName', last_name='$userLastName', email='$userEmail' WHERE id='$userId'");
         return $result;
     }
+
+    public static function setUserCart($cart){
+        $cart = json_encode($cart);
+        $userId = Session::getSessionUser()->getId();
+        $result = Database::getConnection()->query("UPDATE user SET stringified_cart = '$cart' WHERE id='$userId'");
+        return $result;
+    }
 }
