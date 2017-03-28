@@ -2,6 +2,7 @@
 
 namespace Services;
 
+use Models\CartProduct;
 use \Models\Product;
 
 class Products {
@@ -70,6 +71,24 @@ class Products {
             return new Product($result);
         } else {
             return null;
+        }
+    }
+    
+    public static function getProductsInCart($cart){
+        if (is_array($cart) && !empty($cart)) {
+            $cartToString = implode(',', array_keys($cart));
+            $result = Database::getConnection()->get_results("SELECT * FROM product WHERE id IN ($cartToString);");
+            if (!is_null($result)) {
+                $productList = array();
+                foreach ($result as $product) {
+                    array_push($productList, new CartProduct($product, $cart[$product->id]));
+                }
+                return $productList;
+            } else {
+                return array();
+            }
+        } else {
+            return array();
         }
     }
 }

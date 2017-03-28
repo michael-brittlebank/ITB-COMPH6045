@@ -15,13 +15,8 @@ img, input, textarea {
   max-width: 100%;
 }
 
-p, input, textarea {
+p {
   margin: 0 0 10px 0;
-}
-
-label, input, textarea {
-  width: 100%;
-  display: block;
 }
 
 hr {
@@ -33,14 +28,8 @@ a {
   cursor: pointer;
   text-decoration: none;
   @include transition-with-defaults(color);
-  span {
-    @include transition-with-defaults(color);
-  }
   &:hover {
-    color: $color-anchor-hover;
-    span {
-      color: $color-anchor-hover;
-    }
+    color: lighten($color-font-black,50%);
   }
 }
 
@@ -196,7 +185,18 @@ button, .button {
 
 //input
 //-----------------------------
+.standard-form {
+  label, input, textarea {
+    width: 100%;
+    display: block;
+  }
+  input, textarea {
+    margin: 0 0 10px 0;
+  }
+}
+
 input, textarea {
+  padding: 5px;
   border: 1px solid $color-font-black;
   @include transition-with-defaults(border);
   &.error {
@@ -207,6 +207,10 @@ input, textarea {
 
 //tables
 //-----------------------------
+table {
+  margin-bottom: 25px;
+}
+
 thead td {
   font-size: 1.25rem;
   padding: 10px 0 5px 0;
@@ -227,21 +231,18 @@ tbody {
 
 //pagination
 //-----------------------------
-.pagination {
-  margin-top: 25px;
-  .pagination-element {
-    padding: 10px;
-    background: $color-menu-active-state;
-    text-align: center;
-    border: 1px solid $color-dark-grey;
-    margin: 0 2px;
-    &:first-child {
-      margin-left: 0;
-    }
-    &.active {
-      background: $color-font-black;
-      color: white;
-    }
+.pagination-element {
+  padding: 10px;
+  background: $color-menu-active-state;
+  text-align: center;
+  border: 1px solid $color-dark-grey;
+  margin: 0 2px;
+  &:first-child {
+    margin-left: 0;
+  }
+  &.active {
+    background: $color-font-black;
+    color: white;
   }
 }
 

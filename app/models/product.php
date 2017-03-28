@@ -23,12 +23,12 @@ class Product {
     }
 
     public function toString(){
-        return [
+        return array(
             'id'=>$this->id,
             'title'=>$this->title,
             'price'=>$this->price,
             'url'=>$this->url,
             'categories'=>$this->categories
-        ];
+        );
     }
 }

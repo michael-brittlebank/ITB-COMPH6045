@@ -29,13 +29,13 @@ class User {
     }
 
     public function toString(){
-        return [
+        return array(
             'id'=>$this->id,
             'firstName'=>$this->firstName,
             'lastName'=>$this->lastName,
             'email'=>$this->email,
             'role'=>$this->role
-        ];
+        );
     }
     
     public function isCurrentUser($userId){

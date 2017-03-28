@@ -14,6 +14,7 @@ class Admin {
     }
 
     public function getDashboardPage ($request, $response) {
+        //todo, delete products function
         $pageLimit = 10;
         $page = $request->getQueryParam('page');
         if(is_null($page)){

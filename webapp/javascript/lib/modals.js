@@ -11,16 +11,26 @@
         successTitle,
         successContent;
 
+    this.resetModals = function(){
+        window.location.hash = '';
+    };
+
     this.openErrorModal = function(title, content){
         errorTitle.html(title);
         errorContent.html(content);
         window.location.hash = errorModalHash;
+        setTimeout(function(){
+            that.resetModals();
+        }, 5000);
     };
 
     this.openSuccessModal = function(title, content){
         successTitle.html(title);
         successContent.html(content);
         window.location.hash = successModalHash;
+        setTimeout(function(){
+            that.resetModals();
+        }, 5000);
     };
 
     this.init = function(){

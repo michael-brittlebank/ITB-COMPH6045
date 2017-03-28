@@ -27,14 +27,15 @@ var app = {
             profile: {}
         },
         shop: {
-            pdp: {}
+            pdp: {},
+            cart: {}
         }
     },
 
     //functions
     init: function(){
         //reset modals
-        window.location.hash = '';
+        app.modals.resetModals();
 
         var views = app.views;
 
@@ -51,6 +52,7 @@ var app = {
 
         //shop
         views.shop.pdp.init();
+        views.shop.cart.init();
     }
 };
 

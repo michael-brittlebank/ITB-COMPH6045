@@ -19,6 +19,7 @@ class Session {
                     session_regenerate_id(true);
                     self::setSessionUser($user);
                     self::setSessionExpiry();
+                    self::setSessionCart(self::getSessionCart());
                     return true;
                 } else {
                     //invalid password
@@ -64,6 +65,17 @@ class Session {
 
     public static function getSessionExpiry(){
         return $_SESSION['expiry'];
+    }
+
+    public static function setSessionCart($cart){
+        if(!is_array($cart)){
+            $cart = array();
+        }
+        $_SESSION['cart'] = $cart;
+    }
+
+    public static function getSessionCart(){
+        return $_SESSION['cart'];
     }
 
 }
