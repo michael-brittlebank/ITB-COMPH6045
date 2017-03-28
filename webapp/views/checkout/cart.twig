@@ -3,7 +3,9 @@
     <main class="grid-container row">
         <div class="col-sm-12">
             <h1>Cart</h1>
-            <a href="{{ path_for('checkout') }}">Checkout</a>
+            <div class="text-right">
+                <a href="{{ path_for('checkout') }}" class="header-link">Checkout <i class="fa fa-chevron-right"></i></a>
+            </div>
         </div>
     </main>
 {% endblock %}

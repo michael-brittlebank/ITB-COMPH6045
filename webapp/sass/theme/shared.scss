@@ -53,6 +53,22 @@ iframe, table {
   padding: 10px;
 }
 
+button {
+  padding: 10px 40px;
+  color: $color-white;
+  background-color: $color-font-black;
+  border: 2px solid $color-font-black;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin: auto;
+  display: block;
+  @include transition-raw("background-color 300ms ease-out 0s,color 300ms ease-out 0s");
+  &:hover, &:focus {
+    color: $color-font-black;
+    background-color: $color-white;
+  }
+}
+
 
 //helper classes
 //-----------------------------
@@ -86,6 +102,11 @@ iframe, table {
 
 .no-padding {
   padding: 0;
+}
+
+.header-link {
+  display: block;
+  margin-bottom: 25px;
 }
 
 /* http://www.labnol.org/internet/embed-responsive-google-maps/28333/ */
