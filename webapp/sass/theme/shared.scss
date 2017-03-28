@@ -62,6 +62,7 @@ button, .button {
   text-transform: uppercase;
   margin: auto;
   display: block;
+  text-align: center;
   @include transition-raw("background-color 300ms ease-out 0s,color 300ms ease-out 0s");
   &:hover, &:focus {
     color: $color-font-black;
@@ -248,6 +249,7 @@ tbody {
 //-----------------------------
 .product-grid-element {
   text-align: center;
+  margin-bottom: 25px;
   h4, h5 {
     margin: 0;
   }

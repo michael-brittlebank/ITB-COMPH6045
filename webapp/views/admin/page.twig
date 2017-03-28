@@ -35,15 +35,7 @@
                     {% endfor %}
                     </tbody>
                 </table>
-                <div class="pagination">
-                    {% for i in range(1, (productCount/pageLimit)|round(0, 'ceil')) %}
-                        {% if i == currentPage %}
-                            <span class="pagination-element active">{{ i }}</span>
-                        {% else %}
-                            <a href="{{ path_for('admin-dashboard') }}?page={{ i }}" class="pagination-element">{{ i }}</a>
-                        {% endif %}
-                    {% endfor %}
-                </div>
+                {% include 'components/pagination.twig' %}
             {% else %}
                 <p>
                     No products available

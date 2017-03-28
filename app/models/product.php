@@ -8,14 +8,14 @@ class Product {
     private $title;
     private $price;
     private $categories;
-    private $urlKey;
+    private $url;
 
     public function __construct($product){
         $this->id = (int)$product->id;
         $this->title = $product->title;
         $this->price = (double)$product->price;
         $this->categories = $product->categories;
-        $this->urlKey = $product->url_key;
+        $this->url = $product->url_key;
     }
 
     public function toString(){
@@ -23,7 +23,7 @@ class Product {
             'id'=>$this->id,
             'title'=>$this->title,
             'price'=>$this->price,
-            'urlKey'=>$this->urlKey,
+            'url'=>$this->url,
             'categories'=>$this->categories
         ];
     }

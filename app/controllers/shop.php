@@ -14,6 +14,16 @@ class Shop {
     }
 
     public function getShopPage ($request, $response) {
+        $pageLimit = 12;
+        $page = $request->getQueryParam('page');
+        if(is_null($page)){
+            $page = 1;
+        }
+        $viewData['metaTitle'] = Services\Util::getAdminMetaTitle('dashboard');
+        $viewData['products'] = Services\Util::prepareObjectArrayForView(Services\Products::getProducts($pageLimit,$page));
+        $viewData['productCount'] = Services\Products::getProductCount();
+        $viewData['pageLimit'] = $pageLimit;
+        $viewData['currentPage'] = $page;
         $viewData['metaTitle'] = Services\Util::getMetaTitle('shop');
         $viewData['globals'] = $request->getAttribute('globals');
         $viewData['user'] = $request->getAttribute('user');
