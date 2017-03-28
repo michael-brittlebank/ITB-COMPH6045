@@ -27,14 +27,14 @@ class Admin {
         $viewData['currentPage'] = $page;
         $viewData['globals'] = $request->getAttribute('globals');
         $viewData['user'] = $request->getAttribute('user');
-        return $this->view->render($response, '/admin/page.twig', $viewData);
+        return $this->view->render($response, '/admin/dashboard.twig', $viewData);
     }
 
     public function getNewProductPage ($request, $response) {
         $viewData['metaTitle'] = Services\Util::getAdminMetaTitle('new product');
         $viewData['globals'] = $request->getAttribute('globals');
         $viewData['user'] = $request->getAttribute('user');
-        return $this->view->render($response, '/admin/products/new.twig', $viewData);
+        return $this->view->render($response, '/admin/new.twig', $viewData);
     }
     
     public function submitNewProduct ($request, $response) {
@@ -59,7 +59,7 @@ class Admin {
         $viewData['user'] = $request->getAttribute('user');
         if(!is_null($product)){
             $viewData['product'] = $product->toString();
-            return $this->view->render($response, '/admin/products/edit.twig', $viewData);   
+            return $this->view->render($response, '/admin/edit.twig', $viewData);
         } else {
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
