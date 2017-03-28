@@ -17,6 +17,7 @@ class Pages {
         $viewData['metaTitle'] = 'My Store';
         $viewData['globals'] = $request->getAttribute('globals');
         $viewData['user'] = $request->getAttribute('user');
+        $viewData['products'] = Services\Util::prepareObjectArrayForView(Services\Products::getFeaturedProducts());
         return $this->view->render($response, 'pages/homepage.twig', $viewData);
     }
 

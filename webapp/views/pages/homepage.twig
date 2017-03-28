@@ -12,12 +12,9 @@
                 Fusce convallis mi metus, eget tristique urna convallis ut. Praesent lobortis iaculis mi at condimentum. Pellentesque scelerisque ipsum sed pulvinar suscipit. Aenean vestibulum posuere volutpat. Quisque ac orci non odio fermentum fermentum id eu odio. Aliquam maximus mattis dolor. Donec et quam sed ex fermentum egestas ut et ipsum.
             </p>
         </section>
-        <section class="col-sm-12">
-            <h3><a href="{{ path_for('shop') }}">Shop Now</a></h3>
-            {% for user in users %}
-                {{ user.first_name }}
-            {% endfor %}
-            <p>small product grid</p>
+        <section class="col-sm-12 text-center">
+            <a id="homepage-button-shop" href="{{ path_for('shop') }}" class="button">Shop Now</a>
         </section>
+        {% include('components/product-grid.twig') %}
     </main>
 {% endblock %}

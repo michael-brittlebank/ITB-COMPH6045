@@ -1,0 +1,13 @@
+<section class="col-sm-12">
+    <div class="row">
+        {% for product in products %}
+            <div class="col-sm-6 col-md-4 col-lg-3 product-grid-element">
+                <a href="{{ product.url }}">
+                    <img src="//placeholdit.imgix.net/~text?txtsize=33&txt=Product%20Image&w=250&h=250"/>
+                    <h4 class="text-upper">{{ product.title }}</h4>
+                    <h5>€{{ product.price }}</h5>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</section>

@@ -49,4 +49,18 @@ class Products {
         $result = Database::getConnection()->query("UPDATE product SET title = '$productTitle', price=$productPrice, url_key='$productUrl' WHERE id='$productId'");
         return $result === 1;
     }
+    
+    public static function getFeaturedProducts(){
+        //get random products for now
+        $result = Database::getConnection()->get_results("SELECT * FROM product ORDER BY RAND() LIMIT 3");
+        if (!is_null($result)){
+            $productList = array();
+            foreach ($result as $product){
+                array_push($productList, new Product($product));
+            }
+            return $productList;
+        } else {
+            return array();
+        }
+    }
 }
