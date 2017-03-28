@@ -28,7 +28,8 @@ var app = {
         },
         shop: {
             pdp: {},
-            cart: {}
+            cart: {},
+            checkout: {}
         }
     },
 
@@ -53,6 +54,7 @@ var app = {
         //shop
         views.shop.pdp.init();
         views.shop.cart.init();
+        views.shop.checkout.init();
     }
 };
 

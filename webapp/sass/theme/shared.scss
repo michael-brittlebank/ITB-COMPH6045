@@ -11,7 +11,7 @@ h1,h2,h3,h4,h5 {
   font-family: $global-font-raleway;
 }
 
-img, input, textarea {
+img {
   max-width: 100%;
 }
 
@@ -187,7 +187,8 @@ button, .button {
 //-----------------------------
 .standard-form {
   label, input, textarea {
-    width: 100%;
+    width: calc(100% - 12px);
+    max-width: calc(100% - 12px);
     display: block;
   }
   input, textarea {

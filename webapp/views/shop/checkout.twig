@@ -3,7 +3,35 @@
     <main id="page-checkout" class="grid-container row">
         <div class="col-sm-12">
             <h1>Checkout</h1>
-            <a href="{{ path_for('cart') }}" class="header-link"><i class="fa fa-chevron-left"></i> Back</a>
+        </div>
+        <div class="col-sm-6">
+            <h3>Contact Details</h3>
+            <hr/>
+            <form class="standard-form">
+                <label for="checkout-phone">Phone</label>
+                <input id="checkout-phone" type="tel"/>
+                <label for="checkout-message">Message</label>
+                <textarea id="checkout-message" rows="4"></textarea>
+            </form>
+        </div>
+        <div class="col-sm-6">
+            <h3>Invoice</h3>
+            <hr/>
+            {% for product in cart.products %}
+                <p>
+                    <a href="{{ path_for('shop-product', {productUrlKey: product.url}) }}">{{ product.title }}</a> x {{ product.quantity }}
+                </p>
+            {% endfor %}
+            <hr/>
+            <p class="no-margin">Subtotal: €{{ cart.subtotal }}</p>
+            <p class="no-margin">Shipping: €{{ cart.shippingTotal }}</p>
+            <p>Total: €{{ cart.total }}</p>
+        </div>
+        <div class="col-sm-6">
+            <a href="{{ path_for('cart') }}" class="header-link button"><i class="fa fa-chevron-left"></i> Back</a>
+        </div>
+        <div class="col-sm-6 text-right">
+            <a id="checkout-submit-button" href="#" class="header-link button">Place Order <i class="fa fa-chevron-right"></i></a>
         </div>
     </main>
 {% endblock %}

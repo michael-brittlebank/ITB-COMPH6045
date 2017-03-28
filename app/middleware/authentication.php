@@ -34,3 +34,12 @@ $isUserAdmin = function ($request, $response, $next) {
         return $response->withRedirect('/login');
     }
 };
+
+$userHasCart = function ($request, $response, $next) {
+    $cart = \Services\Session::getSessionCart();
+    if (is_array($cart) && !empty($cart)) {
+        return $next($request, $response);
+    } else {
+        return $response->withRedirect('/cart');
+    }
+};
