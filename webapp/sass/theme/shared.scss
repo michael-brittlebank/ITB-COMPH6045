@@ -53,12 +53,6 @@ iframe, table {
   padding: 10px;
 }
 
-input {
-  @include transition-with-defaults(border);
-  &.error {
-    border: 1px solid red;
-  }
-}
 
 //helper classes
 //-----------------------------
@@ -175,5 +169,56 @@ input {
 @include desktop {
   .hide-for-large {
     display: none;
+  }
+}
+
+//input
+//-----------------------------
+input, textarea {
+  border: 1px solid $color-font-black;
+  @include transition-with-defaults(border);
+  &.error {
+    border: 1px solid red;
+  }
+}
+
+
+//tables
+//-----------------------------
+thead td {
+  font-size: 1.25rem;
+  padding: 10px 0 5px 0;
+  border-bottom: 1px solid $color-font-black;
+  border-top: 1px solid $color-font-black;
+}
+
+tbody {
+  td {
+    padding: 5px 0;
+  }
+  tr:nth-of-type(2n){
+    td {
+      background-color: $color-menu-active-state;
+    }
+  }
+}
+
+//pagination
+//-----------------------------
+.pagination {
+  margin-top: 25px;
+  .pagination-element {
+    padding: 10px;
+    background: $color-menu-active-state;
+    text-align: center;
+    border: 1px solid $color-dark-grey;
+    margin: 0 2px;
+    &:first-child {
+      margin-left: 0;
+    }
+    &.active {
+      background: $color-font-black;
+      color: white;
+    }
   }
 }
