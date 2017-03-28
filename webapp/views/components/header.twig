@@ -13,14 +13,14 @@
                 <li class="{% if globals.path == path_for('shop') %}active{% endif %}">
                     <a href="{{ path_for('shop') }}">Shop</a>
                 </li>
-                <li class="{% if globals.path == path_for('login') or globals.path == path_for('register') or globals.path == path_for('profile') or globals.path == path_for('admin-dashboard')%}active{% endif %}">
+                <li class="{% if globals.path == path_for('user-login') or globals.path == path_for('user-register') or globals.path == path_for('user-profile') or globals.path == path_for('user-profile-edit') or globals.path == path_for('admin-dashboard')%}active{% endif %}">
                     <a>
                         <i class="fa fa-user-circle"></i>
                     </a>
                     <ul class="sub-menu">
                         {% if user %}
-                            <li class="{% if globals.path == path_for('profile') %}active{% endif %}">
-                                <a href="{{ path_for('profile') }}">Profile</a>
+                            <li class="{% if globals.path == path_for('user-profile') %}active{% endif %}">
+                                <a href="{{ path_for('user-profile') }}">Profile</a>
                             </li>
                             {% if user.role == 1 %}
                                 <li class="{% if globals.path == path_for('admin-dashboard') %}active{% endif %}">
@@ -28,14 +28,14 @@
                                 </li>
                             {% endif %}
                             <li>
-                                <a href="{{ path_for('logout') }}">Logout</a>
+                                <a href="{{ path_for('user-logout') }}">Logout</a>
                             </li>
                         {% else %}
-                            <li class="{% if globals.path == path_for('login') %}active{% endif %}">
-                                <a href="{{ path_for('login') }}">Login</a>
+                            <li class="{% if globals.path == path_for('user-login') %}active{% endif %}">
+                                <a href="{{ path_for('user-login') }}">Login</a>
                             </li>
-                            <li class="{% if globals.path == path_for('register') %}active{% endif %}">
-                                <a href="{{ path_for('register') }}">Register</a>
+                            <li class="{% if globals.path == path_for('user-register') %}active{% endif %}">
+                                <a href="{{ path_for('user-register') }}">Register</a>
                             </li>
                         {% endif %}
                     </ul>

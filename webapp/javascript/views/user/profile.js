@@ -29,7 +29,7 @@
         if (helpers.isFormValid(profileForm)){
             ajax.ajax(
                 'PUT',
-                '/profile',
+                '/profile-edit',
                 {
                     email: email,
                     firstName: firstName,
@@ -62,7 +62,7 @@
     }
 
     this.init = function(){
-        if ($('#page-user-profile').length > 0){
+        if ($('#page-user-profile-edit').length > 0){
             //variables
             profileForm = $('#user-profile-form');
             emailInput = $('#user-profile-email');

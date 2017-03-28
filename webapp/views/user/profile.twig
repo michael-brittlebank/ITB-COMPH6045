@@ -1,18 +1,22 @@
 {% extends "layouts/main.twig" %}
 {% block content %}
     <main id="page-user-profile" class="grid-container row">
-        <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="col-sm-12">
             <h1>Profile</h1>
-            <form id="user-profile-form">
-                <label for="user-profile-first-name">First Name</label>
-                <input type="text" id="user-profile-first-name" value="{{ user.firstName }}"/>
-                <label for="user-profile-last-name">Last Name</label>
-                <input type="text" id="user-profile-last-name" value="{{ user.lastName }}"/>
-                <label for="user-profile-email">Email</label>
-                <input type="email" id="user-profile-email" value="{{ user.email }}"/>
-                <input type="hidden" id="user-profile-id" value="{{ user.id }}" readonly="readonly"/>
-                <button type="submit">Submit</button>
-            </form>
+            <div class="text-right">
+                <a href="{{ path_for('user-profile-edit') }}" class="header-link">Edit Profile <i class="fa fa-chevron-right"></i></a>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <p>
+                <strong>First Name:</strong> {{ user.firstName }}
+            </p>
+            <p>
+                <strong>Last Name:</strong> {{ user.lastName }}
+            </p>
+            <p>
+                <strong>Email:</strong> {{ user.email }}
+            </p>
         </div>
     </main>
 {% endblock %}

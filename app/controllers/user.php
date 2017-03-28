@@ -48,6 +48,13 @@ class User {
         return $this->view->render($response, '/user/profile.twig', $viewData);
     }
 
+    public function getEditProfilePage ($request, $response) {
+        $viewData['metaTitle'] = Services\Util::getMetaTitle('profile');
+        $viewData['globals'] = $request->getAttribute('globals');
+        $viewData['user'] = $request->getAttribute('user');
+        return $this->view->render($response, '/user/profile-edit.twig', $viewData);
+    }
+    
     public function submitEditProfile ($request, $response) {
         $parsedBody = $request->getParsedBody();
         if (!Services\Util::bodyParserIsValid($parsedBody, array('email','firstName','lastName','id'))){
