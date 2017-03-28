@@ -16,8 +16,8 @@ class Authentication {
                 if ($user->authenticateUserPassword($password)){
                     //successfully authenticated
                     session_regenerate_id(true);
-                    self::updateSessionUser($user);
-                    self::updateSessionExpiry();
+                    self::setSessionUser($user);
+                    self::setSessionExpiry();
                     return true;
                 } else {
                     //invalid password
@@ -26,13 +26,26 @@ class Authentication {
             }
         }
     }
-    
-    public static function updateSessionUser($user){
+
+    public static function isUserSessionStarted(){
+        return isset($_SESSION['expiry']);
+    }
+
+    public static function setSessionUser($user){
         $_SESSION['user'] = $user;
     }
-    
-    public static function updateSessionExpiry(){
-        $_SESSION['expiry'] = self::getSessionExpiryTime();
+
+    public static function getSessionUser(){
+        return $_SESSION['user'];
+    }
+
+    public static function setSessionExpiry(){
+        $minutes = 30 * ($secondsInMinute = 60);
+        $_SESSION['expiry'] = time() + $minutes;
+    }
+
+    public static function getSessionExpiry(){
+        return $_SESSION['expiry'];
     }
 
     public static function endUserSession(){
@@ -59,10 +72,5 @@ class Authentication {
 
     public static function createSalt(){
         return mcrypt_create_iv(22, MCRYPT_DEV_URANDOM);
-    }
-    
-    public static function getSessionExpiryTime(){
-        $minutes = 30 * ($secondsInMinute = 60);
-        return time() + $minutes;
     }
 }

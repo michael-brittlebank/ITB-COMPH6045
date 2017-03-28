@@ -9,7 +9,8 @@ $servicesFiles = [
     'database',
     'authentication',
     'users',
-    'products'
+    'products',
+    'cart'
 ];
 
 //load files
@@ -61,7 +62,7 @@ $controllerPath = 'controllers';
 $controllerFiles = [
     'errors',
     'shop',
-    'checkout',
+    'cart',
     'user',
     'admin',
     'pages'
@@ -79,7 +80,7 @@ foreach($controllerFiles as $controller){
 $routePath = 'routes';
 $routeFiles = [
     'shop',
-    'checkout',
+    'cart',
     'user',
     'admin',
     'pages'

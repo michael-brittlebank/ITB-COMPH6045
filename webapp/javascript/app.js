@@ -25,6 +25,9 @@ var app = {
         user: {
             login: {},
             profile: {}
+        },
+        shop: {
+            pdp: {}
         }
     },
 
@@ -45,6 +48,9 @@ var app = {
         //admin
         views.admin.create.init();
         views.admin.edit.init();
+
+        //shop
+        views.shop.pdp.init();
     }
 };
 

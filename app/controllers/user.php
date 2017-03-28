@@ -61,11 +61,11 @@ class User {
             $status = 400;
             return $response->withJson(Services\Util::createResponse($status), $status);
         } else {
-            if ($_SESSION['user']->isCurrentUser($parsedBody['id'])){
+            if (Services\Authentication::getSessionUser()->isCurrentUser($parsedBody['id'])){
                 $result = Services\Users::updateUser($parsedBody['firstName'],$parsedBody['lastName'],$parsedBody['email'],$parsedBody['id']);
                 $user = Services\Users::getUserByEmail($parsedBody['email']);
-                Services\Authentication::updateSessionUser($user);
-                Services\Authentication::updateSessionExpiry();
+                Services\Authentication::setSessionUser($user);
+                Services\Authentication::setSessionExpiry();
                 if($result === 1) {
                     return $response->withJson(Services\Util::createResponse(200), 200);
                 } else if($result === 0){

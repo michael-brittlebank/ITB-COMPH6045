@@ -26,7 +26,7 @@
                                 €{{ product.price }}
                             </td>
                             <td>
-                                <a href="{{ path_for('shop-product', {product: product.urlKey}) }}">{{ path_for('shop-product', {product: product.urlKey}) }}</a>
+                                <a href="{{ path_for('shop-product', {productUrlKey: product.url}) }}">{{ path_for('shop-product', {productUrlKey: product.url}) }}</a>
                             </td>
                             <td>
                                 <a href="{{ path_for('admin-edit', {productId: product.id}) }}" class="button">Edit</a>

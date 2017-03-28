@@ -49,6 +49,6 @@ $container['view'] = function ($container) {
 };
 
 //bootstrap remaining files
-require_once('app/services/bootstrapper.php');
+require_once('app/bootstrapper.php');
 
 $app->run();
