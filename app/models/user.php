@@ -13,6 +13,7 @@ class User {
     private $role;
     private $passwordSalt;
     private $passwordHash;
+    private $cart;
     
     public function __construct($user){
         $this->id = (int)$user->id;
@@ -22,6 +23,8 @@ class User {
         $this->role = (int)$user->role;
         $this->passwordSalt = $user->password_salt;
         $this->passwordHash = $user->password_hash;
+        $this->cart = $user->cart;
+        //todo, save cart to db
     }
 
     public function isAdmin(){
@@ -34,7 +37,8 @@ class User {
             'firstName'=>$this->firstName,
             'lastName'=>$this->lastName,
             'email'=>$this->email,
-            'role'=>$this->role
+            'role'=>$this->role,
+            'cart'=>$this->cart
         );
     }
     

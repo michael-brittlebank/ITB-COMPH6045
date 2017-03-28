@@ -12,9 +12,13 @@
                 Fusce convallis mi metus, eget tristique urna convallis ut. Praesent lobortis iaculis mi at condimentum. Pellentesque scelerisque ipsum sed pulvinar suscipit. Aenean vestibulum posuere volutpat. Quisque ac orci non odio fermentum fermentum id eu odio. Aliquam maximus mattis dolor. Donec et quam sed ex fermentum egestas ut et ipsum.
             </p>
         </section>
-        <section class="col-sm-12 text-center">
-            <a id="homepage-button-shop" href="{{ path_for('shop') }}" class="button">Shop Now</a>
-        </section>
+        <div class="col-sm-12 text-center">
+            <h3>Featured Products</h3>
+            <hr/>
+        </div>
         {% include('components/product-grid.twig') %}
+        <div class="col-sm-12 text-center">
+            <a id="homepage-button-shop" href="{{ path_for('shop') }}" class="button">Go To Shop</a>
+        </div>
     </main>
 {% endblock %}

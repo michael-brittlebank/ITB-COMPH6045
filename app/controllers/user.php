@@ -42,6 +42,11 @@ class User {
     }
 
     public function getProfilePage ($request, $response) {
+        $cart = Services\Session::getSessionCart();
+        $cartProducts = Services\Util::prepareObjectArrayForView(Services\Products::getProductsInCart($cart));
+        $viewData['cart'] = array(
+            'products'=>$cartProducts
+        );
         $viewData['metaTitle'] = Services\Util::getMetaTitle('profile');
         $viewData['globals'] = $request->getAttribute('globals');
         $viewData['user'] = $request->getAttribute('user');

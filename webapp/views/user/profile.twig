@@ -7,7 +7,26 @@
                 <a href="{{ path_for('user-profile-edit') }}" class="header-link">Edit Profile <i class="fa fa-chevron-right"></i></a>
             </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4">
+            <h3>Cart</h3>
+            <hr/>
+            {% if cart.products %}
+                {% for product in cart.products %}
+                    <p>
+                        <a href="{{ path_for('shop-product', {productUrlKey: product.url}) }}">{{ product.title }}</a>
+                        x {{ product.quantity }}
+                    </p>
+                {% endfor %}
+                <a href="{{ path_for('cart') }}" class="button">Go To Cart</a>
+            {% else %}
+                <p>
+                    Nothing in Cart
+                </p>
+            {% endif %}
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <h3>User Details</h3>
+            <hr/>
             <p>
                 <strong>First Name:</strong> {{ user.firstName }}
             </p>
@@ -15,7 +34,7 @@
                 <strong>Last Name:</strong> {{ user.lastName }}
             </p>
             <p>
-                <strong>Email:</strong> {{ user.email }}
+                <strong>Email:</strong> <a href="mailto:{{ user.email }}">{{ user.email }}</a>
             </p>
         </div>
     </main>
