@@ -1,13 +1,19 @@
 {% extends "layouts/main.twig" %}
 {% block content %}
-    <main class="grid-container row">
+    <main id="page-user-register" class="grid-container row">
         <div class="col-sm-12 col-md-6 col-lg-4">
             <h1>Register</h1>
             <form id="user-register-form" class="standard-form">
+                <label for="user-register-first-name">First Name</label>
+                <input type="text" id="user-register-first-name"/>
+                <label for="user-register-last-name">Last Name</label>
+                <input type="text" id="user-register-last-name"/>
                 <label for="user-register-email">Email</label>
-                <input type="email" id="user-register-email" name="email"/>
+                <input type="email" id="user-register-email"/>
                 <label for="user-register-password">Password</label>
-                <input type="password" id="user-register-password" name="password"/>
+                <input type="password" id="user-register-password"/>
+                <label for="user-register-password-repeat">Repeat Password</label>
+                <input type="password" id="user-register-password-repeat"/>
                 <button type="submit">Submit</button>
             </form>
         </div>

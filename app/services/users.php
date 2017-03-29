@@ -14,8 +14,12 @@ class Users {
         }
     }
 
-    public static function createNewUser(){
-        //todo, user registration
+    public static function createNewUser($userFirstName, $userLastName, $userEmail, $plainTextPassword){
+        $userSalt = Authentication::createSalt();
+        $hashedPassword = Authentication::encryptPassword($plainTextPassword,$userSalt);
+        $userRole = 99;//default role for users
+        $result = Database::getConnection()->query("INSERT INTO user (first_name, last_name, email, password_salt, password_hash, role) VALUES ('$userFirstName','$userLastName', '$userEmail','$userSalt','$hashedPassword',$userRole)");
+        return $result === 1;
     }
 
     public static function updateUser($userFirstName, $userLastName, $userEmail, $userId){

@@ -25,6 +25,7 @@ var app = {
         },
         user: {
             login: {},
+            register: {},
             profile: {},
             profileEdit: {}
         },
@@ -46,6 +47,7 @@ var app = {
         app.modals.init();
         
         //user
+        views.user.register.init();
         views.user.login.init();
         views.user.profile.init();
         views.user.profileEdit.init();

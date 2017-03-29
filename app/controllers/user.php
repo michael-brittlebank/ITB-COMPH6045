@@ -40,6 +40,24 @@ class User {
         return $this->view->render($response, '/user/register.twig', $viewData);
     }
 
+    public function submitUserRegistration($request, $response) {
+        $parsedBody = $request->getParsedBody();
+        if (!Services\Util::bodyParserIsValid($parsedBody, array('email','password','firstName','lastName'))){
+            return $response->withJson(Services\Util::createResponse(400), 400);
+        } else {
+            if(Services\Users::createNewUser($parsedBody['firstName'],$parsedBody['lastName'],$parsedBody['email'],$parsedBody['password'])){
+                if (Services\Session::startUserSession($parsedBody['email'],$parsedBody['password'])){
+                    return $response->withJson(Services\Util::createResponse(200), 200);
+                } else {
+                    return $response->withJson(Services\Util::createResponse(401), 401);
+                }
+            } else {
+                //user already exists
+                return $response->withJson(Services\Util::createResponse(400), 400);
+            }
+        }
+    }
+
     public function getProfilePage ($request, $response) {
         $cart = Services\Session::getSessionCart();
         $cartProducts = Services\Util::prepareObjectArrayForView(Services\Products::getProductsInCart($cart));
@@ -84,7 +102,7 @@ class User {
         $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, '/user/profile-edit.twig', $viewData);
     }
-    
+
     public function submitEditProfile ($request, $response) {
         $parsedBody = $request->getParsedBody();
         if (!Services\Util::bodyParserIsValid($parsedBody, array('email','firstName','lastName','id'))){

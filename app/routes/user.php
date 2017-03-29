@@ -6,6 +6,7 @@ $app->put('/login', \Controllers\User::class.':submitLogin');
 
 //new user page
 $app->get('/register',\Controllers\User::class.':getRegisterPage')->setName('user-register');
+$app->post('/register', \Controllers\User::class.':submitUserRegistration');
 
 //user profile page
 $app->get('/profile', \Controllers\User::class.':getProfilePage')->setName('user-profile')->add($isUserLoggedIn);
