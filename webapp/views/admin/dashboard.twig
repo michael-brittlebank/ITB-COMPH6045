@@ -11,8 +11,8 @@
                     <thead>
                     <tr>
                         <td>Title</td>
-                        <td>Price</td>
-                        <td>Url</td>
+                        <td class="hide-for-small">Price</td>
+                        <td class="hide-for-small">Url</td>
                         <td class="text-center">Edit</td>
                         <td class="text-center">Delete</td>
                     </tr>
@@ -23,10 +23,10 @@
                             <td>
                                 {{ product.title }}
                             </td>
-                            <td>
+                            <td class="hide-for-small">
                                 €{{ product.price }}
                             </td>
-                            <td>
+                            <td class="hide-for-small">
                                 <a href="{{ path_for('shop-product', {productUrlKey: product.url}) }}">{{ path_for('shop-product', {productUrlKey: product.url}) }}</a>
                             </td>
                             <td class="text-center">
