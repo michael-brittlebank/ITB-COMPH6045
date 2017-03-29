@@ -20,7 +20,8 @@ var app = {
     views: {
         admin: {
             create: {},
-            edit: {}
+            edit: {},
+            dashboard: {}
         },
         user: {
             login: {},
@@ -50,6 +51,7 @@ var app = {
         //admin
         views.admin.create.init();
         views.admin.edit.init();
+        views.admin.dashboard.init();
 
         //shop
         views.shop.pdp.init();

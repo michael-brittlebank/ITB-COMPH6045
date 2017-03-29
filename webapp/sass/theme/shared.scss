@@ -42,6 +42,8 @@ iframe, table {
   padding: 10px;
 }
 
+//buttons
+//-----------------------------
 button, .button {
   padding: 10px 40px;
   color: $color-white;
@@ -56,6 +58,17 @@ button, .button {
   &:hover, &:focus {
     color: $color-font-black;
     background-color: $color-white;
+  }
+}
+
+.button-edit, .button-delete {
+  font-size: 1.5rem;
+}
+
+.button-delete {
+  color: $color-red;
+  &:hover {
+    color: lighten($color-red,30%);
   }
 }
 

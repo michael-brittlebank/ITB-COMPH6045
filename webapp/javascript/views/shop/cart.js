@@ -54,8 +54,8 @@
 
     this.init = function(){
         if ($('#page-cart').length > 0) {
-            removeItemFromCartButtons = $('.cart-product-button-remove');
-            updateItemQuantityButtons = $('.cart-product-button-update');
+            removeItemFromCartButtons = $('.button-delete');
+            updateItemQuantityButtons = $('.button-edit');
 
             removeItemFromCartButtons.on('click', function (event) {
                 event.preventDefault();

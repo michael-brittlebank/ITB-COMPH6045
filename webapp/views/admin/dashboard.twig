@@ -1,6 +1,6 @@
 {% extends "layouts/main.twig" %}
 {% block content %}
-    <main class="grid-container row">
+    <main id="page-admin-dashboard" class="grid-container row">
         <div class="col-sm-12">
             <h1>Products</h1>
             <div class="text-right">
@@ -13,7 +13,8 @@
                         <td>Title</td>
                         <td>Price</td>
                         <td>Url</td>
-                        <td>Edit</td>
+                        <td class="text-center">Edit</td>
+                        <td class="text-center">Delete</td>
                     </tr>
                     </thead>
                     <tbody>
@@ -28,8 +29,15 @@
                             <td>
                                 <a href="{{ path_for('shop-product', {productUrlKey: product.url}) }}">{{ path_for('shop-product', {productUrlKey: product.url}) }}</a>
                             </td>
-                            <td>
-                                <a href="{{ path_for('admin-edit', {productId: product.id}) }}" class="button">Edit</a>
+                            <td class="text-center">
+                                <a class="button-edit" href="{{ path_for('admin-edit', {productId: product.id}) }}">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <a class="button-delete" href="#" data-product-id="{{ product.id }}">
+                                    <i class="fa fa-times"></i>
+                                </a>
                             </td>
                         </tr>
                     {% endfor %}

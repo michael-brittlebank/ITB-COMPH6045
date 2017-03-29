@@ -14,7 +14,6 @@ class Admin {
     }
 
     public function getDashboardPage ($request, $response) {
-        //todo, delete products function
         $pageLimit = 10;
         $page = $request->getQueryParam('page');
         if(is_null($page)){
@@ -72,6 +71,20 @@ class Admin {
             return $response->withJson(Services\Util::createResponse($status), $status);
         } else {
             if (Services\Products::updateProduct($parsedBody['title'],$parsedBody['price'],$parsedBody['url'],$parsedBody['id'])){
+                return $response->withJson(Services\Util::createResponse(200), 200);
+            } else {
+                return $response->withJson(Services\Util::createResponse(401), 401);
+            }
+        }
+    }
+
+    public static function submitDeleteProduct($request, $response){
+        $parsedBody = $request->getParsedBody();
+        if (!Services\Util::bodyParserIsValid($parsedBody, array('id'))){
+            $status = 400;
+            return $response->withJson(Services\Util::createResponse($status), $status);
+        } else {
+            if (Services\Products::deleteProduct($parsedBody['id'])){
                 return $response->withJson(Services\Util::createResponse(200), 200);
             } else {
                 return $response->withJson(Services\Util::createResponse(401), 401);

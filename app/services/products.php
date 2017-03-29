@@ -91,4 +91,9 @@ class Products {
             return array();
         }
     }
+    
+    public static function deleteProduct($productId){
+        $result = Database::getConnection()->query("DELETE FROM product WHERE id = '$productId'");
+        return $result === 1;
+    }
 }
