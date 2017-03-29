@@ -4,7 +4,33 @@
         <div class="col-sm-12">
             <h1>Profile</h1>
         </div>
-        <div class="col-md-6 col-lg-4">
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <h3>User Details</h3>
+            <hr/>
+            <p>
+                <strong>First Name:</strong> {{ user.firstName }}
+            </p>
+            <p>
+                <strong>Last Name:</strong> {{ user.lastName }}
+            </p>
+            <p>
+                <strong>Email:</strong> <a href="mailto:{{ user.email }}">{{ user.email }}</a>
+            </p>
+            <a href="{{ path_for('user-profile-edit') }}" class="button">Edit Profile</a>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <h3>Update Password</h3>
+            <hr/>
+            <form id="user-profile-password-form" class="standard-form">
+                <label for="user-profile-password">New Password</label>
+                <input type="password" id="user-profile-password"/>
+                <label for="user-profile-password-repeat">Repeat New Password</label>
+                <input type="password" id="user-profile-password-repeat"/>
+                <input type="hidden" id="user-profile-id" value="{{ user.id }}" readonly="readonly"/>
+                <button type="submit" class="full-width">Update Password</button>
+            </form>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4">
             <h3>Cart</h3>
             <hr/>
             {% if cart.products %}
@@ -20,32 +46,6 @@
                     Nothing in Cart
                 </p>
             {% endif %}
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <h3>User Details</h3>
-            <hr/>
-            <p>
-                <strong>First Name:</strong> {{ user.firstName }}
-            </p>
-            <p>
-                <strong>Last Name:</strong> {{ user.lastName }}
-            </p>
-            <p>
-                <strong>Email:</strong> <a href="mailto:{{ user.email }}">{{ user.email }}</a>
-            </p>
-            <a href="{{ path_for('user-profile-edit') }}" class="button">Edit Profile</a>
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <h3>Update Password</h3>
-            <hr/>
-            <form id="user-profile-password-form" class="standard-form">
-                <label for="user-profile-password">New Password</label>
-                <input type="password" id="user-profile-password"/>
-                <label for="user-profile-password-repeat">Repeat New Password</label>
-                <input type="password" id="user-profile-password-repeat"/>
-                <input type="hidden" id="user-profile-id" value="{{ user.id }}" readonly="readonly"/>
-                <button type="submit" class="full-width">Update Password</button>
-            </form>
         </div>
     </main>
 {% endblock %}

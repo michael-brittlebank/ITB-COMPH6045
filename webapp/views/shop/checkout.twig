@@ -23,9 +23,11 @@
                 </p>
             {% endfor %}
             <hr/>
-            <p class="no-margin">Subtotal: €{{ cart.subtotal }}</p>
-            <p class="no-margin">Shipping: €{{ cart.shippingTotal }}</p>
-            <p>Total: €{{ cart.total }}</p>
+            <div class="text-right">
+                <p class="no-margin">Subtotal: €{{ cart.subtotal }}</p>
+                <p class="no-margin">Shipping: €{{ cart.shippingTotal }}</p>
+                <p>Total: €{{ cart.total }}</p>
+            </div>
         </div>
         <div class="col-sm-6">
             <a href="{{ path_for('cart') }}" class="header-link button"><i class="fa fa-chevron-left"></i> Back</a>
