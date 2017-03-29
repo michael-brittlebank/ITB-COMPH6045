@@ -27,6 +27,14 @@ $isUserLoggedIn = function ($request, $response, $next) {
     }
 };
 
+$userHasSession = function ($request, $response, $next) {
+    if (\Services\Session::isUserSessionStarted()){
+        return $response->withRedirect('/profile');
+    } else {
+        return $next($request, $response);
+    }
+};
+
 $isUserAdmin = function ($request, $response, $next) {
     if (\Services\Session::isUserSessionStarted() && \Services\Session::getSessionUser()->isAdmin()) {
         return $next($request, $response);

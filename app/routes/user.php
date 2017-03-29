@@ -1,11 +1,11 @@
 <?php
 
 //user login page
-$app->get('/login', \Controllers\User::class.':getLoginPage')->setName('user-login');
+$app->get('/login', \Controllers\User::class.':getLoginPage')->setName('user-login')->add($userHasSession);
 $app->put('/login', \Controllers\User::class.':submitLogin');
 
 //new user page
-$app->get('/register',\Controllers\User::class.':getRegisterPage')->setName('user-register');
+$app->get('/register',\Controllers\User::class.':getRegisterPage')->setName('user-register')->add($userHasSession);
 $app->post('/register', \Controllers\User::class.':submitUserRegistration');
 
 //user profile page
