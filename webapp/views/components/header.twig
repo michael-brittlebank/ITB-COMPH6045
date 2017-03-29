@@ -14,7 +14,7 @@
                     <a href="{{ path_for('shop') }}">Shop</a>
                 </li>
                 <li class="{% if globals.path == path_for('user-login') or globals.path == path_for('user-register') or globals.path == path_for('user-profile') or globals.path == path_for('user-profile-edit') or globals.path == path_for('admin-dashboard')%}active{% endif %}">
-                    <a>
+                    <a href="{{ path_for('user-profile') }}">
                         <i class="fa fa-user-circle"></i>
                     </a>
                     <ul class="sub-menu">
