@@ -23,8 +23,7 @@ class User {
     public function submitLogin ($request, $response) {
         $parsedBody = $request->getParsedBody();
         if (!Services\Util::bodyParserIsValid($parsedBody, array('email','password'))){
-            $status = 400;
-            return $response->withJson(Services\Util::createResponse($status), $status);
+            return $response->withJson(Services\Util::createResponse(400), 400);
         } else {
             if(Services\Session::startUserSession($parsedBody['email'],$parsedBody['password'])){
                 return $response->withJson(Services\Util::createResponse(200), 200);
@@ -53,6 +52,32 @@ class User {
         return $this->view->render($response, '/user/profile.twig', $viewData);
     }
 
+    public static function submitUpdatePassword ($request, $response) {
+        $parsedBody = $request->getParsedBody();
+        if (!Services\Util::bodyParserIsValid($parsedBody, array('password','id'))){
+            return $response->withJson(Services\Util::createResponse(400), 400);
+        } else {
+            $sessionUser = Services\Session::getSessionUser();
+            if ($sessionUser->isCurrentUser($parsedBody['id'])){
+                $result = Services\Users::updateUserPassword($parsedBody['password'],$sessionUser->getSalt(),$parsedBody['id']);
+                //update session user
+                $user = Services\Users::getUserByEmail($sessionUser->getEmail());
+                Services\Session::setSessionUser($user);
+                if($result === 1) {
+                    return $response->withJson(Services\Util::createResponse(200), 200);
+                } else if($result === 0){
+                    return $response->withJson(Services\Util::createResponse(204), 204);
+                } else {
+                    return $response->withJson(Services\Util::createResponse(401), 401);
+                }
+            } else {
+                //cannot edit other user's profiles
+                return $response->withJson(Services\Util::createResponse(401), 401);
+            }
+        }
+    }
+
+
     public function getEditProfilePage ($request, $response) {
         $viewData['metaTitle'] = Services\Util::getMetaTitle('profile');
         $viewData['globals'] = $request->getAttribute('globals');
@@ -63,14 +88,12 @@ class User {
     public function submitEditProfile ($request, $response) {
         $parsedBody = $request->getParsedBody();
         if (!Services\Util::bodyParserIsValid($parsedBody, array('email','firstName','lastName','id'))){
-            $status = 400;
-            return $response->withJson(Services\Util::createResponse($status), $status);
+            return $response->withJson(Services\Util::createResponse(400), 400);
         } else {
             if (Services\Session::getSessionUser()->isCurrentUser($parsedBody['id'])){
                 $result = Services\Users::updateUser($parsedBody['firstName'],$parsedBody['lastName'],$parsedBody['email'],$parsedBody['id']);
                 $user = Services\Users::getUserByEmail($parsedBody['email']);
                 Services\Session::setSessionUser($user);
-                Services\Session::setSessionExpiry();
                 if($result === 1) {
                     return $response->withJson(Services\Util::createResponse(200), 200);
                 } else if($result === 0){

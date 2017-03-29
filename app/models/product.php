@@ -16,6 +16,7 @@ class Product {
         $this->price = (double)$product->price;
         $this->categories = $product->categories;
         $this->url = $product->url_key;
+        //todo, product categories
     }
     
     public function getTitle(){

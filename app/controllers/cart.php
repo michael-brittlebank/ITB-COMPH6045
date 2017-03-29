@@ -56,8 +56,7 @@ class Cart {
     public function submitUpdateCart($request, $response) {
         $parsedBody = $request->getParsedBody();
         if (!Services\Util::bodyParserIsValid($parsedBody, array('id','quantity'))){
-            $status = 400;
-            return $response->withJson(Services\Util::createResponse($status), $status);
+            return $response->withJson(Services\Util::createResponse(400), 400);
         } else {
             if (Services\Cart::updateCart($parsedBody['id'], $parsedBody['quantity'])) {
                 return $response->withJson(Services\Util::createResponse(200), 200);

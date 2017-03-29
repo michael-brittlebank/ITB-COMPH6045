@@ -3,9 +3,6 @@
     <main id="page-user-profile" class="grid-container row">
         <div class="col-sm-12">
             <h1>Profile</h1>
-            <div class="text-right">
-                <a href="{{ path_for('user-profile-edit') }}" class="header-link">Edit Profile <i class="fa fa-chevron-right"></i></a>
-            </div>
         </div>
         <div class="col-md-6 col-lg-4">
             <h3>Cart</h3>
@@ -36,6 +33,19 @@
             <p>
                 <strong>Email:</strong> <a href="mailto:{{ user.email }}">{{ user.email }}</a>
             </p>
+            <a href="{{ path_for('user-profile-edit') }}" class="button">Edit Profile</a>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <h3>Update Password</h3>
+            <hr/>
+            <form id="user-profile-password-form" class="standard-form">
+                <label for="user-profile-password">New Password</label>
+                <input type="password" id="user-profile-password"/>
+                <label for="user-profile-password-repeat">Repeat New Password</label>
+                <input type="password" id="user-profile-password-repeat"/>
+                <input type="hidden" id="user-profile-id" value="{{ user.id }}" readonly="readonly"/>
+                <button type="submit" class="full-width">Update Password</button>
+            </form>
         </div>
     </main>
 {% endblock %}

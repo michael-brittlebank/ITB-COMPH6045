@@ -45,6 +45,14 @@ class User {
     public function getCart(){
         return $this->cart;
     }
+    
+    public function getSalt(){
+        return $this->passwordSalt;
+    }
+    
+    public function getEmail(){
+        return $this->email;
+    }
 
     public function toString(){
         return array(

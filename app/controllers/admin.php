@@ -39,8 +39,7 @@ class Admin {
     public function submitNewProduct ($request, $response) {
         $parsedBody = $request->getParsedBody();
         if (!Services\Util::bodyParserIsValid($parsedBody, array('title','price','url'))){
-            $status = 400;
-            return $response->withJson(Services\Util::createResponse($status), $status);
+            return $response->withJson(Services\Util::createResponse(400), 400);
         } else {
             if (Services\Products::createNewProduct($parsedBody['title'],$parsedBody['price'],$parsedBody['url'])){
                 return $response->withJson(Services\Util::createResponse(200), 200);
@@ -67,8 +66,7 @@ class Admin {
     public static function submitEditProduct($request, $response){
         $parsedBody = $request->getParsedBody();
         if (!Services\Util::bodyParserIsValid($parsedBody, array('title','price','url','id'))){
-            $status = 400;
-            return $response->withJson(Services\Util::createResponse($status), $status);
+            return $response->withJson(Services\Util::createResponse(400), 400);
         } else {
             if (Services\Products::updateProduct($parsedBody['title'],$parsedBody['price'],$parsedBody['url'],$parsedBody['id'])){
                 return $response->withJson(Services\Util::createResponse(200), 200);
@@ -81,8 +79,7 @@ class Admin {
     public static function submitDeleteProduct($request, $response){
         $parsedBody = $request->getParsedBody();
         if (!Services\Util::bodyParserIsValid($parsedBody, array('id'))){
-            $status = 400;
-            return $response->withJson(Services\Util::createResponse($status), $status);
+            return $response->withJson(Services\Util::createResponse(400), 400);
         } else {
             if (Services\Products::deleteProduct($parsedBody['id'])){
                 return $response->withJson(Services\Util::createResponse(200), 200);

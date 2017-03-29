@@ -9,6 +9,9 @@ $app->get('/register',\Controllers\User::class.':getRegisterPage')->setName('use
 
 //user profile page
 $app->get('/profile', \Controllers\User::class.':getProfilePage')->setName('user-profile')->add($isUserLoggedIn);
+$app->put('/profile', \Controllers\User::class.':submitUpdatePassword')->add($isUserLoggedIn);
+
+//edit profile
 $app->get('/profile-edit', \Controllers\User::class.':getEditProfilePage')->setName('user-profile-edit')->add($isUserLoggedIn);
 $app->put('/profile-edit', \Controllers\User::class.':submitEditProfile')->add($isUserLoggedIn);
 

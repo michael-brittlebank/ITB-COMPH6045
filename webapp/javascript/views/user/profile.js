@@ -5,75 +5,56 @@
         helpers = app.helpers,
         ajax = app.ajax,
         modals = app.modals,
-        profileForm,
-        emailInput,
-        firstNameInput,
-        lastNameInput,
+        passwordForm,
+        passwordInput,
+        repeatPasswordInput,
         idInput;
 
-    function submitProfileForm(){
-        var email = emailInput.val(),
-            firstName = firstNameInput.val(),
-            lastName = lastNameInput.val(),
+    function submitUpdatePasswordForm(){
+        var password = passwordInput.val(),
+            repeatPassword = repeatPasswordInput.val(),
             id = idInput.val();
-        helpers.resetForm(profileForm);
-        if (helpers.isEmpty(email)){
-            emailInput.addClass(helpers.errorClass);
+        helpers.resetForm(passwordForm);
+        if (helpers.isEmpty(password)){
+            passwordInput.addClass(helpers.errorClass);
         }
-        if (helpers.isEmpty(firstName)){
-            firstNameInput.addClass(helpers.errorClass);
+        if (helpers.isEmpty(repeatPassword)){
+            repeatPasswordInput.addClass(helpers.errorClass);
         }
-        if (helpers.isEmpty(lastName)){
-            lastNameInput.addClass(helpers.errorClass);
-        }
-        if (helpers.isFormValid(profileForm)){
+        if (password !== repeatPassword){
+            modals.openErrorModal('Error','Passwords do not match.  Please try again');
+        } else if (helpers.isFormValid(passwordForm)){
             ajax.ajax(
                 'PUT',
-                '/profile-edit',
+                '/profile',
                 {
-                    email: email,
-                    firstName: firstName,
-                    lastName: lastName,
+                    password: password,
                     id: id
                 }
             )
-                .then(function(success){
-                    if (success){
-                        modals.openSuccessModal('Success', 'Profile edited successfully');
-                    } else {
-                        //204 no content
-                        modals.openSuccessModal('No Change', 'No update detected');
-                    }
+                .then(function(){
+                    modals.openSuccessModal('Success','Password updated successfully');
+                    passwordInput.val('');
+                    repeatPasswordInput.val('');
                 })
-                .catch(function(error){
-                    switch (error.jqXHR.status){
-                        case 400:
-                            modals.openErrorModal('Error','Could not update profile. Ensure email is unique');
-                            break;
-                        case 401:
-                            modals.openErrorModal('Error','Could not update profile. Contact your site administrator');
-                            break;
-                        default:
-                            modals.openErrorModal('Error','Could not update profile. Contact your site administrator');
-                            break;
-                    }
+                .catch(function(){
+                    modals.openErrorModal('Error','Could not update password. Contact your site administrator');
                 });
         }
     }
 
     this.init = function(){
-        if ($('#page-user-profile-edit').length > 0){
+        if ($('#page-user-profile').length > 0){
             //variables
-            profileForm = $('#user-profile-form');
-            emailInput = $('#user-profile-email');
-            firstNameInput = $('#user-profile-first-name');
-            lastNameInput = $('#user-profile-last-name');
+            passwordForm = $('#user-profile-password-form');
+            passwordInput = $('#user-profile-password');
+            repeatPasswordInput = $('#user-profile-password-repeat');
             idInput = $('#user-profile-id');
-            
+
             //bindings
-            profileForm.on('submit',function(event){
+            passwordForm.on('submit',function(event){
                 event.preventDefault();
-                submitProfileForm();
+                submitUpdatePasswordForm();
             });
         }
     };
