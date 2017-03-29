@@ -53,7 +53,7 @@ class Products {
     
     public static function getFeaturedProducts(){
         //get random products for now
-        $result = Database::getConnection()->get_results("SELECT * FROM product ORDER BY RAND() LIMIT 3");
+        $result = Database::getConnection()->get_results("SELECT * FROM product ORDER BY RAND() LIMIT 4");
         if (!is_null($result)){
             $productList = array();
             foreach ($result as $product){

@@ -21,7 +21,7 @@ class Session {
                     self::setSessionExpiry();
                     $userCart = $user->getCart();
                     $sessionCart = self::getSessionCart();
-                    $mergedCart = array_merge($userCart,$sessionCart);
+                    $mergedCart = array_replace($userCart,$sessionCart);
                     self::setSessionCart($mergedCart);
                     Users::setUserCart($mergedCart);
                     return true;

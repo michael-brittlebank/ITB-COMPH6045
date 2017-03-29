@@ -26,7 +26,7 @@ class User {
         $cart = array();
         if(!empty($user->stringified_cart)) {
             try {
-                $cart = json_decode($user->stringified_cart);
+                $cart = json_decode($user->stringified_cart,true);
             } catch (\Exception $exception) {
 
             }
