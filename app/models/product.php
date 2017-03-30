@@ -7,16 +7,17 @@ class Product {
     private $id;
     private $title;
     private $price;
-    private $categories;
+    private $categoryId;
+    private $categoryName;
     private $url;
 
     public function __construct($product){
         $this->id = (int)$product->id;
         $this->title = $product->title;
         $this->price = (double)$product->price;
-        $this->categories = $product->categories;
+        $this->categoryId = $product->category_id;
+        $this->categoryName = $product->category_name;
         $this->url = $product->url_key;
-        //todo, product categories
     }
     
     public function getTitle(){
@@ -29,7 +30,8 @@ class Product {
             'title'=>$this->title,
             'price'=>$this->price,
             'url'=>$this->url,
-            'categories'=>$this->categories
+            'categoryId'=>$this->categoryId,
+            'categoryName'=>$this->categoryName
         );
     }
 }

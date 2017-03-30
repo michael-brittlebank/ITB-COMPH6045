@@ -57,6 +57,7 @@ class Admin {
         $viewData['user'] = $request->getAttribute('user');
         if(!is_null($product)){
             $viewData['product'] = $product->toString();
+            $viewData['categories'] = Services\Util::prepareObjectArrayForView(Services\Products::getCategories());
             return $this->view->render($response, '/admin/edit.twig', $viewData);
         } else {
             throw new \Slim\Exception\NotFoundException($request, $response);
@@ -65,10 +66,10 @@ class Admin {
     
     public static function submitEditProduct($request, $response){
         $parsedBody = $request->getParsedBody();
-        if (!Services\Util::bodyParserIsValid($parsedBody, array('title','price','url','id'))){
+        if (!Services\Util::bodyParserIsValid($parsedBody, array('title','price','url','id','category'))){
             return $response->withJson(Services\Util::createResponse(400), 400);
         } else {
-            if (Services\Products::updateProduct($parsedBody['title'],$parsedBody['price'],$parsedBody['url'],$parsedBody['id'])){
+            if (Services\Products::updateProduct($parsedBody['title'],$parsedBody['price'],$parsedBody['url'],$parsedBody['category'],$parsedBody['id'])){
                 return $response->withJson(Services\Util::createResponse(200), 200);
             } else {
                 return $response->withJson(Services\Util::createResponse(401), 401);

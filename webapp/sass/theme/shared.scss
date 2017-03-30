@@ -204,14 +204,21 @@ button, .button {
     max-width: calc(100% - 12px);
     display: block;
   }
-  input, textarea {
+  input, textarea, select {
     margin: 0 0 10px 0;
+  }
+  select {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    margin-bottom: 20px;
   }
 }
 
-input, textarea {
+input, textarea, select {
   padding: 5px;
   border: 1px solid $color-font-black;
+  background-color: $color-white;
   @include transition-with-defaults(border);
   &.error {
     border: 1px solid red;

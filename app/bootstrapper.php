@@ -27,7 +27,8 @@ $modelsPath = 'models';
 $modelsFiles = [
     'user',
     'product',
-    'cart-product'
+    'cart-product',
+    'category'
 ];
 
 //load files

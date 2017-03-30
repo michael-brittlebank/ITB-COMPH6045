@@ -9,13 +9,15 @@
         titleInput,
         priceInput,
         urlInput,
-        idInput;
+        idInput,
+        categoryInput;
 
     function submitEditProductForm(){
         var title = titleInput.val(),
             price = priceInput.val(),
             url = urlInput.val(),
-            id = idInput.val();
+            id = idInput.val(),
+            category = categoryInput.val();
         helpers.resetForm(newProductForm);
         if (helpers.isEmpty(title)){
             titleInput.addClass(helpers.errorClass);
@@ -34,7 +36,8 @@
                     title: title,
                     price: price,
                     url: url,
-                    id: id
+                    id: id,
+                    category: category
                 }
             )
                 .then(function(){
@@ -64,6 +67,7 @@
             priceInput = $('#edit-product-price');
             urlInput = $('#edit-product-url');
             idInput = $('#edit-product-id');
+            categoryInput = $('#edit-product-category');
 
             //bindings
             newProductForm.on('submit',function(event){

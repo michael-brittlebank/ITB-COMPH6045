@@ -4,12 +4,13 @@ namespace Services;
 
 use Models\CartProduct;
 use \Models\Product;
+use \Models\Category;
 
 class Products {
 
     public static function getProducts($limit,$page){
         $offset = $limit*($page-1);
-        $result = Database::getConnection()->get_results("SELECT * FROM product ORDER BY id LIMIT $limit OFFSET $offset");
+        $result = Database::getConnection()->get_results("SELECT *, product_category.name as category_name FROM product JOIN product_category ORDER BY id LIMIT $limit OFFSET $offset");
         if (!is_null($result)){
             $productList = array();
             foreach ($result as $product){
@@ -45,9 +46,9 @@ class Products {
         }
     }
 
-    public static function updateProduct($productTitle, $productPrice, $productUrl, $productId){
+    public static function updateProduct($productTitle, $productPrice, $productUrl, $productCategory, $productId){
         $productUrl = preg_replace('/[\s-]+/', '-', strtolower($productUrl));;
-        $result = Database::getConnection()->query("UPDATE product SET title = '$productTitle', price=$productPrice, url_key='$productUrl' WHERE id='$productId'");
+        $result = Database::getConnection()->query("UPDATE product SET title = '$productTitle', price=$productPrice, url_key='$productUrl', category_id='$productCategory' WHERE id='$productId'");
         return $result === 1;
     }
     
@@ -95,5 +96,18 @@ class Products {
     public static function deleteProduct($productId){
         $result = Database::getConnection()->query("DELETE FROM product WHERE id = '$productId'");
         return $result === 1;
+    }
+    
+    public static function getCategories(){
+        $result = Database::getConnection()->get_results("SELECT * FROM product_category");
+        if (!is_null($result)){
+            $categoryList = array();
+            foreach ($result as $category){
+                array_push($categoryList, new Category($category));
+            }
+            return $categoryList;
+        } else {
+            return null;
+        }
     }
 }
