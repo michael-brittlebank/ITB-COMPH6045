@@ -28,6 +28,9 @@
         if (helpers.isEmpty(url)){
             urlInput.addClass(helpers.errorClass);
         }
+        if (!category || helpers.isEmpty(category)){
+            categoryInput.addClass(helpers.errorClass);
+        }
         if (helpers.isFormValid(newProductForm)){
             ajax.ajax(
                 'PUT',

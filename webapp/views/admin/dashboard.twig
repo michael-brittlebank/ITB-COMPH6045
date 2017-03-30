@@ -13,6 +13,7 @@
                         <td>Title</td>
                         <td class="hide-for-small">Price</td>
                         <td class="hide-for-small">Url</td>
+                        <td class="hide-for-small">Category</td>
                         <td class="text-center">Edit</td>
                         <td class="text-center">Delete</td>
                     </tr>
@@ -28,6 +29,11 @@
                             </td>
                             <td class="hide-for-small">
                                 <a href="{{ path_for('shop-product', {productUrlKey: product.url}) }}">{{ path_for('shop-product', {productUrlKey: product.url}) }}</a>
+                            </td>
+                            <td>
+                                <a href="{{ path_for('shop') }}?{{ product.categoryName|lower }}">
+                                    {{ product.categoryName }}
+                                </a>
                             </td>
                             <td class="text-center">
                                 <a class="button-edit" href="{{ path_for('admin-edit', {productId: product.id}) }}">
