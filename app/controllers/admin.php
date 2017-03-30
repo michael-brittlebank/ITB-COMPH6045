@@ -30,6 +30,7 @@ class Admin {
     }
 
     public function getNewProductPage ($request, $response) {
+        $viewData['categories'] = Services\Util::prepareObjectArrayForView(Services\Products::getCategories());
         $viewData['metaTitle'] = Services\Util::getAdminMetaTitle('new product');
         $viewData['globals'] = $request->getAttribute('globals');
         $viewData['user'] = $request->getAttribute('user');
@@ -38,10 +39,10 @@ class Admin {
     
     public function submitNewProduct ($request, $response) {
         $parsedBody = $request->getParsedBody();
-        if (!Services\Util::bodyParserIsValid($parsedBody, array('title','price','url'))){
+        if (!Services\Util::bodyParserIsValid($parsedBody, array('title','price','url','category'))){
             return $response->withJson(Services\Util::createResponse(400), 400);
         } else {
-            if (Services\Products::createNewProduct($parsedBody['title'],$parsedBody['price'],$parsedBody['url'])){
+            if (Services\Products::createNewProduct($parsedBody['title'],$parsedBody['price'],$parsedBody['url'],$parsedBody['category'])){
                 return $response->withJson(Services\Util::createResponse(200), 200);
             } else {
                 return $response->withJson(Services\Util::createResponse(401), 401);

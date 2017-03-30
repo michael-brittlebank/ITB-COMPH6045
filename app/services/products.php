@@ -31,9 +31,9 @@ class Products {
         }
     }
 
-    public static function createNewProduct($productTitle, $productPrice, $productUrl){
+    public static function createNewProduct($productTitle, $productPrice, $productUrl, $productCategory){
         $productUrl = preg_replace('/[\s-]+/', '-', strtolower($productUrl));;
-        $result = Database::getConnection()->query("INSERT INTO product (title, price, url_key) VALUES ('$productTitle',$productPrice, '$productUrl')");
+        $result = Database::getConnection()->query("INSERT INTO product (title, price, url_key, category_id) VALUES ('$productTitle',$productPrice, '$productUrl',$productCategory)");
         return $result === 1;
     }
 

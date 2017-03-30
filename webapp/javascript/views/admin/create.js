@@ -8,12 +8,14 @@
         newProductForm,
         titleInput,
         priceInput,
-        urlInput;
+        urlInput,
+        categoryInput;
 
     function submitNewProductForm(){
         var title = titleInput.val(),
             price = priceInput.val(),
-            url = urlInput.val();
+            url = urlInput.val(),
+            category = categoryInput.val();
         helpers.resetForm(newProductForm);
         if (helpers.isEmpty(title)){
             titleInput.addClass(helpers.errorClass);
@@ -24,6 +26,9 @@
         if (helpers.isEmpty(url)){
             urlInput.addClass(helpers.errorClass);
         }
+        if (!category || helpers.isEmpty(category)){
+            categoryInput.addClass(helpers.errorClass);
+        }
         if (helpers.isFormValid(newProductForm)){
             ajax.ajax(
                 'POST',
@@ -31,7 +36,8 @@
                 {
                     title: title,
                     price: price,
-                    url: url
+                    url: url,
+                    category: category
                 }
             )
                 .then(function(){
@@ -39,6 +45,7 @@
                     titleInput.val('');
                     priceInput.val('');
                     urlInput.val('');
+                    categoryInput.val('');
                 })
                 .catch(function(error){
                     switch (error.jqXHR.status){
@@ -63,6 +70,7 @@
             titleInput = $('#create-product-title');
             priceInput = $('#create-product-price');
             urlInput = $('#create-product-url');
+            categoryInput = $('#create-product-category');
 
             //bindings
             newProductForm.on('submit',function(event){
