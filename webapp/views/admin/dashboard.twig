@@ -31,7 +31,7 @@
                                 <a href="{{ path_for('shop-product', {productUrlKey: product.url}) }}">{{ path_for('shop-product', {productUrlKey: product.url}) }}</a>
                             </td>
                             <td>
-                                <a href="{{ path_for('shop') }}?{{ product.categoryName|lower }}">
+                                <a href="{{ path_for('shop') }}?category={{ product.categoryId }}">
                                     {{ product.categoryName }}
                                 </a>
                             </td>
