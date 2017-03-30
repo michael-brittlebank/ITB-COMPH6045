@@ -1,0 +1,25 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <main id="page-shop" class="grid-container row">
+        <div class="col-sm-12">
+            <h1>Shop</h1>
+                <div class="text-right">
+                    <label for="shop-category">Category</label>
+                    <select id="shop-category">
+                        <option value="" {% if currentCategoryId|length < 1 %}selected="selected"{% endif %}>No Category</option>
+                        {% for category in categories%}
+                            <option value="{{ category.id }}" {% if category.id == currentCategoryId %}selected="selected"{% endif %}>{{ category.name|capitalize }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            {% if products %}
+                {% include('components/product-grid.twig') %}
+                {% include 'components/pagination.twig' %}
+            {% else %}
+                <p>
+                    No products available
+                </p>
+            {% endif %}
+        </div>
+    </main>
+{% endblock %}

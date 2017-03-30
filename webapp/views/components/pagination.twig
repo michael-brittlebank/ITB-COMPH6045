@@ -3,7 +3,7 @@
         {% if i == currentPage %}
             <span class="pagination-element active">{{ i }}</span>
         {% else %}
-            <a href="{{ globals.path }}?page={{ i }}" class="pagination-element">{{ i }}</a>
+            <a href="{{ globals.path }}?page={{ i }}" data-page-id="{{ i }}" class="pagination-element">{{ i }}</a>
         {% endif %}
     {% endfor %}
 </div>

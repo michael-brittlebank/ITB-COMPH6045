@@ -32,7 +32,8 @@ var app = {
         shop: {
             pdp: {},
             cart: {},
-            checkout: {}
+            checkout: {},
+            grid: {}
         }
     },
 
@@ -58,6 +59,7 @@ var app = {
         views.admin.dashboard.init();
 
         //shop
+        views.shop.grid.init();
         views.shop.pdp.init();
         views.shop.cart.init();
         views.shop.checkout.init();

@@ -8,9 +8,13 @@ use \Models\Category;
 
 class Products {
 
-    public static function getProducts($limit,$page){
+    public static function getProducts($limit,$page,$categoryId = ''){
         $offset = $limit*($page-1);
-        $result = Database::getConnection()->get_results("SELECT *, product.id as id, product_category.name as category_name FROM product LEFT JOIN product_category ON product.category_id = product_category.id ORDER BY product.id LIMIT $limit OFFSET $offset");
+        $whereStatement = '';
+        if(!empty($categoryId)){
+            $whereStatement = "WHERE product_category.id = '$categoryId'";
+        }
+        $result = Database::getConnection()->get_results("SELECT *, product.id as id, product_category.name as category_name FROM product LEFT JOIN product_category ON product.category_id = product_category.id $whereStatement ORDER BY product.id LIMIT $limit OFFSET $offset");
         if (!is_null($result)){
             $productList = array();
             foreach ($result as $product){
