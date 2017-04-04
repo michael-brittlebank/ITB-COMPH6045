@@ -14,7 +14,7 @@ class Pages {
     }
 
     public function getHomepage ($request, $response) {
-        $viewData['metaTitle'] = 'My Store';
+        $viewData['metaTitle'] = getenv('SITE_NAME');
         $viewData['globals'] = $request->getAttribute('globals');
         $viewData['preferences'] = $request->getAttribute('preferences');
         $viewData['user'] = $request->getAttribute('user');
