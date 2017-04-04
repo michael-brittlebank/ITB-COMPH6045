@@ -8,22 +8,24 @@
         footerCurrencyLinks;
 
     function submitActiveCurrency(element){
-        $('.footer-currency.'+activeClass).removeClass(activeClass);
-        element.addClass(activeClass);
-        var currency = element.attr('data-currency');
-        ajax.ajax(
-            'PUT',
-            '/preferences',
-            {
-                currency: currency
-            }
-        )
-            .then(function(){
-                window.location.reload();
-            })
-            .catch(function(error){
-                window.location.reload();
-            });
+        if (!element.hasClass(activeClass)){
+            $('.footer-currency.'+activeClass).removeClass(activeClass);
+            element.addClass(activeClass);
+            var currency = element.attr('data-currency');
+            ajax.ajax(
+                'PUT',
+                '/preferences',
+                {
+                    currency: currency
+                }
+            )
+                .then(function(){
+                    window.location.reload();
+                })
+                .catch(function(error){
+                    window.location.reload();
+                });
+        }
     }
 
     this.init = function(){
