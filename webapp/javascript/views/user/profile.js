@@ -34,8 +34,7 @@
             )
                 .then(function(){
                     modals.openSuccessModal('Success','Password updated successfully');
-                    passwordInput.val('');
-                    repeatPasswordInput.val('');
+                    helpers.resetFormValues(passwordForm);
                 })
                 .catch(function(){
                     modals.openErrorModal('Error','Could not update password. Contact your site administrator');

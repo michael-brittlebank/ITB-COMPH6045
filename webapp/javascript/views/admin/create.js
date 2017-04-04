@@ -42,10 +42,7 @@
             )
                 .then(function(){
                     modals.openSuccessModal('Success','Product created successfully');
-                    titleInput.val('');
-                    priceInput.val('');
-                    urlInput.val('');
-                    categoryInput.val('');
+                    helpers.resetFormValues(newProductForm);
                 })
                 .catch(function(error){
                     switch (error.jqXHR.status){

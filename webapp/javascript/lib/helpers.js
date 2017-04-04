@@ -30,6 +30,10 @@
       });
     };
 
+    this.resetFormValues = function(formElement){
+        formElement[0].reset();
+    };
+
     this.isFormValid = function(formElement){
         return formElement.find('.'+that.errorClass).length < 1;
     };
