@@ -39,4 +39,10 @@ class Users {
         $result = Database::getConnection()->query("UPDATE user SET password_hash = '$hashedPassword' WHERE id='$userId'");
         return $result;
     }
+    
+    public static function setUserPreferences($currency){
+         Session::setSessionPreferences(array(
+            'currency'=>$currency
+        ));
+    }
 }

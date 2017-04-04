@@ -16,6 +16,7 @@ class User {
     public function getLoginPage ($request, $response) {
         $viewData['metaTitle'] = Services\Util::getMetaTitle('login');
         $viewData['globals'] = $request->getAttribute('globals');
+        $viewData['preferences'] = $request->getAttribute('preferences');
         $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, '/user/login.twig', $viewData);
     }
@@ -36,6 +37,7 @@ class User {
     public function getRegisterPage ($request, $response) {
         $viewData['metaTitle'] = Services\Util::getMetaTitle('register');
         $viewData['globals'] = $request->getAttribute('globals');
+        $viewData['preferences'] = $request->getAttribute('preferences');
         $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, '/user/register.twig', $viewData);
     }
@@ -66,6 +68,7 @@ class User {
         );
         $viewData['metaTitle'] = Services\Util::getMetaTitle('profile');
         $viewData['globals'] = $request->getAttribute('globals');
+        $viewData['preferences'] = $request->getAttribute('preferences');
         $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, '/user/profile.twig', $viewData);
     }
@@ -99,6 +102,7 @@ class User {
     public function getEditProfilePage ($request, $response) {
         $viewData['metaTitle'] = Services\Util::getMetaTitle('profile');
         $viewData['globals'] = $request->getAttribute('globals');
+        $viewData['preferences'] = $request->getAttribute('preferences');
         $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, '/user/profile-edit.twig', $viewData);
     }
@@ -123,6 +127,16 @@ class User {
                 //cannot edit other user's profiles
                 return $response->withJson(Services\Util::createResponse(401), 401);
             }
+        }
+    }
+
+    public function submitUserPreferences ($request, $response) {
+        $parsedBody = $request->getParsedBody();
+        if (!Services\Util::bodyParserIsValid($parsedBody, array('currency'))){
+            return $response->withJson(Services\Util::createResponse(400), 400);
+        } else {
+            Services\Users::setUserPreferences($parsedBody['currency']);
+            return $response->withJson(Services\Util::createResponse(200), 200);
         }
     }
 

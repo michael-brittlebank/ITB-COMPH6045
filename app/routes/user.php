@@ -18,3 +18,6 @@ $app->put('/profile-edit', \Controllers\User::class.':submitEditProfile')->add($
 
 //user logout route
 $app->get('/logout', \Controllers\User::class.':submitLogout')->setName('user-logout');
+
+//user preferences
+$app->put('/preferences', \Controllers\User::class.':submitUserPreferences');

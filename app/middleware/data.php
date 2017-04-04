@@ -10,5 +10,6 @@ $app->add(function (Request $request, Response $response, callable $next) {
         'shopPath' => '/shop/',
         'siteName' => getenv('SITE_NAME')
     ));
+    $request = $request->withAttribute('preferences', \Services\Session::getSessionPreferences());
     return $next($request, $response);
 });

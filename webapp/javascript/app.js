@@ -34,6 +34,9 @@ var app = {
             cart: {},
             checkout: {},
             grid: {}
+        },
+        components: {
+            footer: {}
         }
     },
 
@@ -46,6 +49,9 @@ var app = {
 
         //libs        
         app.modals.init();
+        
+        //components
+        views.components.footer.init();
         
         //user
         views.user.register.init();

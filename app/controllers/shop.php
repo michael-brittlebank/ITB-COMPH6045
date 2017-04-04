@@ -29,6 +29,7 @@ class Shop {
         $viewData['currentCategoryId'] = $categoryId;
         $viewData['metaTitle'] = Services\Util::getMetaTitle('shop');
         $viewData['globals'] = $request->getAttribute('globals');
+        $viewData['preferences'] = $request->getAttribute('preferences');
         $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, '/shop/grid.twig', $viewData);
     }
@@ -37,6 +38,7 @@ class Shop {
         $productUrlKey = strtolower($args['productUrlKey']);
         $product = Services\Products::getProductByUrlKey($productUrlKey);
         $viewData['globals'] = $request->getAttribute('globals');
+        $viewData['preferences'] = $request->getAttribute('preferences');
         $viewData['user'] = $request->getAttribute('user');
         if(!is_null($product)){
             $viewData['product'] = $product->toString();

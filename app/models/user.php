@@ -16,7 +16,6 @@ class User {
     private $cart;
 
     public function __construct($user){
-        //todo, user can change display preference (e.g. colour / font / font size)
         $this->id = (int)$user->id;
         $this->firstName = $user->first_name;
         $this->lastName = $user->last_name;

@@ -25,6 +25,7 @@ class Admin {
         $viewData['pageLimit'] = $pageLimit;
         $viewData['currentPage'] = $page;
         $viewData['globals'] = $request->getAttribute('globals');
+        $viewData['preferences'] = $request->getAttribute('preferences');
         $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, '/admin/dashboard.twig', $viewData);
     }
@@ -33,6 +34,7 @@ class Admin {
         $viewData['categories'] = Services\Util::prepareObjectArrayForView(Services\Products::getCategories());
         $viewData['metaTitle'] = Services\Util::getAdminMetaTitle('new product');
         $viewData['globals'] = $request->getAttribute('globals');
+        $viewData['preferences'] = $request->getAttribute('preferences');
         $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, '/admin/new.twig', $viewData);
     }
@@ -55,6 +57,7 @@ class Admin {
         $product = Services\Products::getProductById($productId);
         $viewData['metaTitle'] = Services\Util::getAdminMetaTitle('edit product');
         $viewData['globals'] = $request->getAttribute('globals');
+        $viewData['preferences'] = $request->getAttribute('preferences');
         $viewData['user'] = $request->getAttribute('user');
         if(!is_null($product)){
             $viewData['product'] = $product->toString();

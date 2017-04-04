@@ -29,6 +29,7 @@ class Cart {
         );
         $viewData['metaTitle'] = Services\Util::getMetaTitle('cart');
         $viewData['globals'] = $request->getAttribute('globals');
+        $viewData['preferences'] = $request->getAttribute('preferences');
         $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, '/shop/cart.twig', $viewData);
     }
@@ -49,6 +50,7 @@ class Cart {
         );
         $viewData['metaTitle'] = Services\Util::getMetaTitle('checkout');
         $viewData['globals'] = $request->getAttribute('globals');
+        $viewData['preferences'] = $request->getAttribute('preferences');
         $viewData['user'] = $request->getAttribute('user');
         return $this->view->render($response, '/shop/checkout.twig', $viewData);
     }

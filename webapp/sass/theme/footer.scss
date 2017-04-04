@@ -2,10 +2,6 @@
 //----------------------
 footer {
   margin: 50px 0 25px 0;
-  .fa {
-    font-size: 2rem;
-    margin: 0 3px;
-  }
 }
 
 #footer-social-title {
@@ -25,7 +21,20 @@ footer {
 
 #footer-social-container {
   text-align: center;
+  .fa {
+    font-size: 2rem;
+    margin: 0 3px;
+  }
   @include tablet-up {
     text-align: right;
+  }
+}
+
+.footer-currency {
+  font-size: 1.25rem;
+  display: inline-block;
+  vertical-align: top;
+  &:hover, &.active {
+    color: $color-anchor-hover;
   }
 }

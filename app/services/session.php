@@ -62,6 +62,14 @@ class Session {
         return $_SESSION['user'];
     }
 
+    public static function setSessionPreferences($preferences){
+        $_SESSION['preferences'] = $preferences;
+    }
+
+    public static function getSessionPreferences(){
+        return $_SESSION['preferences'];
+    }
+
     public static function setSessionExpiry(){
         $minutes = 30 * ($secondsInMinute = 60);
         $_SESSION['expiry'] = time() + $minutes;

@@ -2,7 +2,16 @@
     <div class="col-md-6 col-sm-12">
         <div class="footer-text">
             <a href="{{ path_for('page-about') }}">About</a> |
-            <a href="{{ path_for('page-contact') }}">Contact</a>
+            <a href="{{ path_for('page-contact') }}">Contact</a> |
+            <a href="#" class="footer-currency {% if preferences.currency is empty or preferences.currency == 'eur' %}active{% endif %}" data-currency="eur">
+                <i class="fa fa-eur"></i>
+            </a>
+            <a href="#" class="footer-currency {% if preferences.currency == 'usd' %}active{% endif %}" data-currency="usd">
+                <i class="fa fa-usd"></i>
+            </a>
+            <a href="#" class="footer-currency {% if preferences.currency == 'gbp' %}active{% endif %}" data-currency="gbp">
+                <i class="fa fa-gbp"></i>
+            </a>
         </div>
     </div>
     <div id="footer-social-container" class="col-sm-12 col-md-6">
