@@ -200,8 +200,8 @@ button, .button {
 //-----------------------------
 .standard-form {
   label, input, textarea {
-    width: calc(100% - 12px);
-    max-width: calc(100% - 12px);
+    width: 100%;
+    max-width: 100%;
     display: block;
   }
   input, textarea, select {
@@ -219,6 +219,8 @@ input, textarea, select {
   padding: 5px;
   border: 1px solid $color-font-black;
   background-color: $color-white;
+  border-radius: 5px;
+  box-sizing: border-box;
   @include transition-with-defaults(border);
   &.error {
     border: 1px solid red;
