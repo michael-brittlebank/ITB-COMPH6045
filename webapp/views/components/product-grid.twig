@@ -5,7 +5,7 @@
                 <a href="{{ globals.shopPath }}{{ product.url }}">
                     <img src="//placeholdit.imgix.net/~text?txtsize=33&txt=Product%20Image&w=250&h=250"/>
                     <h4 class="text-upper">{{ product.title }}</h4>
-                    <h5>€{{ product.price }}</h5>
+                    <h5>{% include "components/product-price.twig" %}</h5>
                 </a>
             </div>
         {% endfor %}

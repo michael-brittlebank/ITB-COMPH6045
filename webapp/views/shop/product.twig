@@ -9,7 +9,7 @@
         </div>
         <div class="col-sm-12 col-md-4">
             <h1 class="no-margin">{{ product.title|capitalize }}</h1>
-            <h3>€{{ product.price }}</h3>
+            <h3>{% include "components/product-price.twig" %}</h3>
             <hr/>
             <div>
                 <p>
