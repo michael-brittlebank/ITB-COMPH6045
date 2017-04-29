@@ -1,88 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-<url>
-  <loc>http://h6045.mikestumpf.com/</loc>
-  <changefreq>monthly</changefreq>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>http://h6045.mikestumpf.com/favourites</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://h6045.mikestumpf.com/favourites/activities</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://h6045.mikestumpf.com/favourites/places</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://h6045.mikestumpf.com/favourites/toys</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://h6045.mikestumpf.com/growing-up</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://h6045.mikestumpf.com/growing-up/puppyhood</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://h6045.mikestumpf.com/growing-up/adolescence</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://h6045.mikestumpf.com/growing-up/adulthood</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://h6045.mikestumpf.com/barkbook</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://h6045.mikestumpf.com/gallery</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://h6045.mikestumpf.com/contact</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://h6045.mikestumpf.com/barkbook/kaycee</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://h6045.mikestumpf.com/barkbook/basil</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://h6045.mikestumpf.com/barkbook/quinn</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://h6045.mikestumpf.com/barkbook/wrigley</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.64</priority>
-</url>
+    <url>
+        <loc>http://h6045.mikestumpf.com/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>http://h6045.mikestumpf.com/shop</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>http://h6045.mikestumpf.com/about</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>http://h6045.mikestumpf.com/contact</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>http://h6045.mikestumpf.com/login</loc>
+        <changefreq>never</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>http://h6045.mikestumpf.com/register</loc>
+        <changefreq>never</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>http://h6045.mikestumpf.com/cart</loc>
+        <changefreq>never</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>http://h6045.mikestumpf.com/shop/maracas</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>http://h6045.mikestumpf.com/shop/fiddle</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>http://h6045.mikestumpf.com/shop/tin-whistle</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>http://h6045.mikestumpf.com/shop/one-hour-lesson</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>http://h6045.mikestumpf.com/shop/electric-guitar</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>http://h6045.mikestumpf.com/shop/distortion-pedal</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>http://h6045.mikestumpf.com/shop/spoons</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>http://h6045.mikestumpf.com/shop/delay-pedal</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>http://h6045.mikestumpf.com/shop/ukulele</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>http://h6045.mikestumpf.com/shop/chorus-pedal</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>http://h6045.mikestumpf.com/shop/two-hour-lesson</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>http://h6045.mikestumpf.com/shop/plectrum</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.64</priority>
+    </url>
 </urlset>

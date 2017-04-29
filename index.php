@@ -1,7 +1,5 @@
 <?php
 
-//todo, sitemap
-
 //load composer packages
 require 'vendor/autoload.php';
 
