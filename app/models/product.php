@@ -14,7 +14,7 @@ class Product {
     public function __construct($product){
         $this->id = (int)$product->id;
         $this->title = $product->title;
-        $this->price = (double)$product->price;
+        $this->price = number_format((double)$product->price,2);
         $this->categoryId = $product->category_id;
         $this->categoryName = $product->category_name;
         $this->url = $product->url_key;
