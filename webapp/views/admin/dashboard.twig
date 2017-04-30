@@ -25,7 +25,7 @@
                                 {{ product.title }}
                             </td>
                             <td class="hide-for-small">
-                                €{{ product.price }}
+                                {% include "components/currency-converter.twig" with {"value": product.price} %}
                             </td>
                             <td class="hide-for-small">
                                 <a href="{{ path_for('shop-product', {productUrlKey: product.url}) }}">{{ path_for('shop-product', {productUrlKey: product.url}) }}</a>

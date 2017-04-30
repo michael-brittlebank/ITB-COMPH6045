@@ -37,7 +37,7 @@
 
                             </td>
                             <td>
-                                €{{ product.price }}
+                                {% include "components/currency-converter.twig" with {"value": product.price} %}
                             </td>
                             <td class="text-center">
                                 <input id="cart-product-{{ product.id }}-quantity" type="number" value="{{ product.quantity }}" min="0" max="99"/>
@@ -59,17 +59,17 @@
                     <tr class="text-right">
                         <td colspan="4"></td>
                         <td>Subtotal: </td>
-                        <td>€{{ cart.subtotal }}</td>
+                        <td>{% include "components/currency-converter.twig" with {"value": cart.subtotal} %}</td>
                     </tr>
                     <tr class="text-right">
                         <td colspan="4"></td>
                         <td>Shipping: </td>
-                        <td>€{{ cart.shippingTotal }}</td>
+                        <td>{% include "components/currency-converter.twig" with {"value": cart.shippingTotal} %}</td>
                     </tr>
                     <tr class="text-right">
                         <td colspan="4"></td>
                         <td>Total: </td>
-                        <td>€{{ cart.total }}</td>
+                        <td>{% include "components/currency-converter.twig" with {"value": cart.total} %}</td>
                     </tr>
                     </tfoot>
                 </table>

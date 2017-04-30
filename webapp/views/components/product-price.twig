@@ -1,7 +1,0 @@
-{% if preferences.currency == 'usd' %}
-    ${{ (product.price*1.07)|round(2) }}
-{% elseif preferences.currency == 'gbp' %}
-    £{{ (product.price*0.86)|round(2) }}
-{% else %}
-    €{{ product.price }}
-{% endif %}

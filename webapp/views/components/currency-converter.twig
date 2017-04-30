@@ -1,0 +1,7 @@
+{% if preferences.currency == 'usd' %}
+    ${{ (value*1.07)|round(2)|number_format(2) }}
+{% elseif preferences.currency == 'gbp' %}
+    £{{ (value*0.86)|round(2)|number_format(2) }}
+{% else %}
+    €{{ value }}
+{% endif %}

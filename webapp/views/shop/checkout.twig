@@ -24,9 +24,9 @@
             {% endfor %}
             <hr/>
             <div class="text-right">
-                <p class="no-margin">Subtotal: €{{ cart.subtotal }}</p>
-                <p class="no-margin">Shipping: €{{ cart.shippingTotal }}</p>
-                <p>Total: €{{ cart.total }}</p>
+                <p class="no-margin">Subtotal: {% include "components/currency-converter.twig" with {"value": cart.subtotal} %}</p>
+                <p class="no-margin">Shipping: {% include "components/currency-converter.twig" with {"value": cart.shippingTotal} %}</p>
+                <p>Total: {% include "components/currency-converter.twig" with {"value": cart.total} %}</p>
             </div>
         </div>
         <div class="col-sm-6">
