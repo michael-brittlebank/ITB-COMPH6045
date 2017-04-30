@@ -2,8 +2,13 @@
   "name": "ITB-COMPH6045",
   "version": "1.0.0",
   "private": true,
+  "homepage": "http://h6045.mikestumpf.com/",
   "dependencies": {
     "bower": "1.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mike-stumpf/ITB-COMPH6045"
   },
   "devDependencies": {
     "autoprefixer": "6.3.3",
