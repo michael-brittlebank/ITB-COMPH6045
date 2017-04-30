@@ -59,7 +59,7 @@ class Session {
     }
 
     public static function getSessionUser(){
-        return $_SESSION['user'];
+        return isset($_SESSION['user'])?$_SESSION['user']:array();
     }
 
     public static function setSessionPreferences($preferences){
@@ -67,7 +67,7 @@ class Session {
     }
 
     public static function getSessionPreferences(){
-        return $_SESSION['preferences'];
+        return isset($_SESSION['preferences'])?$_SESSION['preferences']:array();
     }
 
     public static function setSessionExpiry(){
@@ -76,7 +76,7 @@ class Session {
     }
 
     public static function getSessionExpiry(){
-        return $_SESSION['expiry'];
+        return isset($_SESSION['expiry'])?$_SESSION['expiry']:array();
     }
 
     public static function setSessionCart($cart){
@@ -87,11 +87,7 @@ class Session {
     }
 
     public static function getSessionCart(){
-        if (isset($_SESSION['cart'])){
-            return $_SESSION['cart'];
-        } else {
-            return array();
-        }
+        return isset($_SESSION['cart'])?$_SESSION['cart']:array();
     }
 
 }
