@@ -23,7 +23,7 @@ class Cart {
         }
         Session::setSessionCart($cart);
         if(Session::isUserSessionStarted()){
-            Users::setUserCart($cart);
+            Users::setUserCart();
         }
         return true;
     }

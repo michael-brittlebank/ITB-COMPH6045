@@ -18,7 +18,8 @@ class Users {
         $userSalt = Authentication::createSalt();
         $hashedPassword = Authentication::encryptPassword($plainTextPassword,$userSalt);
         $userRole = 99;//default role for users
-        $result = Database::getConnection()->query("INSERT INTO user (first_name, last_name, email, password_salt, password_hash, role) VALUES ('$userFirstName','$userLastName', '$userEmail','$userSalt','$hashedPassword',$userRole)");
+        $stringifiedCart = Session::getStringifiedSessionCart();
+        $result = Database::getConnection()->query("INSERT INTO user (first_name, last_name, email, password_salt, password_hash, role, stringified_cart) VALUES ('$userFirstName','$userLastName', '$userEmail','$userSalt','$hashedPassword',$userRole,'$stringifiedCart')");
         return $result === 1;
     }
 
@@ -27,8 +28,8 @@ class Users {
         return $result;
     }
 
-    public static function setUserCart($cart){
-        $cart = json_encode($cart);
+    public static function setUserCart(){
+        $cart = Session::getStringifiedSessionCart();
         $userId = Session::getSessionUser()->getId();
         $result = Database::getConnection()->query("UPDATE user SET stringified_cart = '$cart' WHERE id='$userId'");
         return $result;

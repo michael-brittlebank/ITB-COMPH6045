@@ -23,7 +23,7 @@ class Session {
                     $sessionCart = self::getSessionCart();
                     $mergedCart = array_replace($userCart,$sessionCart);
                     self::setSessionCart($mergedCart);
-                    Users::setUserCart($mergedCart);
+                    Users::setUserCart();
                     return true;
                 } else {
                     //invalid password
@@ -88,6 +88,10 @@ class Session {
 
     public static function getSessionCart(){
         return isset($_SESSION['cart'])?$_SESSION['cart']:array();
+    }
+    
+    public static function getStringifiedSessionCart(){
+        return json_encode(self::getSessionCart());
     }
 
 }
