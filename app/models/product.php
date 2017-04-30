@@ -16,7 +16,7 @@ class Product {
         $this->title = $product->title;
         $this->price = number_format((double)$product->price,2);
         $this->categoryId = $product->category_id;
-        $this->categoryName = $product->category_name;
+        $this->categoryName = property_exists($product, 'category_name')?$product->category_name:'';
         $this->url = $product->url_key;
     }
     
