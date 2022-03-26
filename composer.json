@@ -5,7 +5,7 @@
     "slim/slim": "^3.0",
     "slim/php-view": "^2.2",
     "slim/http-cache": "^0.3.0",
-    "twig/twig": "^1.32",
+    "twig/twig": "^2.14",
     "slim/twig-view": "^2.2",
     "vlucas/phpdotenv": "^2.4",
     "jv2222/ezsql": "dev-master"
